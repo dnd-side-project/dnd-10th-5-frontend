@@ -1,4 +1,7 @@
 {
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
   "eslint.workingDirectories": [
     {
       "mode": "auto"
