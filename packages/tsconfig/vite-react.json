@@ -1,13 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Next.js",
+  "display": "Vite React",
   "extends": "./base.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "declaration": false,
+    "declarationMap": false,
+    "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "allowJs": true,
-    "jsx": "preserve",
     "noEmit": true
   }
 }
