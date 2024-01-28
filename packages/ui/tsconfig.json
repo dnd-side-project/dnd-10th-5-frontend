@@ -1,8 +1,8 @@
 {
-  "extends": "@favolink/tsconfig/react-library.json",
+  "extends": "@tsconfig/favolink/react-library.json",
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src"],
+  "include": [".eslintrc.js", "src", "turbo"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,5 +1,5 @@
 {
-  "extends": "@favolink/tsconfig/vite-react.json",
+  "extends": "@tsconfig/favolink/vite-react.json",
   "compilerOptions": {
     "plugins": [
       {
@@ -12,7 +12,7 @@
     "next.config.js",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+    ".next/types/**/*.ts",
+    ".eslintrc.js"
+  ]
 }

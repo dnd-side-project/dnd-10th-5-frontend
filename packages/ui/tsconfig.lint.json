@@ -1,5 +1,5 @@
 {
-  "extends": "@favolink/tsconfig/react-library.json",
+  "extends": "@tsconfig/favolink/react-library.json",
   "compilerOptions": {
     "outDir": "dist"
   },
