@@ -1,10 +1,11 @@
 // This configuration only applies to the package manager root.
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  ignorePatterns: ["apps/**", "packages/**"],
-  extends: ["@repo/eslint-config/library.js"],
-  parser: "@typescript-eslint/parser",
+  root: true,
+  ignorePatterns: ['apps/**', 'packages/**'],
+  extends: ['favolink'],
   parserOptions: {
     project: true,
+    tsconfigRootDir: __dirname,
   },
 };
