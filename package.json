@@ -1,11 +1,14 @@
 {
   "name": "favolink",
   "private": true,
+  "packageManager": "pnpm@8.9.0",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo lint",
+    "lint:pack": "packlint sort -R",
+    "postinstall": "pnpm lint:pack",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -16,11 +19,11 @@
     "eslint-config-favolink": "workspace:*",
     "husky": "^9.0.6",
     "lint-staged": "^15.2.0",
+    "packlint": "^0.2.4",
     "prettier": "^3.1.1",
     "turbo": "latest",
     "typescript": "^5.3.3"
   },
-  "packageManager": "pnpm@8.9.0",
   "engines": {
     "node": ">=18"
   }
