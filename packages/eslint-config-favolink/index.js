@@ -7,8 +7,8 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
+    'plugin:@typescript-eslint/strict-type-checked',
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:react/recommended',
@@ -20,7 +20,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  plugins: ['react-refresh'],
+  plugins: ['@stylistic', 'react-refresh'],
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
@@ -44,6 +44,30 @@ module.exports = {
     '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/method-signature-style': 'error',
     '@typescript-eslint/sort-type-constituents': 'error',
+    '@stylistic/padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: '*' },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
+      {
+        blankLine: 'never',
+        prev: ['import', 'cjs-import'],
+        next: ['import', 'cjs-import'],
+      },
+      {
+        blankLine: 'never',
+        prev: ['case', 'break', 'default'],
+        next: ['case', 'break', 'default'],
+      },
+      {
+        blankLine: 'never',
+        prev: 'directive',
+        next: 'directive',
+      },
+    ],
     'import/no-cycle': 'error',
     'import/no-duplicates': ['error', { 'prefer-inline': true }],
     'import/order': [
