@@ -4,7 +4,9 @@
   "packageManager": "pnpm@8.9.0",
   "scripts": {
     "build": "turbo build",
+    "build:extension": "turbo build --filter=extension",
     "dev": "turbo dev",
+    "dev:extension": "turbo dev --filter=extension",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo lint",
     "lint:pack": "packlint sort -R",
