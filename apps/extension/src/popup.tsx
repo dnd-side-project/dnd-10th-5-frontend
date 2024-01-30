@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import Popup from "./pages/Popup";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import Popup from './pages/Popup';
 
-ReactDOM.createRoot(document.body).render(
-  <React.StrictMode>
+createRoot(document.body).render(
+  <StrictMode>
     <Popup />
-  </React.StrictMode>
+  </StrictMode>,
 );

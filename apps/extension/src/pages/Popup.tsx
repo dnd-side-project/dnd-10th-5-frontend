@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import "./Popup.css";
+import './Popup.css';
 
-export default function() {
+// eslint-disable-next-line
+export default function () {
   useEffect(() => {
-    console.log("Hello from the popup!");
+    console.log('Hello from the popup!');
   }, []);
 
   return (
@@ -14,5 +15,5 @@ export default function() {
         Template: <code>react-ts</code>
       </p>
     </div>
-  )
+  );
 }
