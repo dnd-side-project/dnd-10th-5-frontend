@@ -1,4 +1,4 @@
 {
-  "extends": "@tsconfig/favolink/vite-react",
+  "extends": "@tsconfig/favolink/vite-react.json",
   "include": [".eslintrc.cjs", "src", "vite.config.ts"]
 }
