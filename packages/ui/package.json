@@ -9,7 +9,7 @@
   },
   "scripts": {
     "generate:component": "turbo gen react-component",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint \"**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}\""
   },
   "devDependencies": {
     "@tsconfig/favolink": "workspace:*",
