@@ -15,7 +15,8 @@ async function enableMocking() {
   return worker.start();
 }
 
-await enableMocking().then(() => {
+// eslint-disable-next-line
+enableMocking().then(() => {
   createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
       <App />
