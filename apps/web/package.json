@@ -14,6 +14,7 @@
     "@tanstack/react-query": "^5.18.1",
     "@tanstack/react-query-devtools": "^5.18.1",
     "@vanilla-extract/css": "^1.14.1",
+    "@vanilla-extract/vite-plugin": "^4.0.3",
     "axios": "^1.6.7",
     "msw": "^2.1.7",
     "react": "^18.2.0",
