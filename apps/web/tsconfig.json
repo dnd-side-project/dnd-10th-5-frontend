@@ -1,4 +1,10 @@
 {
   "extends": "@tsconfig/favolink/vite-react",
-  "include": [".eslintrc.cjs", "src", "vite.config.ts"]
+  "include": [".eslintrc.cjs", "src", "vite.config.ts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
 }
