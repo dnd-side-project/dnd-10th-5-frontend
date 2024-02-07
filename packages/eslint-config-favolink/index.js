@@ -70,6 +70,7 @@ module.exports = {
     ],
     'import/no-cycle': 'error',
     'import/no-duplicates': ['error', { 'prefer-inline': true }],
+    'import/no-unresolved': 'off',
     'import/order': [
       'error',
       {
