@@ -44,3 +44,10 @@ export async function put<DATA, RESULT>(
 export async function del<RESULT>(url: string) {
   return request<undefined, RESULT>(url, 'DELETE');
 }
+
+export async function patch<DATA, RESULT>(
+  url: string,
+  data: Record<string, DATA>,
+) {
+  return request<DATA, RESULT>(url, 'PATCH', data);
+}
