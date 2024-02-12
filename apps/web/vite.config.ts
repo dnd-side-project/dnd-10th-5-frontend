@@ -8,7 +8,4 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],
   },
-  define: {
-    'process.env': process.env,
-  },
 });

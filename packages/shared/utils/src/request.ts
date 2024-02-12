@@ -9,10 +9,10 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-async function request<DATA, RESULT>(
+async function request<Data, Result>(
   url: string,
   method: string,
-  data?: Record<string, DATA>,
+  data?: Record<string, Data>,
 ) {
   const response = await axiosInstance({
     url,
@@ -20,34 +20,34 @@ async function request<DATA, RESULT>(
     data,
   });
 
-  return response.data as RESULT;
+  return response.data as Result;
 }
 
-export async function get<RESULT>(url: string) {
-  return request<undefined, RESULT>(url, 'GET');
+export async function get<Result>(url: string) {
+  return request<undefined, Result>(url, 'GET');
 }
 
-export async function post<DATA, RESULT>(
+export async function post<Data, Result>(
   url: string,
-  data: Record<string, DATA>,
+  data: Record<string, Data>,
 ) {
-  return request<DATA, RESULT>(url, 'POST', data);
+  return request<Data, Result>(url, 'POST', data);
 }
 
-export async function put<DATA, RESULT>(
+export async function put<Data, Result>(
   url: string,
-  data: Record<string, DATA>,
+  data: Record<string, Data>,
 ) {
-  return request<DATA, RESULT>(url, 'PUT', data);
+  return request<Data, Result>(url, 'PUT', data);
 }
 
-export async function del<RESULT>(url: string) {
-  return request<undefined, RESULT>(url, 'DELETE');
+export async function del<Result>(url: string) {
+  return request<undefined, Result>(url, 'DELETE');
 }
 
-export async function patch<DATA, RESULT>(
+export async function patch<Data, Result>(
   url: string,
-  data: Record<string, DATA>,
+  data: Record<string, Data>,
 ) {
-  return request<DATA, RESULT>(url, 'PATCH', data);
+  return request<Data, Result>(url, 'PATCH', data);
 }
