@@ -5,6 +5,8 @@ import './App.css';
 import { router } from './routes';
 
 export default function App() {
+  console.log('process.env.HOST', process.env.HOST);
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {

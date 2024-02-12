@@ -3,12 +3,14 @@
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
+      "dotEnv": [".env.prod", ".env"],
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dotEnv": [".env.dev", ".env"]
     },
     "lint": {}
   }

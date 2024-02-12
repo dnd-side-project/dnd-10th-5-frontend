@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const HOST = 'https://34.47.80.30:8081';
-
 const axiosInstance = axios.create({
-  baseURL: HOST,
+  baseURL: `${process.env.HOST}`,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -11,10 +9,10 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-async function request<D, R>(
+async function request<DATA, RESULT>(
   url: string,
   method: string,
-  data?: Record<string, D>,
+  data?: Record<string, DATA>,
 ) {
   const response = await axiosInstance({
     url,
@@ -22,21 +20,27 @@ async function request<D, R>(
     data,
   });
 
-  return response.data as R;
+  return response.data as RESULT;
 }
 
-export async function get<R>(url: string) {
-  return request<undefined, R>(url, 'GET');
+export async function get<RESULT>(url: string) {
+  return request<undefined, RESULT>(url, 'GET');
 }
 
-export async function post<D, R>(url: string, data: Record<string, D>) {
-  return request<D, R>(url, 'POST', data);
+export async function post<DATA, RESULT>(
+  url: string,
+  data: Record<string, DATA>,
+) {
+  return request<DATA, RESULT>(url, 'POST', data);
 }
 
-export async function put<D, R>(url: string, data: Record<string, D>) {
-  return request<D, R>(url, 'PUT', data);
+export async function put<DATA, RESULT>(
+  url: string,
+  data: Record<string, DATA>,
+) {
+  return request<DATA, RESULT>(url, 'PUT', data);
 }
 
-export async function del<R>(url: string) {
-  return request<undefined, R>(url, 'DELETE');
+export async function del<RESULT>(url: string) {
+  return request<undefined, RESULT>(url, 'DELETE');
 }
