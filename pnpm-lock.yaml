@@ -81,6 +81,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@favolink/utils':
+        specifier: workspace:*
+        version: link:../../packages/shared/utils
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.50.1)
@@ -205,6 +208,9 @@ importers:
 
   packages/shared/utils:
     dependencies:
+      axios:
+        specifier: ^1.6.7
+        version: 1.6.7
       react:
         specifier: ^18.2.0
         version: 18.2.0
