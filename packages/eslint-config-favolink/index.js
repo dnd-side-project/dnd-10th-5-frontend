@@ -47,6 +47,7 @@ module.exports = {
     '@stylistic/padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: '*' },
+      { blankLine: 'any', prev: 'expression', next: 'expression' },
       {
         blankLine: 'any',
         prev: ['const', 'let', 'var'],
