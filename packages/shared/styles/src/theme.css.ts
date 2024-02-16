@@ -1,0 +1,58 @@
+import {
+  createGlobalTheme,
+  createGlobalThemeContract,
+} from '@vanilla-extract/css';
+
+export const vars = createGlobalThemeContract({
+  color: {
+    archiveBlack: 'color-archive-black',
+    archiveBlue: 'color-archive-blue',
+    archiveBrightGreen: 'color-archive-bright-green',
+    archiveCoral: 'color-archive-coral',
+    archiveYellow: 'color-archive-yellow',
+    archiveMint: 'color-archive-mint',
+    archivePink: 'color-archive-pink',
+    archivePurple: 'color-archive-purple',
+    gray50: 'color-gray-50',
+    gray100: 'color-gray-100',
+    gray150: 'color-gray-150',
+    gray200: 'color-gray-200',
+    gray250: 'color-gray-250',
+    gray300: 'color-gray-300',
+    gray350: 'color-gray-350',
+    gray400: 'color-gray-400',
+    gray450: 'color-gray-450',
+    gray500: 'color-gray-500',
+    gray550: 'color-gray-550',
+    system50: 'color-system-50',
+    system100: 'color-system-100',
+    system150: 'color-system-150',
+  },
+});
+
+createGlobalTheme(':root', vars, {
+  color: {
+    archiveBlack: '#aaacb6',
+    archiveBlue: '#9570ff',
+    archiveBrightGreen: '#b4f78b',
+    archiveCoral: '#f17666',
+    archiveYellow: '#ffe279',
+    archiveMint: '#6af4b4',
+    archivePink: '#ff8fb8',
+    archivePurple: '#9570ff',
+    gray50: '#fafbfd',
+    gray100: '#f4f6f9',
+    gray150: '#edf0f4',
+    gray200: '#d4dbe5',
+    gray250: '#b5bfce',
+    gray300: '#9ea9ba',
+    gray350: '#838fa2',
+    gray400: '#697588',
+    gray450: '#4d5769',
+    gray500: '#303a4b',
+    gray550: '#1d2333',
+    system50: '#ffd7d7',
+    system100: '#ff8484',
+    system150: '#ff4747',
+  },
+});
