@@ -3,25 +3,25 @@ import { globalFontFace, globalStyle } from '@vanilla-extract/css';
 const pretendard = 'Pretendard';
 
 globalFontFace(pretendard, {
-  src: 'url(@/fonts/Pretendard-Regular.woff2) format("woff2"), url(@/fonts/Pretendard-Regular.woff) format("woff")',
+  src: 'url(/fonts/Pretendard-Regular.woff2) format("woff2"), url(/fonts/Pretendard-Regular.woff) format("woff")',
   fontWeight: 400,
   fontDisplay: 'swap',
 });
 
 globalFontFace(pretendard, {
-  src: 'url(@/fonts/Pretendard-Medium.woff2) format("woff2"), url(@/fonts/Pretendard-Medium.woff) format("woff")',
+  src: 'url(/fonts/Pretendard-Medium.woff2) format("woff2"), url(/fonts/Pretendard-Medium.woff) format("woff")',
   fontWeight: 500,
   fontDisplay: 'swap',
 });
 
 globalFontFace(pretendard, {
-  src: 'url(@/fonts/Pretendard-SemiBold.woff2) format("woff2"), url(@/fonts/Pretendard-SemiBold.woff) format("woff")',
+  src: 'url(/fonts/Pretendard-SemiBold.woff2) format("woff2"), url(/fonts/Pretendard-SemiBold.woff) format("woff")',
   fontWeight: 600,
   fontDisplay: 'swap',
 });
 
 globalFontFace(pretendard, {
-  src: 'url(@/fonts/Pretendard-Bold.woff2) format("woff2"), url(@/fonts/Pretendard-Bold.woff) format("woff")',
+  src: 'url(/fonts/Pretendard-Bold.woff2) format("woff2"), url(/fonts/Pretendard-Bold.woff) format("woff")',
   fontWeight: 700,
   fontDisplay: 'swap',
 });
