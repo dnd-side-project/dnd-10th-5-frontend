@@ -1,9 +1,6 @@
-import { createBrowserRouter } from 'react-router-dom';
-import HelloPage from '@/pages/HelloPage';
-
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HelloPage />,
-  },
-]);
+/* eslint-disable @stylistic/padding-line-between-statements */
+export { default as FavoliteLink } from './FavoliteLink';
+export { default as ForgottenLink } from './ForgottenLink';
+export { default as SavedLink } from './SavedLink';
+export { default as Signup } from './Signup';
+export { default as Space } from './Space';

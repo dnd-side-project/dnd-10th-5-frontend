@@ -75,6 +75,7 @@ module.exports = {
     'import/order': [
       'error',
       {
+        alphabetize: { order: 'asc', caseInsensitive: true },
         groups: [
           'builtin',
           'external',
@@ -82,7 +83,12 @@ module.exports = {
           ['parent', 'sibling'],
           'index',
         ],
-        alphabetize: { order: 'asc', caseInsensitive: true },
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'internal',
+          },
+        ],
       },
     ],
     'react/function-component-definition': [
