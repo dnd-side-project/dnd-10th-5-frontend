@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { PATH } from '@/constants';
 import { Header, NavBar } from './components';
 import Wrapper from '../Wrapper';
-import { PATH } from '@/constants';
 
 export default function Layout() {
   const navigate = useNavigate();
