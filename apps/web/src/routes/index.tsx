@@ -4,3 +4,4 @@ export { default as ForgottenLink } from './ForgottenLink';
 export { default as SavedLink } from './SavedLink';
 export { default as Signup } from './Signup';
 export { default as Space } from './Space';
+export { default as KakaoOAuth } from './kakaoOAuth';
