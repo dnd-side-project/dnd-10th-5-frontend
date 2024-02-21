@@ -1,6 +1,5 @@
 import { classNames } from '@favolink/utils';
 import {
-  type ComponentPropsWithRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
   createContext,
@@ -95,7 +94,7 @@ const TopBar = forwardRef<HTMLDivElement, TopBarProps>(
 
 Modal.TopBar = TopBar;
 
-type TitleProps = ComponentPropsWithRef<'h4'> & {
+type TitleProps = ComponentPropsWithoutRef<'h4'> & {
   variant: styles.TitleLayoutVariant;
 };
 
