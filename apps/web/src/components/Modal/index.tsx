@@ -174,8 +174,6 @@ function Provider(props: ModalProviderProps) {
   );
 }
 
-Modal.Provider = Provider;
-
 type ModalProps = ModalProviderProps & {
   isOpen: boolean;
 };
