@@ -1,78 +1,97 @@
 import { classNames } from '@favolink/utils';
 import {
   type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
   type ReactNode,
   createContext,
+  forwardRef,
   useContext,
 } from 'react';
 import * as styles from './styles.css';
 import Portal from '../Portal';
 
-type OverlayProps = Omit<ComponentPropsWithRef<'div'>, 'className'> & {
+type OverlayProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'> & {
   variant?: styles.OverlayVariant;
 };
 
-function Overlay(props: OverlayProps) {
-  const { variant = 'original', ...restProps } = props;
+const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
+  function Overlay(props, ref) {
+    const { variant = 'original', ...restProps } = props;
 
-  return <div {...restProps} className={styles.overlay[variant]} />;
-}
+    return <div {...restProps} ref={ref} className={styles.overlay[variant]} />;
+  },
+);
 
 Modal.Overlay = Overlay;
 
-function Content(props: ComponentPropsWithRef<'div'>) {
-  const { children, className, ...restPorps } = props;
+const Content = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
+  function Content(props, ref) {
+    const { children, className, ...restPorps } = props;
 
-  const { onClose, closeOnOverlayClick } = useContext(ModalContext);
+    const { onClose, closeOnOverlayClick } = useContext(ModalContext);
 
-  return (
-    <>
-      <Overlay
-        onClick={closeOnOverlayClick ? onClose : undefined}
-        variant="withContent"
-      />
-      <div {...restPorps} className={classNames(styles.content, className)}>
-        {children}
-      </div>
-    </>
-  );
-}
+    return (
+      <>
+        <Overlay
+          onClick={closeOnOverlayClick ? onClose : undefined}
+          variant="withContent"
+        />
+        <div
+          {...restPorps}
+          ref={ref}
+          className={classNames(styles.content, className)}
+        >
+          {children}
+        </div>
+      </>
+    );
+  },
+);
 
 Modal.Content = Content;
 
-function Header(props: ComponentPropsWithRef<'header'>) {
-  const { children, className, ...restProps } = props;
+const Header = forwardRef<HTMLElement, ComponentPropsWithoutRef<'header'>>(
+  function Header(props, ref) {
+    const { children, className, ...restProps } = props;
 
-  return (
-    <header {...restProps} className={classNames(styles.header, className)}>
-      {children}
-    </header>
-  );
-}
+    return (
+      <header
+        {...restProps}
+        ref={ref}
+        className={classNames(styles.header, className)}
+      >
+        {children}
+      </header>
+    );
+  },
+);
 
 Modal.Header = Header;
 
-type TopBarProps = ComponentPropsWithRef<'div'> & {
+type TopBarProps = ComponentPropsWithoutRef<'div'> & {
   variant: styles.TopBarLayoutVariant;
 };
 
-function TopBar(props: TopBarProps) {
-  const { children, variant, className, ...restProps } = props;
+const TopBar = forwardRef<HTMLDivElement, TopBarProps>(
+  function TopBar(props, ref) {
+    const { children, variant, className, ...restProps } = props;
 
-  const { onClose } = useContext(ModalContext);
+    const { onClose } = useContext(ModalContext);
 
-  const isCouple = variant === 'couple';
+    const isCouple = variant === 'couple';
 
-  return (
-    <div
-      {...restProps}
-      className={classNames(styles.topBarLayout[variant], className)}
-    >
-      {isCouple && <p>{children}</p>}
-      <p onClick={onClose}>닫기</p>
-    </div>
-  );
-}
+    return (
+      <div
+        {...restProps}
+        ref={ref}
+        className={classNames(styles.topBarLayout[variant], className)}
+      >
+        {isCouple && <p>{children}</p>}
+        <p onClick={onClose}>닫기</p>
+      </div>
+    );
+  },
+);
 
 Modal.TopBar = TopBar;
 
@@ -80,41 +99,55 @@ type TitleProps = ComponentPropsWithRef<'h4'> & {
   variant: styles.TitleLayoutVariant;
 };
 
-function Title(props: TitleProps) {
-  const { children, variant, className, ...restProps } = props;
+const Title = forwardRef<HTMLHeadingElement, TitleProps>(
+  function Title(props, ref) {
+    const { children, variant, className, ...restProps } = props;
 
-  return (
-    <div className={styles.titleLayout[variant]}>
-      <h4 {...restProps} className={classNames(styles.title, className)}>
-        {children}
-      </h4>
-    </div>
-  );
-}
+    return (
+      <div className={styles.titleLayout[variant]}>
+        <h4
+          {...restProps}
+          ref={ref}
+          className={classNames(styles.title, className)}
+        >
+          {children}
+        </h4>
+      </div>
+    );
+  },
+);
 
 Modal.Title = Title;
 
-function Body(props: ComponentPropsWithRef<'main'>) {
-  const { children, className, ...restProps } = props;
+const Body = forwardRef<HTMLElement, ComponentPropsWithoutRef<'main'>>(
+  function Body(props, ref) {
+    const { children, className, ...restProps } = props;
 
-  return (
-    <main {...restProps} className={classNames(className)}>
-      {children}
-    </main>
-  );
-}
+    return (
+      <main {...restProps} ref={ref} className={classNames(className)}>
+        {children}
+      </main>
+    );
+  },
+);
 
 Modal.Body = Body;
 
-function Footer(props: ComponentPropsWithRef<'footer'>) {
-  const { children, className, ...restProps } = props;
+const Footer = forwardRef<HTMLElement, ComponentPropsWithoutRef<'footer'>>(
+  function Footer(props, ref) {
+    const { children, className, ...restProps } = props;
 
-  return (
-    <footer {...restProps} className={classNames(styles.footer, className)}>
-      {children}
-    </footer>
-  );
-}
+    return (
+      <footer
+        {...restProps}
+        ref={ref}
+        className={classNames(styles.footer, className)}
+      >
+        {children}
+      </footer>
+    );
+  },
+);
 
 Modal.Footer = Footer;
 
