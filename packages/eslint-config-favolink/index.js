@@ -40,7 +40,10 @@ module.exports = {
     'func-style': ['error', 'declaration'],
     'no-console': 'warn',
     'sort-imports': ['error', { ignoreDeclarationSort: true }],
-    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      { fixStyle: 'inline-type-imports' },
+    ],
     '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/method-signature-style': 'error',
     '@typescript-eslint/sort-type-constituents': 'error',
