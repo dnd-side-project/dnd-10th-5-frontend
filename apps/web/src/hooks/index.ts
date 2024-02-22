@@ -1,3 +1,2 @@
 /* eslint-disable @stylistic/padding-line-between-statements */
-export * from './classNames';
-export * from './request';
+export { default as useDisclosure } from './useDisclosure';
