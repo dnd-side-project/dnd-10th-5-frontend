@@ -3,6 +3,39 @@ import {
   createGlobalThemeContract,
 } from '@vanilla-extract/css';
 
+const archiveColor = {
+  archiveBlack: '#aaacb6',
+  archiveBlue: '#9570ff',
+  archiveBrightGreen: '#b4f78b',
+  archiveCoral: '#f17666',
+  archiveYellow: '#ffe279',
+  archiveMint: '#6af4b4',
+  archivePink: '#ff8fb8',
+  archivePurple: '#9570ff',
+};
+
+const grayColor = {
+  gray100: '#fafbfd',
+  gray200: '#f4f6f9',
+  gray300: '#edf0f4',
+  gray400: '#d4dbe5',
+  gray500: '#b5bfce',
+  gray600: '#9ea9ba',
+  gray700: '#838fa2',
+  gray800: '#697588',
+  gray900: '#4d5769',
+  gray1000: '#303a4b',
+  gray1100: '#1d2333',
+};
+
+const systemColor = {
+  system100: '#ffd7d7',
+  system200: '#ff8484',
+  system300: '#ff4747',
+};
+
+const color = { ...archiveColor, ...grayColor, ...systemColor };
+
 export const vars = createGlobalThemeContract({
   color: {
     archiveBlack: 'color-archive-black',
@@ -31,28 +64,5 @@ export const vars = createGlobalThemeContract({
 });
 
 createGlobalTheme(':root', vars, {
-  color: {
-    archiveBlack: '#aaacb6',
-    archiveBlue: '#9570ff',
-    archiveBrightGreen: '#b4f78b',
-    archiveCoral: '#f17666',
-    archiveYellow: '#ffe279',
-    archiveMint: '#6af4b4',
-    archivePink: '#ff8fb8',
-    archivePurple: '#9570ff',
-    gray100: '#fafbfd',
-    gray200: '#f4f6f9',
-    gray300: '#edf0f4',
-    gray400: '#d4dbe5',
-    gray500: '#b5bfce',
-    gray600: '#9ea9ba',
-    gray700: '#838fa2',
-    gray800: '#697588',
-    gray900: '#4d5769',
-    gray1000: '#303a4b',
-    gray1100: '#1d2333',
-    system100: '#ffd7d7',
-    system200: '#ff8484',
-    system300: '#ff4747',
-  },
+  color,
 });
