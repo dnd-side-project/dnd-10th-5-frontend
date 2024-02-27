@@ -11,9 +11,11 @@
     "@favolink/styles": "workspace:*",
     "@favolink/utils": "workspace:*",
     "@vanilla-extract/css": "^1.14.1",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.55"
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19"
   }
 }
