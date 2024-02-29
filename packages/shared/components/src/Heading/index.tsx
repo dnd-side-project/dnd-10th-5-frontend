@@ -1,10 +1,13 @@
 import { classNames } from '@favolink/utils';
 import {
   type ComponentPropsWithoutRef,
+  type ComponentRef,
   type ElementType,
   forwardRef,
 } from 'react';
 import * as styles from './styles.css';
+
+const HEADING_CLASSNAME = 'favolink-heading';
 
 type HeadingProps = ComponentPropsWithoutRef<'h2'> & {
   weight?: 'bold' | 'semibold';
@@ -14,18 +17,27 @@ type HeadingProps = ComponentPropsWithoutRef<'h2'> & {
   >;
 };
 
-const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
+const Heading = forwardRef<ComponentRef<'h2'>, HeadingProps>(
   function Heading(props, ref) {
-    const { children, className, as, weight = 'bold', ...restProps } = props;
+    const {
+      children,
+      className,
+      as: Component = 'h2',
+      weight = 'bold',
+      ...restProps
+    } = props;
 
-    const Component = as ?? 'h2';
     const realWeight = `${Component as string}${weight}` as styles.Weight;
 
     return (
       <Component
         {...restProps}
         ref={ref}
-        className={classNames(styles.weight[realWeight], className)}
+        className={classNames(
+          HEADING_CLASSNAME,
+          styles.weight[realWeight],
+          className,
+        )}
       >
         {children}
       </Component>
