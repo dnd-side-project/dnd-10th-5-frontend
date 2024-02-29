@@ -1,10 +1,17 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { portal } from './styles.css';
+import * as styles from './styles.css';
 
-const PORTAL_CLASSNAME = `favolink-portal ${portal}`;
+const PORTAL_CLASSNAME = `favolink-portal`;
 
-export default function Portal({ children }: { children: ReactNode }) {
+type PortalProps = {
+  children: ReactNode;
+  type?: string;
+};
+
+export default function Portal(props: PortalProps) {
+  const { children, type } = props;
+
   const [tempNode, setTempNode] = useState<HTMLElement | null>(null);
   const [, forceUpdate] = useState({});
   const portal = useRef<HTMLDivElement | null>(null);
@@ -18,7 +25,9 @@ export default function Portal({ children }: { children: ReactNode }) {
     const host = doc.body;
 
     portal.current = doc.createElement('div');
-    portal.current.className = PORTAL_CLASSNAME;
+    portal.current.className = type
+      ? `${PORTAL_CLASSNAME}__${type} ${styles.portal}`
+      : `${PORTAL_CLASSNAME} ${styles.portal}`;
 
     host.appendChild(portal.current);
 
@@ -31,7 +40,7 @@ export default function Portal({ children }: { children: ReactNode }) {
         host.removeChild(portalNode);
       }
     };
-  }, [tempNode]);
+  }, [tempNode, type]);
 
   return portal.current ? (
     createPortal(children, portal.current)

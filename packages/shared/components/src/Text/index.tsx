@@ -1,12 +1,18 @@
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef, forwardRef } from 'react';
+import {
+  type ComponentPropsWithoutRef,
+  type ComponentRef,
+  forwardRef,
+} from 'react';
 import * as styles from './styles.css';
+
+const TEXT_CLASSNAME = 'favolink-text';
 
 type TextProps = ComponentPropsWithoutRef<'p'> & {
   scale?: styles.Scale;
 };
 
-const Text = forwardRef<HTMLParagraphElement, TextProps>(
+const Text = forwardRef<ComponentRef<'p'>, TextProps>(
   function Text(props, ref) {
     const { children, className, scale = '2regular', ...restProps } = props;
 
@@ -14,7 +20,7 @@ const Text = forwardRef<HTMLParagraphElement, TextProps>(
       <p
         {...restProps}
         ref={ref}
-        className={classNames(styles.scale[scale], className)}
+        className={classNames(TEXT_CLASSNAME, styles.scale[scale], className)}
       >
         {children}
       </p>

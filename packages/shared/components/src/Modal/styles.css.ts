@@ -1,4 +1,3 @@
-import { h4Bold } from '@favolink/styles/text.css';
 import { vars } from '@favolink/styles/theme.css';
 import { style, styleVariants } from '@vanilla-extract/css';
 
@@ -69,7 +68,7 @@ export const titleLayout = styleVariants({
 
 export type TitleLayoutVariant = keyof typeof titleLayout;
 
-export const title = style([h4Bold, { color: vars.color.gray1000 }]);
+export const title = style({ color: vars.color.gray1000 });
 
 export const footer = style([
   flex,

@@ -1,13 +1,17 @@
 import { classNames } from '@favolink/utils';
 import {
   type ComponentPropsWithoutRef,
+  type ComponentRef,
   type ReactNode,
   createContext,
   forwardRef,
   useContext,
 } from 'react';
 import * as styles from './styles.css';
+import Heading from '../Heading';
 import Portal from '../Portal';
+
+const MODAL_CLASSNAME = 'favolink-modal';
 
 type OverlayProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'> & {
   variant?: styles.OverlayVariant;
@@ -17,53 +21,72 @@ const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
   function Overlay(props, ref) {
     const { variant = 'original', ...restProps } = props;
 
-    return <div {...restProps} ref={ref} className={styles.overlay[variant]} />;
+    return (
+      <div
+        {...restProps}
+        ref={ref}
+        className={classNames(
+          `${MODAL_CLASSNAME}__overlay`,
+          styles.overlay[variant],
+        )}
+      />
+    );
   },
 );
 
 Modal.Overlay = Overlay;
 
-const Content = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
-  function Content(props, ref) {
-    const { children, className, ...restPorps } = props;
+const Content = forwardRef<
+  ComponentRef<'div'>,
+  ComponentPropsWithoutRef<'div'>
+>(function Content(props, ref) {
+  const { children, className, ...restPorps } = props;
 
-    const { onClose, closeOnOverlayClick } = useContext(ModalContext);
+  const { onClose, closeOnOverlayClick } = useContext(ModalContext);
 
-    return (
-      <>
-        <Overlay
-          onClick={closeOnOverlayClick ? onClose : undefined}
-          variant="withContent"
-        />
-        <div
-          {...restPorps}
-          ref={ref}
-          className={classNames(styles.content, className)}
-        >
-          {children}
-        </div>
-      </>
-    );
-  },
-);
+  return (
+    <>
+      <Overlay
+        onClick={closeOnOverlayClick ? onClose : undefined}
+        variant="withContent"
+      />
+      <div
+        {...restPorps}
+        ref={ref}
+        className={classNames(
+          `${MODAL_CLASSNAME}__content`,
+          styles.content,
+          className,
+        )}
+      >
+        {children}
+      </div>
+    </>
+  );
+});
 
 Modal.Content = Content;
 
-const Header = forwardRef<HTMLElement, ComponentPropsWithoutRef<'header'>>(
-  function Header(props, ref) {
-    const { children, className, ...restProps } = props;
+const Header = forwardRef<
+  ComponentRef<'header'>,
+  ComponentPropsWithoutRef<'header'>
+>(function Header(props, ref) {
+  const { children, className, ...restProps } = props;
 
-    return (
-      <header
-        {...restProps}
-        ref={ref}
-        className={classNames(styles.header, className)}
-      >
-        {children}
-      </header>
-    );
-  },
-);
+  return (
+    <header
+      {...restProps}
+      ref={ref}
+      className={classNames(
+        `${MODAL_CLASSNAME}__header`,
+        styles.header,
+        className,
+      )}
+    >
+      {children}
+    </header>
+  );
+});
 
 Modal.Header = Header;
 
@@ -71,7 +94,7 @@ type TopBarProps = ComponentPropsWithoutRef<'div'> & {
   variant: styles.TopBarLayoutVariant;
 };
 
-const TopBar = forwardRef<HTMLDivElement, TopBarProps>(
+const TopBar = forwardRef<ComponentRef<'div'>, TopBarProps>(
   function TopBar(props, ref) {
     const { children, variant, className, ...restProps } = props;
 
@@ -83,7 +106,11 @@ const TopBar = forwardRef<HTMLDivElement, TopBarProps>(
       <div
         {...restProps}
         ref={ref}
-        className={classNames(styles.topBarLayout[variant], className)}
+        className={classNames(
+          `${MODAL_CLASSNAME}__topbar`,
+          styles.topBarLayout[variant],
+          className,
+        )}
       >
         {isCouple && <p>{children}</p>}
         <p onClick={onClose}>닫기</p>
@@ -98,19 +125,24 @@ type TitleProps = ComponentPropsWithoutRef<'h4'> & {
   variant: styles.TitleLayoutVariant;
 };
 
-const Title = forwardRef<HTMLHeadingElement, TitleProps>(
+const Title = forwardRef<ComponentRef<typeof Heading>, TitleProps>(
   function Title(props, ref) {
     const { children, variant, className, ...restProps } = props;
 
     return (
       <div className={styles.titleLayout[variant]}>
-        <h4
+        <Heading
           {...restProps}
+          as="h4"
           ref={ref}
-          className={classNames(styles.title, className)}
+          className={classNames(
+            `${MODAL_CLASSNAME}__title`,
+            styles.title,
+            className,
+          )}
         >
           {children}
-        </h4>
+        </Heading>
       </div>
     );
   },
@@ -118,12 +150,16 @@ const Title = forwardRef<HTMLHeadingElement, TitleProps>(
 
 Modal.Title = Title;
 
-const Body = forwardRef<HTMLElement, ComponentPropsWithoutRef<'main'>>(
+const Body = forwardRef<ComponentRef<'main'>, ComponentPropsWithoutRef<'main'>>(
   function Body(props, ref) {
     const { children, className, ...restProps } = props;
 
     return (
-      <main {...restProps} ref={ref} className={classNames(className)}>
+      <main
+        {...restProps}
+        ref={ref}
+        className={classNames(`${MODAL_CLASSNAME}__body`, className)}
+      >
         {children}
       </main>
     );
@@ -132,21 +168,26 @@ const Body = forwardRef<HTMLElement, ComponentPropsWithoutRef<'main'>>(
 
 Modal.Body = Body;
 
-const Footer = forwardRef<HTMLElement, ComponentPropsWithoutRef<'footer'>>(
-  function Footer(props, ref) {
-    const { children, className, ...restProps } = props;
+const Footer = forwardRef<
+  ComponentRef<'footer'>,
+  ComponentPropsWithoutRef<'footer'>
+>(function Footer(props, ref) {
+  const { children, className, ...restProps } = props;
 
-    return (
-      <footer
-        {...restProps}
-        ref={ref}
-        className={classNames(styles.footer, className)}
-      >
-        {children}
-      </footer>
-    );
-  },
-);
+  return (
+    <footer
+      {...restProps}
+      ref={ref}
+      className={classNames(
+        `${MODAL_CLASSNAME}__footer`,
+        styles.footer,
+        className,
+      )}
+    >
+      {children}
+    </footer>
+  );
+});
 
 Modal.Footer = Footer;
 
@@ -184,7 +225,7 @@ export default function Modal(props: ModalProps) {
 
   return (
     isOpen && (
-      <Portal>
+      <Portal type="modal">
         <Provider {...realRestProps}>{children}</Provider>
       </Portal>
     )
