@@ -10,6 +10,7 @@
     "@favolink/hooks": "workspace:*",
     "@favolink/stores": "workspace:*",
     "@favolink/styles": "workspace:*",
+    "@favolink/system": "workspace:*",
     "@favolink/utils": "workspace:*",
     "@vanilla-extract/css": "^1.14.1",
     "react": "^18.2.0",
