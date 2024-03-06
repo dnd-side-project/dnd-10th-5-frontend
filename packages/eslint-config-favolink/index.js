@@ -45,6 +45,7 @@ module.exports = {
       { fixStyle: 'inline-type-imports' },
     ],
     '@typescript-eslint/dot-notation': 'error',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/method-signature-style': 'error',
     '@typescript-eslint/sort-type-constituents': 'error',
     '@stylistic/padding-line-between-statements': [
