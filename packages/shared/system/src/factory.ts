@@ -1,4 +1,3 @@
-import { type ElementType } from 'react';
 import createComponent, {
   type FavolinkComponent,
   type HTMLFavolinkComponents,
@@ -6,13 +5,11 @@ import createComponent, {
 import { type DOMElements } from './types';
 
 type FavolinkFactory = {
-  <Element extends ElementType, Props extends object>(
-    element: Element,
-  ): FavolinkComponent<Element, Props>;
+  <Element extends DOMElements>(element: Element): FavolinkComponent<Element>;
 };
 
 function factory() {
-  const cache = new Map<DOMElements, FavolinkComponent<DOMElements, object>>();
+  const cache = new Map<DOMElements, FavolinkComponent<DOMElements>>();
 
   return new Proxy(createComponent, {
     apply: (_, __, options: [DOMElements]) => {
