@@ -7,7 +7,7 @@ export type RightJoinProps<
   OverrideProps extends object,
 > = Omit<OriginalProps, keyof OverrideProps> & OverrideProps;
 
-export type PropsMergeWithAs<
+export type MergeWithAsComponentProps<
   ComponentProps extends object,
   AsComponentProps extends object,
   Props extends object,
@@ -24,7 +24,7 @@ export type ComponentWithAs<
   Props extends object,
 > = {
   <AsComponent extends ElementType>(
-    props: PropsMergeWithAs<
+    props: MergeWithAsComponentProps<
       ComponentPropsWithRef<Component>,
       ComponentPropsWithRef<AsComponent>,
       Props,
