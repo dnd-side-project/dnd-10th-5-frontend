@@ -1,48 +1,37 @@
+import { favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import {
-  type ComponentPropsWithoutRef,
-  type ComponentRef,
-  type ElementType,
-  forwardRef,
-} from 'react';
+import { type ComponentPropsWithoutRef, type ElementType } from 'react';
 import * as styles from './styles.css';
 
 const HEADING_CLASSNAME = 'favolink-heading';
 
-type HeadingProps = ComponentPropsWithoutRef<'h2'> & {
-  weight?: 'bold' | 'semibold';
-  as?: ElementType<
-    { className: string },
-    'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  >;
+type AsHeading = {
+  as?: ElementType<any, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
 };
 
-const Heading = forwardRef<ComponentRef<'h2'>, HeadingProps>(
-  function Heading(props, ref) {
-    const {
-      children,
-      className,
-      as: Component = 'h2',
-      weight = 'bold',
-      ...restProps
-    } = props;
+export type HeadingProps = AsHeading &
+  ComponentPropsWithoutRef<'h2'> & {
+    weight?: 'bold' | 'semibold';
+  };
 
-    const realWeight = `${Component as string}${weight}` as styles.Weight;
+const Heading = forwardRef<HeadingProps, 'h2'>(function Heading(props, ref) {
+  const { children, className, weight = 'bold', ...restProps } = props;
 
-    return (
-      <Component
-        {...restProps}
-        ref={ref}
-        className={classNames(
-          HEADING_CLASSNAME,
-          styles.weight[realWeight],
-          className,
-        )}
-      >
-        {children}
-      </Component>
-    );
-  },
-);
+  const realWeight = `${props.as as string}${weight}` as styles.Weight;
+
+  return (
+    <favolink.h2
+      {...restProps}
+      ref={ref}
+      className={classNames(
+        HEADING_CLASSNAME,
+        styles.weight[realWeight],
+        className,
+      )}
+    >
+      {children}
+    </favolink.h2>
+  );
+});
 
 export default Heading;
