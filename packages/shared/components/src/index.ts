@@ -2,11 +2,11 @@
 export * from '@favolink/hooks';
 export * from '@favolink/system';
 export { default as Box } from './Box';
-export { default as Button } from './Button';
-export { default as Heading } from './Heading';
+export { default as Button, type ButtonProps } from './Button';
+export { default as Heading, type HeadingProps } from './Heading';
 export { default as Link, type LinkProps } from './Link';
 export { default as Modal } from './Modal';
 export { default as Portal } from './Portal';
 export { default as FavolinkProvider } from './Provider';
+export { default as Text, type TextProps } from './Text';
 export { default as Toast } from './Toast';
-export { default as Text } from './Text';

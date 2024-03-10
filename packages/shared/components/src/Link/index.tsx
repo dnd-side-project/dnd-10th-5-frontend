@@ -13,7 +13,6 @@ export type LinkProps = ComponentPropsWithoutRef<'a'> & {
 const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
   const {
     children,
-    as,
     className,
     color = 'black',
     isExternal = false,
@@ -24,7 +23,6 @@ const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
     <favolink.a
       {...restProps}
       ref={ref}
-      as={as}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener' : undefined}
       className={classNames(

@@ -58,7 +58,7 @@ export const topBarLayout = styleVariants({
   couple: [flex, { justifyContent: 'space-between' }],
 });
 
-export type TopBarLayoutVariant = keyof typeof topBarLayout;
+export type TopBarLayout = keyof typeof topBarLayout;
 
 export const titleLayout = styleVariants({
   left: [flex, { justifyContent: 'flex-start' }],
@@ -66,7 +66,7 @@ export const titleLayout = styleVariants({
   right: [flex, { justifyContent: 'flex-end' }],
 });
 
-export type TitleLayoutVariant = keyof typeof titleLayout;
+export type TitleLayout = keyof typeof titleLayout;
 
 export const title = style({ color: vars.color.gray1000 });
 

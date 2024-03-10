@@ -2,7 +2,9 @@ import { type Toast, toastStore } from '@favolink/stores';
 import { classNames } from '@favolink/utils';
 import { useEffect, useSyncExternalStore } from 'react';
 import * as styles from './styles.css';
+import Box from '../Box';
 import Heading from '../Heading';
+import Link from '../Link';
 import Portal from '../Portal';
 
 const TOAST_CLASSNAME = 'favolink-toast';
@@ -14,11 +16,11 @@ function Provider() {
   );
 
   const toastList = (
-    <div className={classNames(`${TOAST_CLASSNAME}__list`, styles.container)}>
+    <Box className={classNames(`${TOAST_CLASSNAME}__list`, styles.container)}>
       {toastState.map((toast) => (
         <Toast key={toast.id} {...toast} />
       ))}
-    </div>
+    </Box>
   );
 
   return <Portal type="toast">{toastList}</Portal>;
@@ -44,11 +46,15 @@ export default function Toast(props: ToastProps) {
   }, [deleteToast, duration, id]);
 
   return (
-    <div className={classNames(`${TOAST_CLASSNAME}__item`, styles.item)}>
+    <Box className={classNames(`${TOAST_CLASSNAME}__item`, styles.item)}>
       <Heading as="h5" weight="semibold" className={classNames(styles.text)}>
         {message}
       </Heading>
-      {link && <a>{link}</a>}
-    </div>
+      {link && (
+        <Link color="gray" href={link}>
+          바로가기
+        </Link>
+      )}
+    </Box>
   );
 }
