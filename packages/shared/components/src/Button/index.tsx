@@ -1,44 +1,39 @@
+import { favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import {
-  type ComponentPropsWithoutRef,
-  type ComponentRef,
-  forwardRef,
-} from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 import * as styles from './styles.css';
 
 const BUTTON_CLASSNAME = 'favolink-button';
 
-type ButtonProps = ComponentPropsWithoutRef<'button'> & {
+export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   colorScheme?: styles.ColorScheme;
   size?: styles.Size;
 };
 
-const Button = forwardRef<ComponentRef<'button'>, ButtonProps>(
-  function Button(props, ref) {
-    const {
-      children,
-      className,
-      colorScheme = 'white',
-      size = 'medium',
-      ...restProps
-    } = props;
+const Button = forwardRef<ButtonProps, 'button'>(function Button(props, ref) {
+  const {
+    children,
+    className,
+    colorScheme = 'white',
+    size = 'medium',
+    ...restProps
+  } = props;
 
-    return (
-      <button
-        {...restProps}
-        ref={ref}
-        className={classNames(
-          BUTTON_CLASSNAME,
-          styles.base,
-          styles.size[size],
-          styles.colorScheme[colorScheme],
-          className,
-        )}
-      >
-        {children}
-      </button>
-    );
-  },
-);
+  return (
+    <favolink.button
+      {...restProps}
+      ref={ref}
+      className={classNames(
+        BUTTON_CLASSNAME,
+        styles.base,
+        styles.size[size],
+        styles.colorScheme[colorScheme],
+        className,
+      )}
+    >
+      {children}
+    </favolink.button>
+  );
+});
 
 export default Button;
