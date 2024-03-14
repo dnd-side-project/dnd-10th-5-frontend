@@ -17,7 +17,7 @@ type CreateContextReturn<CreateContextDefaultValue> = [
 
 export default function createContext<CreateContextDefaultValue>(
   defaultValue: CreateContextDefaultValue,
-) {
+): CreateContextReturn<CreateContextDefaultValue> {
   const Context = createReactContext<CreateContextDefaultValue>(defaultValue);
 
   function useContext() {
@@ -38,9 +38,5 @@ export default function createContext<CreateContextDefaultValue>(
     );
   }
 
-  return [
-    ContextProvider,
-    useContext,
-    Context,
-  ] as CreateContextReturn<CreateContextDefaultValue>;
+  return [ContextProvider, useContext, Context];
 }
