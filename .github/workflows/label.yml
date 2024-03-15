@@ -1,0 +1,17 @@
+name: Label
+
+on:
+  issues:
+    types: [opened, edited, milestoned]
+
+  pull_request_target:
+    types: [opened, edited]
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: jimschubert/labeler-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
