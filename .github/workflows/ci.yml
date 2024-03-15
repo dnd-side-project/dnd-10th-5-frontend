@@ -9,7 +9,7 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  quality:
+  check-quality:
     timeout-minutes: 15
 
     runs-on: ubuntu-latest
