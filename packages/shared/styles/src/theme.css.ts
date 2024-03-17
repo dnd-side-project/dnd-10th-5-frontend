@@ -3,18 +3,20 @@ import {
   createGlobalThemeContract,
 } from '@vanilla-extract/css';
 
-const archiveColor = {
-  archiveBlack: '#aaacb6',
-  archiveBlue: '#9570ff',
-  archiveBrightGreen: '#b4f78b',
-  archiveCoral: '#f17666',
-  archiveYellow: '#ffe279',
-  archiveMint: '#6af4b4',
-  archivePink: '#ff8fb8',
-  archivePurple: '#9570ff',
+export const archiveColor = {
+  black: '#aaacb6',
+  blue: '#9570ff',
+  brightGreen: '#b4f78b',
+  coral: '#f17666',
+  mint: '#6af4b4',
+  pink: '#ff8fb8',
+  purple: '#9570ff',
+  yellow: '#ffe279',
 };
 
-const grayColor = {
+export type ArchiveColor = keyof typeof archiveColor;
+
+export const grayColor = {
   gray100: '#fafbfd',
   gray200: '#f4f6f9',
   gray300: '#edf0f4',
@@ -28,24 +30,32 @@ const grayColor = {
   gray1100: '#1d2333',
 };
 
-const systemColor = {
+export type GrayColor = keyof typeof grayColor;
+
+export const systemColor = {
   system100: '#ffd7d7',
   system200: '#ff8484',
   system300: '#ff4747',
 };
 
-const color = { ...archiveColor, ...grayColor, ...systemColor };
+export type SystemColor = keyof typeof systemColor;
+
+const color = {
+  ...archiveColor,
+  ...grayColor,
+  ...systemColor,
+};
 
 export const vars = createGlobalThemeContract({
   color: {
-    archiveBlack: 'color-archive-black',
-    archiveBlue: 'color-archive-blue',
-    archiveBrightGreen: 'color-archive-bright-green',
-    archiveCoral: 'color-archive-coral',
-    archiveYellow: 'color-archive-yellow',
-    archiveMint: 'color-archive-mint',
-    archivePink: 'color-archive-pink',
-    archivePurple: 'color-archive-purple',
+    black: 'color-archive-black',
+    blue: 'color-archive-blue',
+    brightGreen: 'color-archive-bright-green',
+    coral: 'color-archive-coral',
+    yellow: 'color-archive-yellow',
+    mint: 'color-archive-mint',
+    pink: 'color-archive-pink',
+    purple: 'color-archive-purple',
     gray100: 'color-gray-100',
     gray200: 'color-gray-200',
     gray300: 'color-gray-300',
