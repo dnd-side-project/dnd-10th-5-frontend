@@ -25,5 +25,13 @@ export {
 } from './Modal';
 export { default as Portal } from './Portal';
 export { default as FavolinkProvider } from './Provider';
+export {
+  type TagProps,
+  default as Tag,
+  TagIcon,
+  type TagIconProps,
+  TagLabel,
+  type TagLabelProps,
+} from './Tag';
 export { default as Text, type TextProps } from './Text';
 export { default as Toast } from './Toast';
