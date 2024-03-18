@@ -9,6 +9,7 @@ globalStyle(
     fontSize: '100%',
     font: 'inherit',
     verticalAlign: 'baseline',
+    boxSizing: 'border-box',
   },
 );
 
