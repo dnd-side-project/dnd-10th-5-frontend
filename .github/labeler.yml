@@ -3,42 +3,42 @@ version: v1
 labels:
   - label: bug
     matcher:
-      title: '^bug(?:\(.+\))?: .+'
-      branch: '^bug(?:\/.+)?'
-      commits: '^bug(?:\(.+\))?: .+'
+      title: '^bug(?:\(.+\))?:.*'
+      branch: '^bug\/.*'
+      commits: '^bug(?:\(.+\))?:.*'
 
   - label: chore
     matcher:
-      title: '^chore(?:\(.+\))?: .+'
-      branch: '^chore(?:\/.+)?'
-      commits: '^chore(?:\(.+\))?: .+'
+      title: '^chore(?:\(.+\))?:.*'
+      branch: '^chore\/.*'
+      commits: '^chore(?:\(.+\))?:.*'
 
   - label: docs
     matcher:
-      title: '^docs(?:\(.+\))?: .+'
-      branch: '^docs(?:\/.+)?'
-      commits: '^docs(?:\(.+\))?: .+'
+      title: '^docs(?:\(.+\))?:.*'
+      branch: '^docs\/.*'
+      commits: '^docs(?:\(.+\))?:.*'
 
   - label: feat
     matcher:
-      title: '^feat(?:\(.+\))?: .+'
-      branch: '^feat(?:\/.+)?'
-      commits: '^feat(?:\(.+\))?: .+'
+      title: '^feat(?:\(.+\))?:.*'
+      branch: '^feat\/.*'
+      commits: '^feat(?:\(.+\))?:.*'
 
   - label: fix
     matcher:
-      title: '^fix(?:\(.+\))?: .+'
-      branch: '^fix(?:\/.+)?'
-      commits: '^fix(?:\(.+\))?: .+'
+      title: '^fix(?:\(.+\))?:.*'
+      branch: '^fix\/.*'
+      commits: '^fix(?:\(.+\))?:.*'
 
   - label: refactor
     matcher:
-      title: '^refactor(?:\(.+\))?: .+'
-      branch: '^refactor(?:\/.+)?'
-      commits: '^refactor(?:\(.+\))?: .+'
+      title: '^refactor(?:\(.+\))?:.*'
+      branch: '^refactor\/.*'
+      commits: '^refactor(?:\(.+\))?:.*'
 
   - label: style
     matcher:
-      title: '^style(?:\(.+\))?: .+'
-      branch: '^style(?:\/.+)?'
-      commits: '^style(?:\(.+\))?: .+'
+      title: '^style(?:\(.+\))?:.*'
+      branch: '^style\/.*'
+      commits: '^style(?:\(.+\))?:.*'
