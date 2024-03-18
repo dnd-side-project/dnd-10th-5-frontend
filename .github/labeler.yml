@@ -1,26 +1,44 @@
-enable:
-  issues: true
-  prs: true
+version: v1
 
 labels:
-  bug:
-    include:
-      - '\bbug(?:\(.+\))?\b'
-  chore:
-    include:
-      - '\bchore(?:\(.+\))?\b'
-  docs:
-    include:
-      - '\bdocs(?:\(.+\))?\b'
-  feat:
-    include:
-      - '\bfeat(?:\(.+\))?\b'
-  fix:
-    include:
-      - '\bfix(?:\(.+\))?\b'
-  refactor:
-    include:
-      - '\brefactor(?:\(.+\))?\b'
-  style:
-    include:
-      - '\bstyle(?:\(.+\))?\b'
+  - label: bug
+    matcher:
+      title: '^bug(?:\(.+\))?: .+'
+      branch: '^bug(?:\/.+)?'
+      commits: '^bug(?:\(.+\))?: .+'
+
+  - label: chore
+    matcher:
+      title: '^chore(?:\(.+\))?: .+'
+      branch: '^chore(?:\/.+)?'
+      commits: '^chore(?:\(.+\))?: .+'
+
+  - label: docs
+    matcher:
+      title: '^docs(?:\(.+\))?: .+'
+      branch: '^docs(?:\/.+)?'
+      commits: '^docs(?:\(.+\))?: .+'
+
+  - label: feat
+    matcher:
+      title: '^feat(?:\(.+\))?: .+'
+      branch: '^feat(?:\/.+)?'
+      commits: '^feat(?:\(.+\))?: .+'
+
+  - label: fix
+    matcher:
+      title: '^fix(?:\(.+\))?: .+'
+      branch: '^fix(?:\/.+)?'
+      commits: '^fix(?:\(.+\))?: .+'
+
+  - label: refactor
+    matcher:
+      title: '^refactor(?:\(.+\))?: .+'
+      branch: '^refactor(?:\/.+)?'
+      commits: '^refactor(?:\(.+\))?: .+'
+
+  - label: style
+    matcher:
+      title: '^style(?:\(.+\))?: .+'
+      branch: '^style(?:\/.+)?'
+      commits: '^style(?:\(.+\))?: .+'
