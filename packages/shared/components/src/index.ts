@@ -34,4 +34,4 @@ export {
   type TagLabelProps,
 } from './Tag';
 export { default as Text, type TextProps } from './Text';
-export { default as Toast } from './Toast';
+export { default as Toast, type ToastProps, ToastProvider } from './Toast';
