@@ -38,12 +38,12 @@ export const toastStore: ToastStore = {
       listeners.delete(listener);
     };
   },
-  showToast: ({ message, duration = 2000, link }) => {
+  showToast: ({ message, duration = 2000, link = '' }) => {
     const newToast: Toast = {
       id: Date.now(),
       message,
       duration,
-      link: link ?? '',
+      link,
     };
 
     setState((prevState) => [...prevState, newToast]);
