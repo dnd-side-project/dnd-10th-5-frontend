@@ -9,7 +9,7 @@ import Portal from '../Portal';
 
 const TOAST_CLASSNAME = 'favolink-toast';
 
-function Provider() {
+export function ToastProvider() {
   const toastState = useSyncExternalStore(
     toastStore.subscribe,
     toastStore.getState,
@@ -26,9 +26,7 @@ function Provider() {
   return <Portal type="toast">{toastList}</Portal>;
 }
 
-Toast.Provider = Provider;
-
-type ToastProps = Toast;
+export type ToastProps = Toast;
 
 export default function Toast(props: ToastProps) {
   const { id, message, duration, link } = props;
