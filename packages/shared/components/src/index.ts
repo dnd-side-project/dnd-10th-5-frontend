@@ -5,6 +5,16 @@ export { default as Box } from './Box';
 export { default as Button, type ButtonProps } from './Button';
 export { default as Heading, type HeadingProps } from './Heading';
 export { default as Icon, type IconProps } from './Icon';
+export {
+  default as Input,
+  type InputProps,
+  InputGroup,
+  type InputGroupProps,
+  InputLeftElement,
+  type InputLeftElementProps,
+  InputRightElement,
+  type InputRightElementProps,
+} from './Input';
 export { default as Link, type LinkProps } from './Link';
 export {
   default as Modal,
