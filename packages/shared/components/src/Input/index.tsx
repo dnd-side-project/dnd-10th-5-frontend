@@ -88,7 +88,7 @@ const Input = forwardRef<InputProps, 'input'>(function Input(props, ref) {
         INPUT_CLASSNAME,
         styles.base,
         styles.variant[variant],
-        !className && styles.withElement,
+        className ?? styles.withElement,
         className,
       )}
     />
