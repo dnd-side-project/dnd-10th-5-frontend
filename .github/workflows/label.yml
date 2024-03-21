@@ -5,7 +5,7 @@ on:
     types: [opened, edited, milestoned]
 
   pull_request_target:
-    types: [opened, edited]
+    types: [opened, edited, synchronize]
 
 jobs:
   add-labels:
