@@ -9,30 +9,30 @@ export type ButtonProps = HTMLFavolinkProps<'button'> & {
   size?: styles.Size;
 };
 
-const Button = forwardRef<ButtonProps, 'button'>(function Button(props, ref) {
-  const {
-    children,
-    className,
-    colorScheme = 'white',
-    size = 'medium',
-    ...restProps
-  } = props;
+export const Button = forwardRef<ButtonProps, 'button'>(
+  function Button(props, ref) {
+    const {
+      children,
+      className,
+      colorScheme = 'white',
+      size = 'medium',
+      ...restProps
+    } = props;
 
-  return (
-    <favolink.button
-      {...restProps}
-      ref={ref}
-      className={classNames(
-        BUTTON_CLASSNAME,
-        styles.base,
-        styles.size[size],
-        styles.colorScheme[colorScheme],
-        className,
-      )}
-    >
-      {children}
-    </favolink.button>
-  );
-});
-
-export default Button;
+    return (
+      <favolink.button
+        {...restProps}
+        ref={ref}
+        className={classNames(
+          BUTTON_CLASSNAME,
+          styles.base,
+          styles.size[size],
+          styles.colorScheme[colorScheme],
+          className,
+        )}
+      >
+        {children}
+      </favolink.button>
+    );
+  },
+);
