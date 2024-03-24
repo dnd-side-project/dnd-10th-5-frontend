@@ -15,9 +15,9 @@ export default function createComponent<Element extends DOMElements>(
   element: Element,
 ) {
   const favolinkComponent = forwardRef(function favolinkComponent(props, ref) {
-    const { as: asComponent, ...restProps } = props;
+    const { as: asElement, ...restProps } = props;
 
-    return createElement(asComponent ? asComponent : element, {
+    return createElement(asElement ?? element, {
       ref,
       ...restProps,
     });
