@@ -1,11 +1,10 @@
-import { favolink, forwardRef } from '@favolink/system';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef } from 'react';
 import * as styles from './styles.css';
 
 const LINK_CLASSNAME = 'favolink-link';
 
-export type LinkProps = ComponentPropsWithoutRef<'a'> & {
+export type LinkProps = HTMLFavolinkProps<'a'> & {
   isExternal?: boolean;
   color?: styles.Color;
 };
