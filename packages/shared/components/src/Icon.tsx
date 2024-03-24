@@ -1,10 +1,9 @@
-import { favolink, forwardRef } from '@favolink/system';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef } from 'react';
 
 const ICON_CLASSNAME = 'favolink-icon';
 
-export type IconProps = ComponentPropsWithoutRef<'svg'>;
+export type IconProps = HTMLFavolinkProps<'svg'>;
 
 const Icon = forwardRef<IconProps, 'svg'>(function Icon(props, ref) {
   const { as: element, children, className, ...restProps } = props;

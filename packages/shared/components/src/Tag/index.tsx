@@ -1,6 +1,10 @@
-import { createContext, favolink, forwardRef } from '@favolink/system';
+import {
+  type HTMLFavolinkProps,
+  createContext,
+  favolink,
+  forwardRef,
+} from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef } from 'react';
 import * as styles from './styles.css';
 import * as theme from './theme.css';
 import Icon, { type IconProps } from '../Icon';
@@ -28,7 +32,7 @@ export const TagIcon = forwardRef<TagIconProps, typeof Icon>(
   },
 );
 
-export type TagLabelProps = ComponentPropsWithoutRef<'span'> & {
+export type TagLabelProps = HTMLFavolinkProps<'span'> & {
   isAsIcon?: boolean;
 };
 
@@ -63,7 +67,7 @@ const [TagProvider, useTagContext] = createContext<TagContextDefaultValue>({
   size: 'small',
 });
 
-export type TagProps = ComponentPropsWithoutRef<'span'> & {
+export type TagProps = HTMLFavolinkProps<'span'> & {
   colorScheme?: styles.ColorScheme;
   size?: styles.Size;
 };

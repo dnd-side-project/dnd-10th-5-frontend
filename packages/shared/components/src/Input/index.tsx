@@ -1,11 +1,10 @@
-import { favolink, forwardRef } from '@favolink/system';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef } from 'react';
 import * as styles from './styles.css';
 
 const INPUT_CLASSNAME = 'favolink-input';
 
-export type InputGroupProps = ComponentPropsWithoutRef<'div'>;
+export type InputGroupProps = HTMLFavolinkProps<'div'>;
 
 export const InputGroup = forwardRef<InputGroupProps, 'div'>(
   function InputGroup(props, ref) {
@@ -27,7 +26,7 @@ export const InputGroup = forwardRef<InputGroupProps, 'div'>(
   },
 );
 
-type InputElementProps = ComponentPropsWithoutRef<'div'>;
+type InputElementProps = HTMLFavolinkProps<'div'>;
 
 export type InputLeftElementProps = InputElementProps;
 
@@ -73,7 +72,7 @@ export const InputRightElement = forwardRef<InputRightElementProps, 'div'>(
   },
 );
 
-export type InputProps = ComponentPropsWithoutRef<'input'> & {
+export type InputProps = HTMLFavolinkProps<'input'> & {
   variant?: styles.Variant;
 };
 

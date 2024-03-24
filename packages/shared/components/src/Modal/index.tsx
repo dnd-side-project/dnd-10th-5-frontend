@@ -1,11 +1,11 @@
 import {
   type ContextProviderProps,
+  type HTMLFavolinkProps,
   createContext,
   favolink,
   forwardRef,
 } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef } from 'react';
 import * as styles from './styles.css';
 import Heading, { type HeadingProps } from '../Heading';
 import Portal from '../Portal';
@@ -13,10 +13,7 @@ import Text from '../Text';
 
 const MODAL_CLASSNAME = 'favolink-modal';
 
-export type ModalOverlayProps = Omit<
-  ComponentPropsWithoutRef<'div'>,
-  'className'
-> & {
+export type ModalOverlayProps = HTMLFavolinkProps<'div'> & {
   variant?: styles.OverlayVariant;
 };
 
@@ -37,7 +34,7 @@ export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
   },
 );
 
-export type ModalContentProps = ComponentPropsWithoutRef<'div'>;
+export type ModalContentProps = HTMLFavolinkProps<'div'>;
 
 export const ModalContent = forwardRef<ModalContentProps, 'div'>(
   function ModalContent(props, ref) {
@@ -67,7 +64,7 @@ export const ModalContent = forwardRef<ModalContentProps, 'div'>(
   },
 );
 
-export type ModalHeaderProps = ComponentPropsWithoutRef<'header'>;
+export type ModalHeaderProps = HTMLFavolinkProps<'header'>;
 
 export const ModalHeader = forwardRef<ModalHeaderProps, 'header'>(
   function ModalHeader(props, ref) {
@@ -89,7 +86,7 @@ export const ModalHeader = forwardRef<ModalHeaderProps, 'header'>(
   },
 );
 
-export type ModalTopBarProps = ComponentPropsWithoutRef<'div'> & {
+export type ModalTopBarProps = HTMLFavolinkProps<'div'> & {
   layout: styles.TopBarLayout;
 };
 
@@ -145,7 +142,7 @@ export const ModalTitle = forwardRef<ModalTitleProps, typeof Heading>(
   },
 );
 
-export type ModalBodyProps = ComponentPropsWithoutRef<'main'>;
+export type ModalBodyProps = HTMLFavolinkProps<'main'>;
 
 export const ModalBody = forwardRef<ModalBodyProps, 'main'>(
   function ModalBody(props, ref) {
@@ -164,7 +161,7 @@ export const ModalBody = forwardRef<ModalBodyProps, 'main'>(
   },
 );
 
-export type ModalFooterProps = ComponentPropsWithoutRef<'footer'>;
+export type ModalFooterProps = HTMLFavolinkProps<'footer'>;
 
 export const ModalFooter = forwardRef<ModalFooterProps, 'footer'>(
   function ModalFooter(props, ref) {
