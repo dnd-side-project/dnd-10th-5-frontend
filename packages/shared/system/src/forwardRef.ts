@@ -6,10 +6,7 @@ import {
 } from 'react';
 import { type ComponentWithAs, type RightJoinProps } from './types';
 
-export default function forwardRef<
-  Props extends object,
-  Component extends ElementType,
->(
+export function forwardRef<Props extends object, Component extends ElementType>(
   render: ForwardRefRenderFunction<
     any,
     RightJoinProps<ComponentPropsWithoutRef<Component>, Props> & {
