@@ -8,7 +8,7 @@ export type TextProps = HTMLFavolinkProps<'p'> & {
   scale?: styles.Scale;
 };
 
-const Text = forwardRef<TextProps, 'p'>(function Text(props, ref) {
+export const Text = forwardRef<TextProps, 'p'>(function Text(props, ref) {
   const { children, className, scale = '2regular', ...restProps } = props;
 
   return (
@@ -21,5 +21,3 @@ const Text = forwardRef<TextProps, 'p'>(function Text(props, ref) {
     </favolink.p>
   );
 });
-
-export default Text;
