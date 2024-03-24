@@ -7,7 +7,7 @@ import {
 import { classNames } from '@favolink/utils';
 import * as styles from './styles.css';
 import * as theme from './theme.css';
-import Icon, { type IconProps } from '../Icon';
+import { Icon, type IconProps } from '../Icon';
 
 const TAG_CLASSNAME = 'favolink-tag';
 
