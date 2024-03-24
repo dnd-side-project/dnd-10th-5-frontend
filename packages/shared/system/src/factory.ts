@@ -1,6 +1,7 @@
-import createComponent, {
+import {
   type FavolinkComponent,
   type HTMLFavolinkComponents,
+  createComponent,
 } from './createComponent';
 import { type DOMElements } from './types';
 

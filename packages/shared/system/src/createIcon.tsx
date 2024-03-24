@@ -1,8 +1,9 @@
-import { Children, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { Children, type ReactNode } from 'react';
+import { type HTMLFavolinkProps } from './createComponent';
 import { favolink } from './factory';
-import forwardRef from './forwardRef';
+import { forwardRef } from './forwardRef';
 
-type IconProps = ComponentPropsWithoutRef<'svg'>;
+type IconProps = HTMLFavolinkProps<'svg'>;
 
 type CreateIconOptions = {
   d?: string;
@@ -10,7 +11,7 @@ type CreateIconOptions = {
   defaultProps?: IconProps;
 };
 
-export default function createIcon(options: CreateIconOptions) {
+export function createIcon(options: CreateIconOptions) {
   const { d: pathDefinition, path, defaultProps = {} } = options;
   const { viewBox = '0 0 20 20', ...restDefaultProps } = defaultProps;
 

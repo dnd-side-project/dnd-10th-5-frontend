@@ -1,5 +1,9 @@
-import { createElement } from 'react';
-import forwardRef from './forwardRef';
+import {
+  type ComponentPropsWithoutRef,
+  type ElementType,
+  createElement,
+} from 'react';
+import { forwardRef } from './forwardRef';
 import { type ComponentWithAs, type DOMElements } from './types';
 
 export type FavolinkComponent<Element extends DOMElements> = ComponentWithAs<
@@ -7,13 +11,11 @@ export type FavolinkComponent<Element extends DOMElements> = ComponentWithAs<
   object
 >;
 
-export default function createComponent<Element extends DOMElements>(
-  element: Element,
-) {
+export function createComponent<Element extends DOMElements>(element: Element) {
   const favolinkComponent = forwardRef(function favolinkComponent(props, ref) {
-    const { as: asComponent, ...restProps } = props;
+    const { as: asElement, ...restProps } = props;
 
-    return createElement(asComponent ? asComponent : element, {
+    return createElement(asElement ?? element, {
       ref,
       ...restProps,
     });
@@ -25,3 +27,6 @@ export default function createComponent<Element extends DOMElements>(
 export type HTMLFavolinkComponents = {
   [Element in DOMElements]: FavolinkComponent<Element>;
 };
+
+export type HTMLFavolinkProps<Element extends DOMElements> =
+  ComponentPropsWithoutRef<Element> & { as?: ElementType };

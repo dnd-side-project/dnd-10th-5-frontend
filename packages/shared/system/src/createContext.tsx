@@ -15,7 +15,7 @@ type CreateContextReturn<CreateContextDefaultValue> = [
   Context<CreateContextDefaultValue>,
 ];
 
-export default function createContext<CreateContextDefaultValue>(
+export function createContext<CreateContextDefaultValue>(
   defaultValue: CreateContextDefaultValue,
 ): CreateContextReturn<CreateContextDefaultValue> {
   const Context = createReactContext<CreateContextDefaultValue>(defaultValue);
