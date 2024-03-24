@@ -7,9 +7,9 @@ import {
 } from '@favolink/system';
 import { classNames } from '@favolink/utils';
 import * as styles from './styles.css';
-import Heading, { type HeadingProps } from '../Heading';
-import Portal from '../Portal';
-import Text from '../Text';
+import { Heading, type HeadingProps } from '../Heading';
+import { Portal } from '../Portal';
+import { Text } from '../Text';
 
 const MODAL_CLASSNAME = 'favolink-modal';
 
@@ -198,7 +198,7 @@ type ModalProps = ContextProviderProps<ModalContextDefaultValue> & {
   isOpen: boolean;
 };
 
-export default function Modal(props: ModalProps) {
+export function Modal(props: ModalProps) {
   const { children, ...restProps } = props;
   const { isOpen, ...realRestProps } = restProps;
 
