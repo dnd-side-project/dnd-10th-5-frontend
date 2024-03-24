@@ -72,7 +72,7 @@ export type TagProps = HTMLFavolinkProps<'span'> & {
   size?: styles.Size;
 };
 
-const Tag = forwardRef<TagProps, 'span'>(function Tag(props, ref) {
+export const Tag = forwardRef<TagProps, 'span'>(function Tag(props, ref) {
   const {
     children,
     className,
@@ -98,5 +98,3 @@ const Tag = forwardRef<TagProps, 'span'>(function Tag(props, ref) {
     </favolink.span>
   );
 });
-
-export default Tag;
