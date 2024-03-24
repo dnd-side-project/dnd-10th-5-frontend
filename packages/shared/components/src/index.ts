@@ -9,7 +9,7 @@ export * from './Input';
 export * from './Link';
 export * from './Modal';
 export * from './Portal';
-export * from './Provider';
+export { Provider as FavolinkProvider } from './Provider';
 export * from './Tag';
 export * from './Text';
 export * from './Toast';
