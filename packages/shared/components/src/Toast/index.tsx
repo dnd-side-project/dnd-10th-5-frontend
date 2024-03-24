@@ -2,10 +2,10 @@ import { type Toast, toastStore } from '@favolink/stores';
 import { classNames } from '@favolink/utils';
 import { useEffect, useSyncExternalStore } from 'react';
 import * as styles from './styles.css';
-import Box from '../Box';
-import Heading from '../Heading';
-import Link from '../Link';
-import Portal from '../Portal';
+import { Box } from '../Box';
+import { Heading } from '../Heading';
+import { Link } from '../Link';
+import { Portal } from '../Portal';
 
 const TOAST_CLASSNAME = 'favolink-toast';
 
@@ -28,7 +28,7 @@ export function ToastProvider() {
 
 export type ToastProps = Toast;
 
-export default function Toast(props: ToastProps) {
+export function Toast(props: ToastProps) {
   const { id, message, duration, link } = props;
 
   const { deleteToast } = toastStore;

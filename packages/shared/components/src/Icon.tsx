@@ -5,7 +5,7 @@ const ICON_CLASSNAME = 'favolink-icon';
 
 export type IconProps = HTMLFavolinkProps<'svg'>;
 
-const Icon = forwardRef<IconProps, 'svg'>(function Icon(props, ref) {
+export const Icon = forwardRef<IconProps, 'svg'>(function Icon(props, ref) {
   const { as: element, children, className, ...restProps } = props;
 
   const sharedProps = {
@@ -23,5 +23,3 @@ const Icon = forwardRef<IconProps, 'svg'>(function Icon(props, ref) {
     </favolink.svg>
   );
 });
-
-export default Icon;

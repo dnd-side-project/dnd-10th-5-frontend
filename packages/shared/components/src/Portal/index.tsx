@@ -9,7 +9,7 @@ type PortalProps = {
   type?: string;
 };
 
-export default function Portal(props: PortalProps) {
+export function Portal(props: PortalProps) {
   const { children, type } = props;
 
   const [tempNode, setTempNode] = useState<HTMLElement | null>(null);
