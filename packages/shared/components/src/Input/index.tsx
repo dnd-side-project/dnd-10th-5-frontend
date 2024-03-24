@@ -76,22 +76,22 @@ export type InputProps = HTMLFavolinkProps<'input'> & {
   variant?: styles.Variant;
 };
 
-const Input = forwardRef<InputProps, 'input'>(function Input(props, ref) {
-  const { className, variant = 'outline', ...restPorps } = props;
+export const Input = forwardRef<InputProps, 'input'>(
+  function Input(props, ref) {
+    const { className, variant = 'outline', ...restPorps } = props;
 
-  return (
-    <favolink.input
-      {...restPorps}
-      ref={ref}
-      className={classNames(
-        INPUT_CLASSNAME,
-        styles.base,
-        styles.variant[variant],
-        className ?? styles.withElement,
-        className,
-      )}
-    />
-  );
-});
-
-export default Input;
+    return (
+      <favolink.input
+        {...restPorps}
+        ref={ref}
+        className={classNames(
+          INPUT_CLASSNAME,
+          styles.base,
+          styles.variant[variant],
+          className ?? styles.withElement,
+          className,
+        )}
+      />
+    );
+  },
+);
