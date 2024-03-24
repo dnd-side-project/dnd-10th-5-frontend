@@ -9,7 +9,7 @@ export type LinkProps = HTMLFavolinkProps<'a'> & {
   color?: styles.Color;
 };
 
-const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
+export const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
   const {
     children,
     className,
@@ -35,5 +35,3 @@ const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
     </favolink.a>
   );
 });
-
-export default Link;
