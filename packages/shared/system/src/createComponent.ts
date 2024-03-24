@@ -1,4 +1,8 @@
-import { createElement } from 'react';
+import {
+  type ComponentPropsWithoutRef,
+  type ElementType,
+  createElement,
+} from 'react';
 import forwardRef from './forwardRef';
 import { type ComponentWithAs, type DOMElements } from './types';
 
@@ -25,3 +29,6 @@ export default function createComponent<Element extends DOMElements>(
 export type HTMLFavolinkComponents = {
   [Element in DOMElements]: FavolinkComponent<Element>;
 };
+
+export type HTMLFavolinkProps<Element extends DOMElements> =
+  ComponentPropsWithoutRef<Element> & { as?: ElementType };
