@@ -1,11 +1,10 @@
-import { favolink, forwardRef } from '@favolink/system';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef } from 'react';
 import * as styles from './styles.css';
 
 const BUTTON_CLASSNAME = 'favolink-button';
 
-export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
+export type ButtonProps = HTMLFavolinkProps<'button'> & {
   colorScheme?: styles.ColorScheme;
   size?: styles.Size;
 };
