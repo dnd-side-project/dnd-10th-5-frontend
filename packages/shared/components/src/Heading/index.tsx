@@ -14,24 +14,24 @@ export type HeadingProps = AsHeading &
     weight?: 'bold' | 'semibold';
   };
 
-const Heading = forwardRef<HeadingProps, 'h2'>(function Heading(props, ref) {
-  const { children, className, weight = 'bold', ...restProps } = props;
+export const Heading = forwardRef<HeadingProps, 'h2'>(
+  function Heading(props, ref) {
+    const { children, className, weight = 'bold', ...restProps } = props;
 
-  const realWeight = `${props.as as string}${weight}` as styles.Weight;
+    const realWeight = `${props.as as string}${weight}` as styles.Weight;
 
-  return (
-    <favolink.h2
-      {...restProps}
-      ref={ref}
-      className={classNames(
-        HEADING_CLASSNAME,
-        styles.weight[realWeight],
-        className,
-      )}
-    >
-      {children}
-    </favolink.h2>
-  );
-});
-
-export default Heading;
+    return (
+      <favolink.h2
+        {...restProps}
+        ref={ref}
+        className={classNames(
+          HEADING_CLASSNAME,
+          styles.weight[realWeight],
+          className,
+        )}
+      >
+        {children}
+      </favolink.h2>
+    );
+  },
+);
