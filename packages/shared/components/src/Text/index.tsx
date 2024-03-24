@@ -1,11 +1,10 @@
-import { favolink, forwardRef } from '@favolink/system';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import { type ComponentPropsWithoutRef } from 'react';
 import * as styles from './styles.css';
 
 const TEXT_CLASSNAME = 'favolink-text';
 
-export type TextProps = ComponentPropsWithoutRef<'p'> & {
+export type TextProps = HTMLFavolinkProps<'p'> & {
   scale?: styles.Scale;
 };
 
