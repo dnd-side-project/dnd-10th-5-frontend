@@ -17,7 +17,7 @@ export const TagIcon = forwardRef<TagIconProps, typeof Icon>(
   function TagIcon(props, ref) {
     const { children, ...restProps } = props;
 
-    const { size } = useTagContext();
+    const { size } = useTagStylesContext();
 
     const iconSize: Record<styles.Size, typeof restProps> = {
       small: { width: 14, height: 14 },
@@ -40,7 +40,7 @@ export const TagLabel = forwardRef<TagLabelProps, 'span'>(
   function TagText(props, ref) {
     const { children, className, isAsIcon, ...restProps } = props;
 
-    const { size } = useTagContext();
+    const { size } = useTagStylesContext();
 
     return (
       <favolink.span
@@ -59,13 +59,14 @@ export const TagLabel = forwardRef<TagLabelProps, 'span'>(
   },
 );
 
-type TagContextDefaultValue = {
+type TagStylesContextDefaultValue = {
   size: styles.Size;
 };
 
-const [TagProvider, useTagContext] = createContext<TagContextDefaultValue>({
-  size: 'small',
-});
+const [TagStylesContextProvider, useTagStylesContext] =
+  createContext<TagStylesContextDefaultValue>({
+    size: 'small',
+  });
 
 export type TagProps = HTMLFavolinkProps<'span'> & {
   colorScheme?: styles.ColorScheme;
@@ -82,19 +83,21 @@ export const Tag = forwardRef<TagProps, 'span'>(function Tag(props, ref) {
   } = props;
 
   return (
-    <favolink.span
-      {...restProps}
-      ref={ref}
-      className={classNames(
-        TAG_CLASSNAME,
-        theme.color,
-        styles.base,
-        styles.size[size],
-        styles.colorScheme[colorScheme],
-        className,
-      )}
-    >
-      <TagProvider size={size}>{children}</TagProvider>
-    </favolink.span>
+    <TagStylesContextProvider value={{ size }}>
+      <favolink.span
+        {...restProps}
+        ref={ref}
+        className={classNames(
+          TAG_CLASSNAME,
+          theme.color,
+          styles.base,
+          styles.size[size],
+          styles.colorScheme[colorScheme],
+          className,
+        )}
+      >
+        {children}
+      </favolink.span>
+    </TagStylesContextProvider>
   );
 });
