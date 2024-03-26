@@ -1,5 +1,6 @@
 import {
   type Context,
+  type Provider,
   type ReactNode,
   createContext as createReactContext,
   useContext as useReactContext,
@@ -10,7 +11,7 @@ export type ContextProviderProps<ContextDefaultValue> = ContextDefaultValue & {
 };
 
 type CreateContextReturn<CreateContextDefaultValue> = [
-  (props: ContextProviderProps<CreateContextDefaultValue>) => JSX.Element,
+  Provider<CreateContextDefaultValue>,
   () => CreateContextDefaultValue,
   Context<CreateContextDefaultValue>,
 ];
@@ -26,17 +27,5 @@ export function createContext<CreateContextDefaultValue>(
     return context;
   }
 
-  function ContextProvider(
-    props: ContextProviderProps<CreateContextDefaultValue>,
-  ) {
-    const { children, ...restProps } = props;
-
-    return (
-      <Context.Provider value={restProps as CreateContextDefaultValue}>
-        {children}
-      </Context.Provider>
-    );
-  }
-
-  return [ContextProvider, useContext, Context];
+  return [Context.Provider, useContext, Context];
 }
