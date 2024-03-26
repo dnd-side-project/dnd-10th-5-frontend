@@ -1,14 +1,9 @@
 import {
   type Context,
   type Provider,
-  type ReactNode,
   createContext as createReactContext,
   useContext as useReactContext,
 } from 'react';
-
-export type ContextProviderProps<ContextDefaultValue> = ContextDefaultValue & {
-  children: ReactNode;
-};
 
 type CreateContextReturn<CreateContextDefaultValue> = [
   Provider<CreateContextDefaultValue>,
