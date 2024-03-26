@@ -1,11 +1,11 @@
 import {
-  type ContextProviderProps,
   type HTMLFavolinkProps,
   createContext,
   favolink,
   forwardRef,
 } from '@favolink/system';
 import { classNames } from '@favolink/utils';
+import { type ReactNode } from 'react';
 import * as styles from './styles.css';
 import { Heading, type HeadingProps } from '../Heading';
 import { Portal } from '../Portal';
@@ -188,13 +188,14 @@ type ModalContextDefaultValue = {
   closeOnOverlayClick?: boolean;
 };
 
-const [ModalProvider, useModalContext] =
+const [ModalContextProvider, useModalContext] =
   createContext<ModalContextDefaultValue>({
     onClose: () => {},
     closeOnOverlayClick: false,
   });
 
-type ModalProps = ContextProviderProps<ModalContextDefaultValue> & {
+type ModalProps = ModalContextDefaultValue & {
+  children: ReactNode;
   isOpen: boolean;
 };
 
@@ -203,10 +204,8 @@ export function Modal(props: ModalProps) {
   const { isOpen, ...realRestProps } = restProps;
 
   return (
-    isOpen && (
-      <Portal type="modal">
-        <ModalProvider {...realRestProps}>{children}</ModalProvider>
-      </Portal>
-    )
+    <ModalContextProvider value={realRestProps}>
+      {isOpen && <Portal type="modal">{children}</Portal>}
+    </ModalContextProvider>
   );
 }
