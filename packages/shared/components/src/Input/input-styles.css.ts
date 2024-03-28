@@ -1,26 +1,9 @@
 import { body3Medium } from '@favolink/styles/text.css';
 import { vars } from '@favolink/styles/theme.css';
 import { style, styleVariants } from '@vanilla-extract/css';
+import { inputElementDirection } from './input-element-styles.css';
 
-export const groupBase = style({
-  position: 'relative',
-});
-
-export const elementBase = style({
-  width: 42,
-  position: 'absolute',
-  height: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
-
-export const elementDirection = styleVariants({
-  right: [elementBase, { top: 0, right: 0 }],
-  left: [elementBase, { top: 0, left: 0 }],
-});
-
-export const base = style([
+export const inputBase = style([
   body3Medium,
   {
     boxSizing: 'border-box',
@@ -31,7 +14,7 @@ export const base = style([
   },
 ]);
 
-export const variant = styleVariants({
+export const inputVariant = styleVariants({
   outline: {
     border: `1px solid ${vars.color.gray300}`,
     borderRadius: 8,
@@ -65,14 +48,14 @@ export const variant = styleVariants({
   },
 });
 
-export type Variant = keyof typeof variant;
+export type InputVariant = keyof typeof inputVariant;
 
-export const withElement = style({
+export const inputWithElement = style({
   selectors: {
-    [`${elementDirection.left} ~ &`]: {
+    [`${inputElementDirection.left} ~ &`]: {
       paddingLeft: 42,
     },
-    [`&:has(~ ${elementDirection.right})`]: {
+    [`&:has(~ ${inputElementDirection.right})`]: {
       paddingRight: 42,
     },
   },
