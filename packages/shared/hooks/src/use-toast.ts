@@ -1,6 +1,6 @@
 import { toastStore } from '@favolink/stores';
 
-export default function useToast() {
+export function useToast() {
   const { showToast, deleteToast } = toastStore;
 
   return {
