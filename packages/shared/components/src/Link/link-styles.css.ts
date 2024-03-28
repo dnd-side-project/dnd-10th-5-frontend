@@ -2,7 +2,7 @@ import { body3Medium } from '@favolink/styles/text.css';
 import { vars } from '@favolink/styles/theme.css';
 import { style, styleVariants } from '@vanilla-extract/css';
 
-export const base = style([
+export const linkBase = style([
   body3Medium,
   {
     cursor: 'pointer',
@@ -16,10 +16,10 @@ export const base = style([
   },
 ]);
 
-export const color = styleVariants({
+export const linkColor = styleVariants({
   white: { color: 'white' },
   gray: { color: vars.color.gray400 },
   black: { color: 'black' },
 });
 
-export type Color = keyof typeof color;
+export type LinkColor = keyof typeof linkColor;
