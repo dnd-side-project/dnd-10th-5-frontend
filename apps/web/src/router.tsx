@@ -4,6 +4,7 @@ import { PATH } from './constants';
 import {
   FavoliteLink,
   ForgottenLink,
+  KakaoOAuth,
   SavedLink,
   Signup,
   Space,
@@ -35,5 +36,9 @@ export const router = createBrowserRouter([
   {
     path: PATH.SIGNUP,
     element: <Signup />,
+  },
+  {
+    path: PATH.KAKAO_OAUTH,
+    element: <KakaoOAuth />,
   },
 ]);
