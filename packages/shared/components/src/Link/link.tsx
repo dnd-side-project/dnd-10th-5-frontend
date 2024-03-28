@@ -1,12 +1,10 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import * as styles from './styles.css';
-
-const LINK_CLASSNAME = 'favolink-link';
+import * as styles from './link-styles.css';
 
 export type LinkProps = HTMLFavolinkProps<'a'> & {
   isExternal?: boolean;
-  color?: styles.Color;
+  color?: styles.LinkColor;
 };
 
 export const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
@@ -25,9 +23,9 @@ export const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener' : undefined}
       className={classNames(
-        LINK_CLASSNAME,
-        styles.base,
-        styles.color[color],
+        'favolink-link',
+        styles.linkBase,
+        styles.linkColor[color],
         className,
       )}
     >
