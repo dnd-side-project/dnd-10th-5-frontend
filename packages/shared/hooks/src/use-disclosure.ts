@@ -11,5 +11,9 @@ export default function useDisclosure(initialIsOpen = false) {
     setIsOpen(false);
   }
 
-  return { isOpen, onOpen, onClose };
+  function onToggle() {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  }
+
+  return { isOpen, onOpen, onClose, onToggle };
 }
