@@ -3,7 +3,7 @@ import {
   type ElementType,
   createElement,
 } from 'react';
-import { forwardRef } from './forwardRef';
+import { forwardRef } from './forward-ref';
 import { type ComponentWithAs, type DOMElements } from './types';
 
 export type FavolinkComponent<Element extends DOMElements> = ComponentWithAs<
