@@ -10,7 +10,7 @@ import {
 } from '@favolink/styles/text.css';
 import { styleVariants } from '@vanilla-extract/css';
 
-export const scale = styleVariants({
+export const textScale = styleVariants({
   '1medium': [body1Medium],
   '1regular': [body1Regular],
   '2medium': [body2Medium],
@@ -21,4 +21,4 @@ export const scale = styleVariants({
   '4regular': [body4Regular],
 });
 
-export type Scale = keyof typeof scale;
+export type TextScale = keyof typeof textScale;
