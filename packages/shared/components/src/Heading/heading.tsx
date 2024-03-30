@@ -1,7 +1,7 @@
 import { favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
 import { type ComponentPropsWithoutRef, type ElementType } from 'react';
-import * as styles from './heading-styles.css';
+import * as styles from './heading.styles.css';
 
 const HEADING_CLASSNAME = 'favolink-heading';
 

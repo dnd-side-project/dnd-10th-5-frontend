@@ -1,8 +1,8 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
 import { type ReactElement } from 'react';
-import * as styles from './icon-button-styles.css';
-import * as theme from './icon-button-theme.css';
+import * as styles from './icon-button.styles.css';
+import * as theme from './icon-button.theme.css';
 
 const CLASSNAME_ICONBUTTOM = 'favolink-iconbutton';
 

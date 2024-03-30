@@ -1,7 +1,7 @@
 import { body3Medium } from '@favolink/styles/text.css';
 import { vars } from '@favolink/styles/theme.css';
 import { style, styleVariants } from '@vanilla-extract/css';
-import { inputElementDirection } from './input-element-styles.css';
+import { inputElementDirection } from './input-element.styles.css';
 
 export const inputBase = style([
   body3Medium,

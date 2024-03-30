@@ -1,6 +1,6 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import * as styles from './input-element-styles.css';
+import * as styles from './input-element.styles.css';
 
 type InputElementProps = HTMLFavolinkProps<'div'>;
 

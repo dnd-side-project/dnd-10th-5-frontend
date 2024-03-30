@@ -1,6 +1,6 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import * as styles from './input-group-styles.css';
+import * as styles from './input-group.styles.css';
 
 export type InputGroupProps = HTMLFavolinkProps<'div'>;
 

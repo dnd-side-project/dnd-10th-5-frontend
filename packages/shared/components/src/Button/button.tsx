@@ -1,6 +1,6 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
-import * as styles from './button-styles.css';
+import * as styles from './button.styles.css';
 
 const BUTTON_CLASSNAME = 'favolink-button';
 
