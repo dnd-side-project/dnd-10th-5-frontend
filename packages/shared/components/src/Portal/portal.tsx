@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import * as styles from './styles.css';
+import * as styles from './portal.styles.css';
 
 const PORTAL_CLASSNAME = `favolink-portal`;
 
