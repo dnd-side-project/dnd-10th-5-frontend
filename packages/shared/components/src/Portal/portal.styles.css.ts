@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import * as modalStyles from '../Modal/styles.css';
+import * as modalContentStyles from '../modal/modal-content.styles.css';
 
 export const portal = style({
   position: 'fixed',
@@ -8,7 +8,7 @@ export const portal = style({
   display: 'flex',
 
   selectors: {
-    [`&:has(> ${modalStyles.content})`]: {
+    [`&:has(> ${modalContentStyles.modalContent})`]: {
       right: 0,
       bottom: 0,
       justifyContent: 'center',
