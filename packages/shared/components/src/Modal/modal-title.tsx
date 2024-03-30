@@ -1,7 +1,7 @@
 import { favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
 import * as styles from './modal-title.styles.css';
-import { Heading, type HeadingProps } from '../heading';
+import { Heading, type HeadingProps } from '../typography';
 
 export type ModalTitleProps = HeadingProps & {
   layout: styles.ModalTitleLayout;

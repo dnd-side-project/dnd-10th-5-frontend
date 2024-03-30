@@ -3,8 +3,8 @@ import { classNames } from '@favolink/utils';
 import { useEffect } from 'react';
 import * as styles from './toast.styles.css';
 import { Box } from '../box';
-import { Heading } from '../heading';
 import { Link } from '../link';
+import { Heading } from '../typography';
 
 export type ToastProps = Toast;
 

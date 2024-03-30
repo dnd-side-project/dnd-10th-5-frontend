@@ -2,7 +2,7 @@ import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
 import * as styles from './modal-topbar.styles.css';
 import { useModalContext } from './modal.context';
-import { Text } from '../text';
+import { Text } from '../typography';
 
 export type ModalTopbarProps = HTMLFavolinkProps<'div'> & {
   layout: styles.ModalTopbarLayout;
