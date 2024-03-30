@@ -2,8 +2,6 @@ import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import * as styles from './portal.styles.css';
 
-const PORTAL_CLASSNAME = `favolink-portal`;
-
 type PortalProps = {
   children: ReactNode;
   type?: string;
@@ -26,8 +24,8 @@ export function Portal(props: PortalProps) {
 
     portal.current = doc.createElement('div');
     portal.current.className = type
-      ? `${PORTAL_CLASSNAME}__${type} ${styles.portal}`
-      : `${PORTAL_CLASSNAME} ${styles.portal}`;
+      ? `favolink-portal__${type} ${styles.portal}`
+      : `favolink-portal ${styles.portal}`;
 
     host.appendChild(portal.current);
 
