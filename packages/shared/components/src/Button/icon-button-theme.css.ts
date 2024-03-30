@@ -1,5 +1,5 @@
-import * as tagTheme from '../Tag/theme.css';
+import * as tagTheme from '../tag/tag.theme.css';
 
-export const color = tagTheme.color;
+export const color = tagTheme.tagColor;
 
-export type Color = tagTheme.Color;
+export type Color = tagTheme.TagColor;

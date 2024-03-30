@@ -1,6 +1,6 @@
 import { h4SemiBold, h5SemiBold, h6SemiBold } from '@favolink/styles/text.css';
 import { style, styleVariants } from '@vanilla-extract/css';
-import * as tagStyles from '../Tag/styles.css';
+import * as tagStyles from '../tag/tag.styles.css';
 
 export const base = style({
   cursor: 'pointer',
@@ -18,6 +18,6 @@ export const size = styleVariants({
 
 export type Size = keyof typeof size;
 
-export const colorScheme = tagStyles.colorScheme;
+export const colorScheme = tagStyles.tagColorScheme;
 
-export type ColorScheme = tagStyles.ColorScheme;
+export type ColorScheme = tagStyles.TagColorScheme;
