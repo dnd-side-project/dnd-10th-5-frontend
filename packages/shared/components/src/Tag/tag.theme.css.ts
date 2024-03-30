@@ -1,7 +1,7 @@
 import { vars as globalVars } from '@favolink/styles/theme.css';
 import { createTheme, createThemeContract } from '@vanilla-extract/css';
 
-export const vars = createThemeContract({
+export const tagVars = createThemeContract({
   normal: {
     black: null,
     blue: null,
@@ -24,9 +24,9 @@ export const vars = createThemeContract({
   },
 });
 
-export type Color = keyof typeof vars.normal;
+export type TagColor = keyof typeof tagVars.normal;
 
-export const color = createTheme(vars, {
+export const tagColor = createTheme(tagVars, {
   normal: {
     black: globalVars.color.gray700,
     blue: '#2c84ec',

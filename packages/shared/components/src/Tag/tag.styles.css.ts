@@ -5,28 +5,23 @@ import {
   style,
   styleVariants,
 } from '@vanilla-extract/css';
-import { type Color as TagColor, vars as tagVars } from './theme.css';
+import { type TagColor, tagVars } from './tag.theme.css';
 
-const border = style({
-  borderRadius: 100,
-});
-
-const layout = style({
+export const tagBase = style({
   display: 'inline-flex',
   alignItems: 'center',
   gap: 10,
+  borderRadius: 100,
 });
 
-export const base = style([border, layout]);
-
-export const size = styleVariants({
+export const tagSize = styleVariants({
   small: [body4Medium, { padding: '4px 8px' }],
   medium: [body3Medium, { padding: '8px 14px' }],
 });
 
-export type Size = keyof typeof size;
+export type TagSize = keyof typeof tagSize;
 
-export const colorScheme = styleVariants({
+export const tagColorScheme = styleVariants({
   black: createColorScheme('black'),
   blue: createColorScheme('blue'),
   brightGreen: createColorScheme('brightGreen'),
@@ -42,28 +37,12 @@ export const colorScheme = styleVariants({
   },
 });
 
-export type ColorScheme = keyof typeof colorScheme;
-
-const labelbase = style({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
-
-export const label = styleVariants({
-  small: [labelbase, { minWidth: 14, minHeight: 14 }],
-  medium: [labelbase, { minWidth: 18, minHeight: 18 }],
-});
-
-export type Text = keyof typeof label;
-
-export const labelAsIcon = style({
-  color: vars.color.gray400,
-});
+export type TagColorScheme = keyof typeof tagColorScheme;
 
 function createColorScheme(color: TagColor): ComplexStyleRule {
   return {
     color: tagVars.normal[color],
     backgroundColor: tagVars.light[color],
+    border: `1px solid ${tagVars.light[color]}`,
   };
 }
