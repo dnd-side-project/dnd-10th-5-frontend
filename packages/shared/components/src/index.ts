@@ -3,7 +3,6 @@ export * from '@favolink/hooks';
 export * from '@favolink/system';
 export * from './box';
 export * from './button';
-export * from './menu';
 export * from './icon';
 export * from './input';
 export * from './link';
