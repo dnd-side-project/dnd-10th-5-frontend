@@ -1,15 +1,15 @@
 /* eslint-disable @stylistic/padding-line-between-statements, react-refresh/only-export-components */
 export * from '@favolink/hooks';
 export * from '@favolink/system';
-export * from './Box';
-export * from './Button';
-export * from './Heading';
-export * from './Icon';
-export * from './Input';
-export * from './Link';
-export * from './Modal';
-export * from './Portal';
-export { Provider as FavolinkProvider } from './Provider';
-export * from './Tag';
-export * from './Text';
-export * from './Toast';
+export * from './box';
+export * from './button';
+export * from './menu';
+export * from './icon';
+export * from './input';
+export * from './link';
+export * from './modal';
+export * from './portal';
+export * from './provider';
+export * from './tag';
+export * from './toast';
+export * from './typography';
