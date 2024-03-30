@@ -2,7 +2,7 @@ import {
   type FavolinkComponent,
   type HTMLFavolinkComponents,
   createComponent,
-} from './createComponent';
+} from './create-component';
 import { type DOMElements } from './types';
 
 type FavolinkFactory = {

@@ -1,3 +1,3 @@
 /* eslint-disable @stylistic/padding-line-between-statements */
-export { default as useDisclosure } from './useDisclosure';
-export { default as useToast } from './useToast';
+export { useDisclosure } from './use-disclosure';
+export { useToast } from './use-toast';
