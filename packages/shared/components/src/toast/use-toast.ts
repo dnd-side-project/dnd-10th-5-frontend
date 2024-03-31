@@ -1,4 +1,4 @@
-import { toastStore } from '@favolink/stores';
+import { toastStore } from './toast.store';
 
 export function useToast() {
   const { showToast, deleteToast } = toastStore;

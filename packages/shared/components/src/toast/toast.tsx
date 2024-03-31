@@ -1,6 +1,6 @@
-import { type Toast, toastStore } from '@favolink/stores';
 import { classNames } from '@favolink/utils';
 import { useEffect } from 'react';
+import { type Toast, toastStore } from './toast.store';
 import * as styles from './toast.styles.css';
 import { Box } from '../box';
 import { Link } from '../link';

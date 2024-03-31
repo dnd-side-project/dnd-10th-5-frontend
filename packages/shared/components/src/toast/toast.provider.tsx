@@ -1,8 +1,8 @@
-import { toastStore } from '@favolink/stores';
 import { classNames } from '@favolink/utils';
 import { useSyncExternalStore } from 'react';
 import { Toast } from './toast';
 import * as styles from './toast.provider.styles.css';
+import { toastStore } from './toast.store';
 import { Box } from '../box';
 import { Portal } from '../portal';
 

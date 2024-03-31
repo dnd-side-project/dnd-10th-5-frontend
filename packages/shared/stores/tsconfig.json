@@ -1,4 +1,0 @@
-{
-  "extends": "@tsconfig/favolink/base.json",
-  "include": [".eslintrc.js", "src"]
-}
