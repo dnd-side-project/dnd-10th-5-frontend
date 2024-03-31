@@ -184,9 +184,6 @@ importers:
       '@favolink/hooks':
         specifier: workspace:*
         version: link:../hooks
-      '@favolink/stores':
-        specifier: workspace:*
-        version: link:../stores
       '@favolink/styles':
         specifier: workspace:*
         version: link:../styles
@@ -215,9 +212,6 @@ importers:
 
   packages/shared/hooks:
     dependencies:
-      '@favolink/stores':
-        specifier: workspace:*
-        version: link:../stores
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -235,8 +229,6 @@ importers:
       '@types/react':
         specifier: ^18.2.55
         version: 18.2.55
-
-  packages/shared/stores: {}
 
   packages/shared/styles:
     dependencies:
