@@ -19,6 +19,7 @@ export const TagLabel = forwardRef<TagLabelProps, 'span'>(
         ref={ref}
         className={classNames(
           'favolink-tag__label',
+          styles.tagLabelBase,
           styles.tagLabelSize[size],
           isAsIcon && styles.tagLabelAsIcon,
           className,
