@@ -13,7 +13,9 @@ export function ToastProvider() {
   );
 
   const toastList = (
-    <Box className={classNames('favolink-toast__list', styles.toastContainer)}>
+    <Box
+      className={classNames('favolink-toast__list', styles.toastContainerBase)}
+    >
       {toastState.map((toast) => (
         <Toast key={toast.id} {...toast} />
       ))}

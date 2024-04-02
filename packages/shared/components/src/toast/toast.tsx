@@ -24,11 +24,11 @@ export function Toast(props: ToastProps) {
   }, [deleteToast, duration, id]);
 
   return (
-    <Box className={classNames('favolink-toast__item', styles.toastItem)}>
+    <Box className={classNames('favolink-toast__item', styles.toastItemBase)}>
       <Heading
         as="h5"
         weight="semibold"
-        className={classNames(styles.toastItemText)}
+        className={classNames(styles.toastItemTextBase)}
       >
         {message}
       </Heading>
