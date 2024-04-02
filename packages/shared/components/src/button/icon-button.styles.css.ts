@@ -2,7 +2,7 @@ import { h4SemiBold, h5SemiBold, h6SemiBold } from '@favolink/styles/text.css';
 import { style, styleVariants } from '@vanilla-extract/css';
 import * as tagStyles from '../tag/tag.styles.css';
 
-export const base = style({
+export const iconButtonBase = style({
   cursor: 'pointer',
   borderRadius: 8,
   display: 'flex',
@@ -10,14 +10,14 @@ export const base = style({
   alignItems: 'center',
 });
 
-export const size = styleVariants({
+export const iconButtonSize = styleVariants({
   small: [h6SemiBold, { padding: 8 }],
   medium: [h5SemiBold, { padding: 10 }],
   large: [h4SemiBold, { padding: 12 }],
 });
 
-export type Size = keyof typeof size;
+export type IconButtonSize = keyof typeof iconButtonSize;
 
-export const colorScheme = tagStyles.tagColorScheme;
+export const iconButtoncolorScheme = tagStyles.tagColorScheme;
 
-export type ColorScheme = tagStyles.TagColorScheme;
+export type IconButtonColorScheme = tagStyles.TagColorScheme;
