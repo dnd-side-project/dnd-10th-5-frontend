@@ -1,8 +1,12 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
+
+export const modalTopbarBase = style({
+  display: 'flex',
+});
 
 export const modalTopbarLayout = styleVariants({
-  single: { display: 'flex', justifyContent: 'flex-end' },
-  couple: { display: 'felx', justifyContent: 'space-between' },
+  single: { justifyContent: 'flex-end' },
+  couple: { justifyContent: 'space-between' },
 });
 
 export type ModalTopbarLayout = keyof typeof modalTopbarLayout;

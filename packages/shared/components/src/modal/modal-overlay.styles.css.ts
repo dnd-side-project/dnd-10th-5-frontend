@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-const modalOverlayBase = style({
+export const modalOverlayBase = style({
   position: 'fixed',
   top: 0,
   left: 0,
@@ -11,12 +11,9 @@ const modalOverlayBase = style({
   alignItems: 'center',
 });
 
-export const modalOverlay = styleVariants({
-  original: [
-    modalOverlayBase,
-    { backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 96 },
-  ],
-  withContent: [modalOverlayBase, { zIndex: 97 }],
+export const modalOverlayVariant = styleVariants({
+  original: { backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 96 },
+  withContent: { zIndex: 97 },
 });
 
-export type ModalOverlayVariant = keyof typeof modalOverlay;
+export type ModalOverlayVariant = keyof typeof modalOverlayVariant;

@@ -23,7 +23,7 @@ export const ModalContent = forwardRef<ModalContentProps, 'div'>(
           ref={ref}
           className={classNames(
             'favolink-modal__content',
-            styles.modalContent,
+            styles.modalContentBase,
             className,
           )}
         >

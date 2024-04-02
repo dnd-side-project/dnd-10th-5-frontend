@@ -14,7 +14,7 @@ export const ModalFooter = forwardRef<ModalFooterProps, 'footer'>(
         ref={ref}
         className={classNames(
           `favolink-modal__footer`,
-          styles.modalFooter,
+          styles.modalFooterBase,
           className,
         )}
       >

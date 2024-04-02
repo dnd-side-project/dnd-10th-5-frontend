@@ -16,7 +16,8 @@ export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
         ref={ref}
         className={classNames(
           'favolink-modal__overlay',
-          styles.modalOverlay[variant],
+          styles.modalOverlayBase,
+          styles.modalOverlayVariant[variant],
         )}
       />
     );

@@ -1,7 +1,7 @@
 import { vars } from '@favolink/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const modalContent = style({
+export const modalContentBase = style({
   display: 'flex',
   gap: 16,
   position: 'relative',

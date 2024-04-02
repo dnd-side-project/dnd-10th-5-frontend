@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const modalHeader = style([
+export const modalHeaderBase = style([
   {
     display: 'flex',
     gap: 16,
