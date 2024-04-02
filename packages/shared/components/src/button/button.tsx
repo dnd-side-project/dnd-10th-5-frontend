@@ -2,11 +2,9 @@ import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
 import { classNames } from '@favolink/utils';
 import * as styles from './button.styles.css';
 
-const BUTTON_CLASSNAME = 'favolink-button';
-
 export type ButtonProps = HTMLFavolinkProps<'button'> & {
-  colorScheme?: styles.ColorScheme;
-  size?: styles.Size;
+  colorScheme?: styles.ButtonColorScheme;
+  size?: styles.ButtonSize;
 };
 
 export const Button = forwardRef<ButtonProps, 'button'>(
@@ -24,10 +22,10 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         {...restProps}
         ref={ref}
         className={classNames(
-          BUTTON_CLASSNAME,
-          styles.base,
-          styles.size[size],
-          styles.colorScheme[colorScheme],
+          'favolink-button',
+          styles.buttonBase,
+          styles.buttonSize[size],
+          styles.buttonColorScheme[colorScheme],
           className,
         )}
       >

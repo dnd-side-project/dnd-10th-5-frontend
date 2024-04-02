@@ -4,7 +4,7 @@ import * as styles from './modal-title.styles.css';
 import { Heading, type HeadingProps } from '../typography';
 
 export type ModalTitleProps = HeadingProps & {
-  layout: styles.ModalTitleLayout;
+  layout: styles.ModalTitleContainerLayout;
 };
 
 export const ModalTitle = forwardRef<ModalTitleProps, typeof Heading>(
@@ -12,14 +12,14 @@ export const ModalTitle = forwardRef<ModalTitleProps, typeof Heading>(
     const { children, className, layout, ...restProps } = props;
 
     return (
-      <favolink.div className={styles.modalTitlelayout[layout]}>
+      <favolink.div className={styles.modalTitleContainerLayout[layout]}>
         <Heading
           as="h4"
           {...restProps}
           ref={ref}
           className={classNames(
             'favolink-modal__title',
-            styles.modalTitle,
+            styles.modalTitleBase,
             className,
           )}
         >

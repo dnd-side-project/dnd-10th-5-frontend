@@ -2,20 +2,20 @@ import { h5Bold, h6SemiBold } from '@favolink/styles/text.css';
 import { vars } from '@favolink/styles/theme.css';
 import { style, styleVariants } from '@vanilla-extract/css';
 
-export const base = style({
+export const buttonBase = style({
   borderRadius: 8,
   cursor: 'pointer',
 });
 
-export const size = styleVariants({
+export const buttonSize = styleVariants({
   small: [h6SemiBold, { minWidth: 100, minHeight: 30 }],
   medium: [h6SemiBold, { minWidth: 202, minHeight: 40 }],
   large: [h5Bold, { minWidth: 332, minHeight: 44 }],
 });
 
-export type Size = keyof typeof size;
+export type ButtonSize = keyof typeof buttonSize;
 
-export const colorScheme = styleVariants({
+export const buttonColorScheme = styleVariants({
   gray: {
     backgroundColor: vars.color.gray400,
     border: `1px solid ${vars.color.gray400}`,
@@ -38,4 +38,4 @@ export const colorScheme = styleVariants({
   },
 });
 
-export type ColorScheme = keyof typeof colorScheme;
+export type ButtonColorScheme = keyof typeof buttonColorScheme;

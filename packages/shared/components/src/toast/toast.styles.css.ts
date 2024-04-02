@@ -1,7 +1,7 @@
 import { vars } from '@favolink/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const toastItem = style({
+export const toastItemBase = style({
   width: '100%',
   backgroundColor: vars.color.gray800,
   borderRadius: 20,
@@ -11,6 +11,6 @@ export const toastItem = style({
   alignItems: 'center',
 });
 
-export const toastItemText = style({
+export const toastItemTextBase = style({
   color: 'white',
 });

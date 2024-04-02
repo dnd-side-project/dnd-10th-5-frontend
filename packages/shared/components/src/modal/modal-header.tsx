@@ -14,7 +14,7 @@ export const ModalHeader = forwardRef<ModalHeaderProps, 'header'>(
         ref={ref}
         className={classNames(
           'favolink-modal__header',
-          styles.modalHeader,
+          styles.modalHeaderBase,
           className,
         )}
       >

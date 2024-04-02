@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const modalFooter = style([
+export const modalFooterBase = style([
   {
     display: 'flex',
     justifyContent: 'flex-end',

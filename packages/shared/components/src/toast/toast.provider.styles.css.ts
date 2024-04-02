@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const toastContainer = style({
+export const toastContainerBase = style({
   position: 'fixed',
   width: 780,
   bottom: 10,

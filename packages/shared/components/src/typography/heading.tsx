@@ -18,7 +18,7 @@ export const Heading = forwardRef<HeadingProps, 'h2'>(
   function Heading(props, ref) {
     const { children, className, weight = 'bold', ...restProps } = props;
 
-    const realWeight = `${props.as as string}${weight}` as styles.Weight;
+    const realWeight = `${props.as as string}${weight}` as styles.HeadingWeight;
 
     return (
       <favolink.h2
@@ -26,7 +26,7 @@ export const Heading = forwardRef<HeadingProps, 'h2'>(
         ref={ref}
         className={classNames(
           HEADING_CLASSNAME,
-          styles.weight[realWeight],
+          styles.headingWeight[realWeight],
           className,
         )}
       >

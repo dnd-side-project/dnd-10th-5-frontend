@@ -4,12 +4,10 @@ import { type ReactElement } from 'react';
 import * as styles from './icon-button.styles.css';
 import * as theme from './icon-button.theme.css';
 
-const CLASSNAME_ICONBUTTOM = 'favolink-iconbutton';
-
 export type IconButtonProps = HTMLFavolinkProps<'button'> & {
   icon: ReactElement;
-  colorScheme?: styles.ColorScheme;
-  size?: styles.Size;
+  colorScheme?: styles.IconButtonColorScheme;
+  size?: styles.IconButtonSize;
 };
 
 export const IconButton = forwardRef<IconButtonProps, 'button'>(
@@ -27,11 +25,11 @@ export const IconButton = forwardRef<IconButtonProps, 'button'>(
         {...restProps}
         ref={ref}
         className={classNames(
-          CLASSNAME_ICONBUTTOM,
-          theme.color,
-          styles.base,
-          styles.size[size],
-          styles.colorScheme[colorScheme],
+          'favolink-button',
+          theme.iconButtonColor,
+          styles.iconButtonBase,
+          styles.iconButtonSize[size],
+          styles.iconButtoncolorScheme[colorScheme],
           className,
         )}
       >

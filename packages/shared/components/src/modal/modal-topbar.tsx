@@ -22,6 +22,7 @@ export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
         ref={ref}
         className={classNames(
           `favolink-modal__topbar`,
+          styles.modalTopbarBase,
           styles.modalTopbarLayout[layout],
           className,
         )}
