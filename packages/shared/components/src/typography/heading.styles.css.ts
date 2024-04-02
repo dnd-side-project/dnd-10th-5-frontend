@@ -14,7 +14,7 @@ import {
 } from '@favolink/styles/text.css';
 import { styleVariants } from '@vanilla-extract/css';
 
-export const weight = styleVariants({
+export const headingWeight = styleVariants({
   h1bold: [h1Bold],
   h1semibold: [h1SemiBold],
   h2bold: [h2Bold],
@@ -29,4 +29,4 @@ export const weight = styleVariants({
   h6semibold: [h6SemiBold],
 });
 
-export type Weight = keyof typeof weight;
+export type HeadingWeight = keyof typeof headingWeight;
