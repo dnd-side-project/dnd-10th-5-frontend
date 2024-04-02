@@ -24,8 +24,8 @@ export function Portal(props: PortalProps) {
 
     portal.current = doc.createElement('div');
     portal.current.className = type
-      ? `favolink-portal__${type} ${styles.portal}`
-      : `favolink-portal ${styles.portal}`;
+      ? `favolink-portal__${type} ${styles.portalBase}`
+      : `favolink-portal ${styles.portalBase}`;
 
     host.appendChild(portal.current);
 
