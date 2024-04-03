@@ -3,8 +3,6 @@ import { classNames } from '@favolink/utils';
 import { type ComponentPropsWithoutRef, type ElementType } from 'react';
 import * as styles from './heading.styles.css';
 
-const HEADING_CLASSNAME = 'favolink-heading';
-
 type AsHeading = {
   as?: ElementType<any, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
 };
@@ -25,7 +23,7 @@ export const Heading = forwardRef<HeadingProps, 'h2'>(
         {...restProps}
         ref={ref}
         className={classNames(
-          HEADING_CLASSNAME,
+          'favolink-heading',
           styles.headingWeight[realWeight],
           className,
         )}
