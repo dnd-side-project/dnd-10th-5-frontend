@@ -196,6 +196,9 @@ importers:
       '@vanilla-extract/css':
         specifier: ^1.14.1
         version: 1.14.1
+      '@vanilla-extract/dynamic':
+        specifier: ^2.1.0
+        version: 2.1.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -1756,6 +1759,12 @@ packages:
       media-query-parser: 2.0.2
       modern-ahocorasick: 1.0.1
       outdent: 0.8.0
+    dev: false
+
+  /@vanilla-extract/dynamic@2.1.0:
+    resolution: {integrity: sha512-8zl0IgBYRtgD1h+56Zu13wHTiMTJSVEa4F7RWX9vTB/5Xe2KtjoiqApy/szHPVFA56c+ex6A4GpCQjT1bKXbYw==}
+    dependencies:
+      '@vanilla-extract/private': 1.0.3
     dev: false
 
   /@vanilla-extract/integration@7.0.0(@types/node@20.10.6):
