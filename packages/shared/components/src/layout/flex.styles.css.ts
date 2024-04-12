@@ -1,79 +1,26 @@
-import { style } from '@vanilla-extract/css';
-import { createCSSPropertyStyleVariants } from './create-css-property-style-variants';
+import { createVar, style } from '@vanilla-extract/css';
+
+export const flexJustify = createVar();
+
+export const flexAlign = createVar();
+
+export const flexWrap = createVar();
+
+export const flexDirection = createVar();
+
+export const flexBasis = createVar();
+
+export const flexShrink = createVar();
+
+export const flexGrow = createVar();
 
 export const flexBase = style({
   display: 'flex',
+  justifyContent: flexJustify,
+  alignItems: flexAlign,
+  flexWrap,
+  flexDirection,
+  flexBasis,
+  flexShrink,
+  flexGrow,
 });
-
-export const flexJustify = createCSSPropertyStyleVariants('justifyContent', [
-  '-moz-initial',
-  'center',
-  'end',
-  'flex-end',
-  'flex-start',
-  'inherit',
-  'initial',
-  'left',
-  'normal',
-  'revert',
-  'revert-layer',
-  'right',
-  'space-around',
-  'space-between',
-  'space-evenly',
-  'start',
-  'stretch',
-  'unset',
-]);
-
-export type FlexJustify = keyof typeof flexJustify;
-
-export const flexAlign = createCSSPropertyStyleVariants('alignItems', [
-  '-moz-initial',
-  'baseline',
-  'center',
-  'end',
-  'flex-end',
-  'flex-start',
-  'inherit',
-  'initial',
-  'normal',
-  'revert',
-  'revert-layer',
-  'self-end',
-  'self-start',
-  'start',
-  'stretch',
-  'unset',
-]);
-
-export type FlexAlign = keyof typeof flexAlign;
-
-export const flexWrap = createCSSPropertyStyleVariants('flexWrap', [
-  '-moz-initial',
-  'inherit',
-  'initial',
-  'nowrap',
-  'revert',
-  'revert-layer',
-  'unset',
-  'wrap',
-  'wrap-reverse',
-]);
-
-export type FlexWrap = keyof typeof flexWrap;
-
-export const flexDirection = createCSSPropertyStyleVariants('flexDirection', [
-  '-moz-initial',
-  'column',
-  'column-reverse',
-  'inherit',
-  'initial',
-  'revert',
-  'revert-layer',
-  'row',
-  'row-reverse',
-  'unset',
-]);
-
-export type FlexDirection = keyof typeof flexDirection;
