@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { type CSSProperties } from 'react';
 import * as styles from './flex.styles.css';
@@ -35,7 +35,7 @@ export const Flex = forwardRef<FlexProps, 'div'>(function Flex(props, ref) {
     <favolink.div
       {...restProps}
       ref={ref}
-      className={classNames(styles.flexBase, className)}
+      className={cx(styles.flexBase, className)}
       style={{
         ...assignInlineVars({
           [styles.flexJustify]: justify,

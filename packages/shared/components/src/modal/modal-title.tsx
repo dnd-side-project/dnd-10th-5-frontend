@@ -1,5 +1,5 @@
 import { favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './modal-title.styles.css';
 import { Heading, type HeadingProps } from '../typography';
 
@@ -17,7 +17,7 @@ export const ModalTitle = forwardRef<ModalTitleProps, typeof Heading>(
           as="h4"
           {...restProps}
           ref={ref}
-          className={classNames(
+          className={cx(
             'favolink-modal__title',
             styles.modalTitleBase,
             className,

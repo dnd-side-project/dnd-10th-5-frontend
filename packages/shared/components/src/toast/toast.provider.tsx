@@ -1,4 +1,4 @@
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import { useSyncExternalStore } from 'react';
 import { Toast } from './toast';
 import * as styles from './toast.provider.styles.css';
@@ -13,9 +13,7 @@ export function ToastProvider() {
   );
 
   const toastList = (
-    <Box
-      className={classNames('favolink-toast__list', styles.toastContainerBase)}
-    >
+    <Box className={cx('favolink-toast__list', styles.toastContainerBase)}>
       {toastState.map((toast) => (
         <Toast key={toast.id} {...toast} />
       ))}

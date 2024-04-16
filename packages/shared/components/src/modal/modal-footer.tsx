@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './modal-footer.styles.css';
 
 export type ModalFooterProps = HTMLFavolinkProps<'footer'>;
@@ -12,7 +12,7 @@ export const ModalFooter = forwardRef<ModalFooterProps, 'footer'>(
       <favolink.footer
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           `favolink-modal__footer`,
           styles.modalFooterBase,
           className,

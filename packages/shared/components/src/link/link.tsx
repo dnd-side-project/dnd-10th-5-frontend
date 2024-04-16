@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './link-styles.css';
 
 export type LinkProps = HTMLFavolinkProps<'a'> & {
@@ -22,7 +22,7 @@ export const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
       ref={ref}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener' : undefined}
-      className={classNames(
+      className={cx(
         'favolink-link',
         styles.linkBase,
         styles.linkColor[color],

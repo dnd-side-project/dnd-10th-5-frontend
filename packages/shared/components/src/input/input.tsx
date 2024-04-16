@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './input.styles.css';
 
 export type InputProps = HTMLFavolinkProps<'input'> & {
@@ -14,7 +14,7 @@ export const Input = forwardRef<InputProps, 'input'>(
       <favolink.input
         {...restPorps}
         ref={ref}
-        className={classNames(
+        className={cx(
           'favolink-input',
           styles.inputBase,
           styles.inputVariant[variant],

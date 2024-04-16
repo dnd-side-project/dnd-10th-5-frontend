@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './tag-label.styles.css';
 import { useTagStylesContext } from './tag.context';
 
@@ -17,7 +17,7 @@ export const TagLabel = forwardRef<TagLabelProps, 'span'>(
       <favolink.span
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           'favolink-tag__label',
           styles.tagLabelBase,
           styles.tagLabelSize[size],

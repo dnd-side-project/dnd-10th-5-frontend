@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 
 export type ModalBodyProps = HTMLFavolinkProps<'main'>;
 
@@ -12,7 +12,7 @@ export const ModalBody = forwardRef<ModalBodyProps, 'main'>(
         as="main"
         {...restProps}
         ref={ref}
-        className={classNames('favolink-modal__body', className)}
+        className={cx('favolink-modal__body', className)}
       >
         {children}
       </favolink.main>

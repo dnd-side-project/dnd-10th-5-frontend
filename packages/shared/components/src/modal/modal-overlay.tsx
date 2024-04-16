@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './modal-overlay.styles.css';
 
 export type ModalOverlayProps = HTMLFavolinkProps<'div'> & {
@@ -14,7 +14,7 @@ export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
       <favolink.div
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           'favolink-modal__overlay',
           styles.modalOverlayBase,
           styles.modalOverlayVariant[variant],

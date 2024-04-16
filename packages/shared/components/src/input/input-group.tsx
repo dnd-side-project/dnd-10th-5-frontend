@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './input-group.styles.css';
 
 export type InputGroupProps = HTMLFavolinkProps<'div'>;
@@ -12,7 +12,7 @@ export const InputGroup = forwardRef<InputGroupProps, 'div'>(
       <favolink.div
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           'favolink-input__group',
           styles.inputGroupBase,
           className,

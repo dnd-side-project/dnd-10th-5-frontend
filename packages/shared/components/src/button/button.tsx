@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './button.styles.css';
 
 export type ButtonProps = HTMLFavolinkProps<'button'> & {
@@ -21,7 +21,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       <favolink.button
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           'favolink-button',
           styles.buttonBase,
           styles.buttonSize[size],
