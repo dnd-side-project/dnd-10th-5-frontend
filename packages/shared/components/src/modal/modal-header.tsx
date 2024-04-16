@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './modal-header.styles.css';
 
 export type ModalHeaderProps = HTMLFavolinkProps<'header'>;
@@ -12,7 +12,7 @@ export const ModalHeader = forwardRef<ModalHeaderProps, 'header'>(
       <favolink.header
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           'favolink-modal__header',
           styles.modalHeaderBase,
           className,

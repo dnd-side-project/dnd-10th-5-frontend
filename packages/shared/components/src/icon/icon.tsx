@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 
 export type IconProps = HTMLFavolinkProps<'svg'>;
 
@@ -8,7 +8,7 @@ export const Icon = forwardRef<IconProps, 'svg'>(function Icon(props, ref) {
 
   const sharedProps = {
     ref,
-    className: classNames('favolink-icon', className),
+    className: cx('favolink-icon', className),
   };
 
   if (element && typeof element !== 'string') {

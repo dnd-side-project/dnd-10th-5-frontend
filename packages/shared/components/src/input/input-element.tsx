@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './input-element.styles.css';
 
 type InputElementProps = HTMLFavolinkProps<'div'>;
@@ -14,7 +14,7 @@ export const InputLeftElement = forwardRef<InputLeftElementProps, 'div'>(
       <favolink.div
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           '$favolink-input__left-element',
           styles.inputElementDirection.left,
           className,
@@ -36,7 +36,7 @@ export const InputRightElement = forwardRef<InputRightElementProps, 'div'>(
       <favolink.div
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           'favolink-input__right-element',
           styles.inputElementDirection.right,
           className,

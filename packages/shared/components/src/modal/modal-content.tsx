@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './modal-content.styles.css';
 import { ModalOverlay } from './modal-overlay';
 import { useModalContext } from './modal.context';
@@ -21,7 +21,7 @@ export const ModalContent = forwardRef<ModalContentProps, 'div'>(
         <favolink.div
           {...restPorps}
           ref={ref}
-          className={classNames(
+          className={cx(
             'favolink-modal__content',
             styles.modalContentBase,
             className,

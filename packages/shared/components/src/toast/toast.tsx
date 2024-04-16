@@ -1,4 +1,4 @@
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import { useEffect } from 'react';
 import { type Toast, toastStore } from './toast.store';
 import * as styles from './toast.styles.css';
@@ -24,16 +24,16 @@ export function Toast(props: ToastProps) {
   }, [deleteToast, duration, id]);
 
   return (
-    <Box className={classNames('favolink-toast__item', styles.toastItemBase)}>
+    <Box className={cx('favolink-toast__item', styles.toastItemBase)}>
       <Heading
         as="h5"
         weight="semibold"
-        className={classNames(styles.toastItemTextBase)}
+        className={cx(styles.toastItemTextBase)}
       >
         {message}
       </Heading>
       {link && (
-        <Link color="gray" href={link}>
+        <Link cxolor="gray" href={link}>
           바로가기
         </Link>
       )}

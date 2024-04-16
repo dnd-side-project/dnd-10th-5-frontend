@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './modal-topbar.styles.css';
 import { useModalContext } from './modal.context';
 import { Text } from '../typography';
@@ -20,7 +20,7 @@ export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
       <favolink.div
         {...restProps}
         ref={ref}
-        className={classNames(
+        className={cx(
           `favolink-modal__topbar`,
           styles.modalTopbarBase,
           styles.modalTopbarLayout[layout],

@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, favolink, forwardRef } from '@favolink/system';
-import { classNames } from '@favolink/utils';
+import { cx } from '@favolink/utils';
 import * as styles from './text.styles.css';
 
 export type TextProps = HTMLFavolinkProps<'p'> & {
@@ -13,11 +13,7 @@ export const Text = forwardRef<TextProps, 'p'>(function Text(props, ref) {
     <favolink.p
       {...restProps}
       ref={ref}
-      className={classNames(
-        'favolink-text',
-        styles.textScale[scale],
-        className,
-      )}
+      className={cx('favolink-text', styles.textScale[scale], className)}
     >
       {children}
     </favolink.p>
