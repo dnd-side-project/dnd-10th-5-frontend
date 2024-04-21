@@ -46,6 +46,7 @@ module.exports = {
     ],
     '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/method-signature-style': 'error',
+    '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/prefer-reduce-type-parameter': 'off',
     '@typescript-eslint/sort-type-constituents': 'error',
