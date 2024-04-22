@@ -244,6 +244,15 @@ importers:
 
   packages/shared/system:
     dependencies:
+      '@favolink/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@vanilla-extract/css':
+        specifier: ^1.14.1
+        version: 1.14.1
+      '@vanilla-extract/dynamic':
+        specifier: ^2.1.0
+        version: 2.1.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
