@@ -254,22 +254,12 @@ importers:
 
   packages/shared/utils:
     dependencies:
-      '@vanilla-extract/css':
-        specifier: ^1.14.1
-        version: 1.14.1
-      '@vanilla-extract/dynamic':
-        specifier: ^2.1.0
-        version: 2.1.0
       axios:
         specifier: ^1.6.7
         version: 1.6.7
       react:
         specifier: ^18.2.0
         version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.79
-        version: 18.2.79
 
   packages/tsconfig: {}
 
@@ -1500,13 +1490,13 @@ packages:
   /@types/react-dom@18.2.18:
     resolution: {integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==}
     dependencies:
-      '@types/react': 18.2.63
+      '@types/react': 18.2.79
     dev: true
 
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.63
+      '@types/react': 18.2.79
     dev: true
 
   /@types/react@18.2.46:

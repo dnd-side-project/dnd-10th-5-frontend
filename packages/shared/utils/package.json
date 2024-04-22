@@ -7,12 +7,7 @@
     "lint": "eslint \"**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}\""
   },
   "dependencies": {
-    "@vanilla-extract/css": "^1.14.1",
-    "@vanilla-extract/dynamic": "^2.1.0",
     "axios": "^1.6.7",
     "react": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.79"
   }
 }
