@@ -10,15 +10,15 @@ import '@favolink/styles/theme.css';
 
 setAxiosUrl(import.meta.env.VITE_API_HOST as string);
 
-export default function App() {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-      },
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
     },
-  });
+  },
+});
 
+export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <FavolinkProvider>
