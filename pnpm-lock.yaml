@@ -235,6 +235,9 @@ importers:
 
   packages/shared/styles:
     dependencies:
+      '@favolink/system':
+        specifier: workspace:*
+        version: link:../system
       '@vanilla-extract/css':
         specifier: ^1.14.1
         version: 1.14.1
