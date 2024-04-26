@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    ".": "./src/index.ts",
+    "./props": "./src/props/index.ts",
+    "./vars": "./src/vars/index.ts",
     "./reset.css": "./src/reset.css.ts",
     "./text.css": "./src/text.css.ts",
     "./theme.css": "./src/theme.css.ts"
