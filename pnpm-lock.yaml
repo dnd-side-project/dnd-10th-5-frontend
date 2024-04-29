@@ -81,15 +81,9 @@ importers:
 
   apps/web:
     dependencies:
-      '@favolink/react':
+      '@favolink-ui/react':
         specifier: workspace:*
-        version: link:../../packages/shared/components
-      '@favolink/styles':
-        specifier: workspace:*
-        version: link:../../packages/shared/styles
-      '@favolink/utils':
-        specifier: workspace:*
-        version: link:../../packages/shared/utils
+        version: link:../../packages/ui/react
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.50.1)
@@ -179,20 +173,22 @@ importers:
         specifier: ^0.4.5
         version: 0.4.5(eslint@8.56.0)
 
-  packages/shared/components:
+  packages/tsconfig: {}
+
+  packages/ui/react:
     dependencies:
-      '@favolink/hooks':
+      '@favolink-ui/hooks':
         specifier: workspace:*
-        version: link:../hooks
-      '@favolink/styles':
+        version: link:src/hooks
+      '@favolink-ui/icons':
         specifier: workspace:*
-        version: link:../styles
-      '@favolink/system':
+        version: link:src/icons
+      '@favolink-ui/system':
         specifier: workspace:*
-        version: link:../system
-      '@favolink/utils':
+        version: link:src/system
+      '@favolink-ui/utils':
         specifier: workspace:*
-        version: link:../utils
+        version: link:src/utils
       '@vanilla-extract/css':
         specifier: ^1.14.1
         version: 1.14.1
@@ -208,12 +204,12 @@ importers:
     devDependencies:
       '@types/react':
         specifier: ^18.2.55
-        version: 18.2.55
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.19
         version: 18.2.19
 
-  packages/shared/hooks:
+  packages/ui/react/src/hooks:
     dependencies:
       react:
         specifier: ^18.2.0
@@ -221,9 +217,9 @@ importers:
     devDependencies:
       '@types/react':
         specifier: ^18.2.55
-        version: 18.2.55
+        version: 18.2.79
 
-  packages/shared/icons:
+  packages/ui/react/src/icons:
     dependencies:
       react:
         specifier: ^18.2.0
@@ -231,23 +227,11 @@ importers:
     devDependencies:
       '@types/react':
         specifier: ^18.2.55
-        version: 18.2.55
+        version: 18.2.79
 
-  packages/shared/styles:
+  packages/ui/react/src/system:
     dependencies:
-      '@favolink/system':
-        specifier: workspace:*
-        version: link:../system
-      '@vanilla-extract/css':
-        specifier: ^1.14.1
-        version: 1.14.1
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-
-  packages/shared/system:
-    dependencies:
-      '@favolink/utils':
+      '@favolink-ui/utils':
         specifier: workspace:*
         version: link:../utils
       '@vanilla-extract/css':
@@ -262,9 +246,9 @@ importers:
     devDependencies:
       '@types/react':
         specifier: ^18.2.63
-        version: 18.2.63
+        version: 18.2.79
 
-  packages/shared/utils:
+  packages/ui/react/src/utils:
     dependencies:
       axios:
         specifier: ^1.6.7
@@ -272,8 +256,6 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
-
-  packages/tsconfig: {}
 
 packages:
 
@@ -1513,22 +1495,6 @@ packages:
 
   /@types/react@18.2.46:
     resolution: {integrity: sha512-nNCvVBcZlvX4NU1nRRNV/mFl1nNRuTuslAJglQsq+8ldXe5Xv0Wd2f7WTE3jOxhLH2BFfiZGC6GCp+kHQbgG+w==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.3
-      csstype: 3.1.2
-    dev: true
-
-  /@types/react@18.2.55:
-    resolution: {integrity: sha512-Y2Tz5P4yz23brwm2d7jNon39qoAtMMmalOQv6+fEFt1mT+FcM3D841wDpoUvFXhaYenuROCy3FZYqdTjM7qVyA==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.3
-      csstype: 3.1.2
-    dev: true
-
-  /@types/react@18.2.63:
-    resolution: {integrity: sha512-ppaqODhs15PYL2nGUOaOu2RSCCB4Difu4UFrP4I3NHLloXC/ESQzQMi9nvjfT1+rudd0d2L3fQPJxRSey+rGlQ==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
