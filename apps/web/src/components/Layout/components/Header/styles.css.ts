@@ -1,5 +1,5 @@
-import { h1SemiBold } from '@favolink/styles/text.css';
-import { vars } from '@favolink/styles/theme.css';
+import { h1SemiBold } from '@favolink-ui/react/text.css';
+import { vars } from '@favolink-ui/react/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const header = style([
