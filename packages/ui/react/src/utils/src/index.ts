@@ -2,4 +2,5 @@
 export * from './cx';
 export * from './request';
 export * from './merge-fns';
+export * from './merge-props';
 export * from './merge-records';
