@@ -18,7 +18,7 @@ import {
 export type FavolinkComponent<Component extends ElementType> =
   ComponentWithPolymorphic<Component, object>;
 
-export function createComponent<Component extends ElementType>(
+export function createPolymorphicComponent<Component extends ElementType>(
   component: Component,
 ) {
   const favolinkComponent = forwardRef<object, Component>(
