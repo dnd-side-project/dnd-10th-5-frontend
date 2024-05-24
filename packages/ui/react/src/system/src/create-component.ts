@@ -1,32 +1,60 @@
+import { composeRefs, mergeProps } from '@favolink-ui/utils';
 import {
+  Children,
   type ComponentPropsWithoutRef,
   type ElementType,
+  type Ref,
+  cloneElement,
   createElement,
+  isValidElement,
 } from 'react';
 import { forwardRef } from './forward-ref';
-import { type ComponentWithAs, type DOMElements } from './types';
+import {
+  type ComponentWithPolymorphic,
+  type JsxElements,
+  type PolymorphicProps,
+} from './types';
 
-export type FavolinkComponent<Element extends DOMElements> = ComponentWithAs<
-  Element,
-  object
->;
+export type FavolinkComponent<Component extends ElementType> =
+  ComponentWithPolymorphic<Component, object>;
 
-export function createComponent<Element extends DOMElements>(element: Element) {
-  const favolinkComponent = forwardRef(function favolinkComponent(props, ref) {
-    const { as: asElement, ...restProps } = props;
+export function createComponent<Component extends ElementType>(
+  component: Component,
+) {
+  const favolinkComponent = forwardRef<object, Component>(
+    function favolinkComponent(props, ref) {
+      const { as: asElement, asChild, children, ...restProps } = props;
 
-    return createElement(asElement ?? element, {
-      ref,
-      ...restProps,
-    });
-  });
+      if (!asChild) {
+        return createElement(
+          asElement ?? component,
+          {
+            ref,
+            ...restProps,
+          },
+          children,
+        );
+      }
 
-  return favolinkComponent as FavolinkComponent<Element>;
+      const onlyChild = Children.only(children);
+
+      return isValidElement(onlyChild)
+        ? cloneElement(onlyChild, {
+            ...mergeProps(restProps, onlyChild.props),
+            ref: ref
+              ? composeRefs(ref, onlyChild.ref as Ref<any>)
+              : (onlyChild.ref as Ref<any>),
+          })
+        : null;
+    },
+  );
+
+  return favolinkComponent as FavolinkComponent<Component>;
 }
 
 export type HTMLFavolinkComponents = {
-  [Element in DOMElements]: FavolinkComponent<Element>;
+  [Element in JsxElements]: FavolinkComponent<Element>;
 };
 
-export type HTMLFavolinkProps<Element extends DOMElements> =
-  ComponentPropsWithoutRef<Element> & { as?: ElementType };
+export type HTMLFavolinkProps<Element extends JsxElements> =
+  ComponentPropsWithoutRef<Element> & PolymorphicProps;
