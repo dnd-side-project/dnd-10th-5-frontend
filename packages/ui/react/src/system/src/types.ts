@@ -1,34 +1,44 @@
-import { type ComponentPropsWithRef, type ElementType } from 'react';
+import {
+  type ComponentPropsWithRef,
+  type ElementType,
+  type ReactElement,
+} from 'react';
 
-export type DOMElements = keyof JSX.IntrinsicElements;
+export type JsxElements = keyof JSX.IntrinsicElements;
+
+export type PolymorphicProps = {
+  as?: ElementType;
+  asChild?: boolean;
+};
 
 export type RightJoinProps<
   OriginalProps extends object,
   OverrideProps extends object,
 > = Omit<OriginalProps, keyof OverrideProps> & OverrideProps;
 
-export type MergeWithAsComponentProps<
+export type MergePolymorpicProps<
   ComponentProps extends object,
   AsComponentProps extends object,
   Props extends object,
   AsComponent extends ElementType,
 > = {
   as?: AsComponent;
+  asChild?: boolean;
 } & (
   | RightJoinProps<AsComponentProps, Props>
   | RightJoinProps<ComponentProps, Props>
 );
 
-export type ComponentWithAs<
+export type ComponentWithPolymorphic<
   Component extends ElementType,
   Props extends object,
 > = {
   <AsComponent extends ElementType>(
-    props: MergeWithAsComponentProps<
+    props: MergePolymorpicProps<
       ComponentPropsWithRef<Component>,
       ComponentPropsWithRef<AsComponent>,
       Props,
       AsComponent
     >,
-  ): JSX.Element;
+  ): ReactElement;
 };

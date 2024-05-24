@@ -1,29 +1,34 @@
+import { type ElementType } from 'react';
 import {
   type FavolinkComponent,
   type HTMLFavolinkComponents,
-  createComponent,
-} from './create-component';
-import { type DOMElements } from './types';
+  createPolymorphicComponent,
+} from './create-polymorphic-component';
+import { type JsxElements } from './types';
 
-type FavolinkFactory = {
-  <Element extends DOMElements>(element: Element): FavolinkComponent<Element>;
+export type FavolinkFactory = {
+  <Component extends ElementType>(
+    component: Component,
+  ): FavolinkComponent<Component>;
 };
 
-function factory() {
-  const cache = new Map<DOMElements, FavolinkComponent<DOMElements>>();
+export type FavolinkFactoryFn = FavolinkFactory & HTMLFavolinkComponents;
 
-  return new Proxy(createComponent, {
-    apply: (_, __, options: [DOMElements]) => {
-      return createComponent(...options);
+function factory() {
+  const cache = new Map<JsxElements, FavolinkComponent<JsxElements>>();
+
+  return new Proxy(createPolymorphicComponent, {
+    apply: (_, __, options: [ElementType]) => {
+      return createPolymorphicComponent(...options);
     },
-    get: (_, element: DOMElements) => {
+    get: (_, element: JsxElements) => {
       if (!cache.get(element)) {
-        cache.set(element, createComponent(element));
+        cache.set(element, createPolymorphicComponent(element));
       }
 
       return cache.get(element);
     },
-  }) as FavolinkFactory & HTMLFavolinkComponents;
+  });
 }
 
-export const favolink = factory();
+export const favolink = factory() as FavolinkFactoryFn;
