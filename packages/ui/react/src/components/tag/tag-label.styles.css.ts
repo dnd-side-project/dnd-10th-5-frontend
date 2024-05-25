@@ -1,5 +1,5 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { vars } from '../../styles/theme.css';
+import { vars } from '../../styles/vars.css';
 
 export const tagLabelBase = style({
   display: 'flex',
@@ -15,5 +15,5 @@ export const tagLabelSize = styleVariants({
 export type TagLabelSize = keyof typeof tagLabelSize;
 
 export const tagLabelAsIcon = style({
-  color: vars.color.gray400,
+  color: vars.color.gray[400],
 });

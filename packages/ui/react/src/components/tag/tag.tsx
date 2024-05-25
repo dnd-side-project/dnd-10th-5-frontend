@@ -6,7 +6,6 @@ import {
 import { cx } from '@favolink-ui/utils';
 import { TagStylesContextProvider } from './tag.context';
 import * as styles from './tag.styles.css';
-import * as theme from './tag.theme.css';
 
 export type TagProps = HTMLFavolinkProps<'span'> & {
   colorScheme?: styles.TagColorScheme;
@@ -29,7 +28,6 @@ export const Tag = forwardRef<TagProps, 'span'>(function Tag(props, ref) {
         ref={ref}
         className={cx(
           'favolink-tag',
-          theme.tagColor,
           styles.tagBase,
           styles.tagSize[size],
           styles.tagColorScheme[colorScheme],
