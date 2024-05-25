@@ -5,7 +5,7 @@ import {
 } from '@vanilla-extract/css';
 import { type TagColor, tagVars } from './tag.theme.css';
 import { body3Medium, body4Medium } from '../../styles/text.css';
-import { vars } from '../../styles/theme.css';
+import { vars } from '../../styles/vars.css';
 
 export const tagBase = style({
   display: 'inline-flex',
@@ -33,7 +33,7 @@ export const tagColorScheme = styleVariants({
   white: {
     ...createColorScheme('black'),
     backgroundColor: 'white',
-    border: `1px solid ${vars.color.gray300}`,
+    border: `1px solid ${vars.color.gray[300]}`,
   },
 });
 

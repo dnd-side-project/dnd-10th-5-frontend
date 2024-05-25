@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { body3Medium } from '../../styles/text.css';
-import { vars } from '../../styles/theme.css';
+import { vars } from '../../styles/vars.css';
 
 export const linkBase = style([
   body3Medium,
@@ -18,7 +18,7 @@ export const linkBase = style([
 
 export const linkColor = styleVariants({
   white: { color: 'white' },
-  gray: { color: vars.color.gray400 },
+  gray: { color: vars.color.gray[400] },
   black: { color: 'black' },
 });
 

@@ -1,5 +1,5 @@
 import { createTheme, createThemeContract } from '@vanilla-extract/css';
-import { vars as globalVars } from '../../styles/theme.css';
+import { vars as globalVars } from '../../styles/vars.css';
 
 export const tagVars = createThemeContract({
   normal: {
@@ -28,13 +28,13 @@ export type TagColor = keyof typeof tagVars.normal;
 
 export const tagColor = createTheme(tagVars, {
   normal: {
-    black: globalVars.color.gray700,
+    black: globalVars.color.gray[700],
     blue: '#2c84ec',
     brightGreen: '#5db924',
-    coral: globalVars.color.coral,
+    coral: globalVars.color.archive.coral,
     mint: '#15c27a',
     pink: '#ff4cbc',
-    purple: globalVars.color.purple,
+    purple: globalVars.color.archive.purple,
     yellow: '#ff8a35',
   },
   light: {

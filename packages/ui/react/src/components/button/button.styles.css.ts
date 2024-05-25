@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { h5Bold, h6SemiBold } from '../../styles/text.css';
-import { vars } from '../../styles/theme.css';
+import { vars } from '../../styles/vars.css';
 
 export const buttonBase = style({
   borderRadius: 8,
@@ -17,23 +17,23 @@ export type ButtonSize = keyof typeof buttonSize;
 
 export const buttonColorScheme = styleVariants({
   gray: {
-    backgroundColor: vars.color.gray400,
-    border: `1px solid ${vars.color.gray400}`,
-    color: vars.color.gray200,
+    backgroundColor: vars.color.gray[400],
+    border: `1px solid ${vars.color.gray[400]}`,
+    color: vars.color.gray[200],
   },
   black: {
-    backgroundColor: vars.color.gray1000,
-    border: `1px solid ${vars.color.gray1000}`,
+    backgroundColor: vars.color.gray[1000],
+    border: `1px solid ${vars.color.gray[1000]}`,
     color: 'white',
   },
   white: {
     backgroundColor: 'white',
-    border: `1px solid ${vars.color.gray300}`,
-    color: vars.color.gray900,
+    border: `1px solid ${vars.color.gray[300]}`,
+    color: vars.color.gray[900],
   },
   red: {
-    backgroundColor: vars.color.system300,
-    border: `1px solid ${vars.color.system300}`,
+    backgroundColor: vars.color.system[300],
+    border: `1px solid ${vars.color.system[300]}`,
     color: 'white',
   },
 });
