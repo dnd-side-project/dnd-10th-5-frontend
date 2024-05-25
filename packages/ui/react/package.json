@@ -6,6 +6,7 @@
     ".": "./src/index.ts",
     "./reset.css": "./src/styles/reset.css.ts",
     "./text.css": "./src/styles/text.css.ts",
+    "./vars.css": "./src/styles/vars.css.ts",
     "./theme.css": "./src/styles/theme.css.ts"
   },
   "scripts": {
