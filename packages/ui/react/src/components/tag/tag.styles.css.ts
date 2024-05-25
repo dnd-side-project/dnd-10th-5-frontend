@@ -3,7 +3,6 @@ import {
   style,
   styleVariants,
 } from '@vanilla-extract/css';
-import { type TagColor, tagVars } from './tag.theme.css';
 import { body3Medium, body4Medium } from '../../styles/text.css';
 import { vars } from '../../styles/vars.css';
 
@@ -22,16 +21,16 @@ export const tagSize = styleVariants({
 export type TagSize = keyof typeof tagSize;
 
 export const tagColorScheme = styleVariants({
-  black: createColorScheme('black'),
-  blue: createColorScheme('blue'),
-  brightGreen: createColorScheme('brightGreen'),
-  coral: createColorScheme('coral'),
-  mint: createColorScheme('mint'),
-  pink: createColorScheme('pink'),
-  purple: createColorScheme('purple'),
-  yellow: createColorScheme('yellow'),
+  black: createTagColorScheme('black'),
+  blue: createTagColorScheme('blue'),
+  brightGreen: createTagColorScheme('brightGreen'),
+  coral: createTagColorScheme('coral'),
+  mint: createTagColorScheme('mint'),
+  pink: createTagColorScheme('pink'),
+  purple: createTagColorScheme('purple'),
+  yellow: createTagColorScheme('yellow'),
   white: {
-    ...createColorScheme('black'),
+    ...createTagColorScheme('black'),
     backgroundColor: 'white',
     border: `1px solid ${vars.color.gray[300]}`,
   },
@@ -39,10 +38,12 @@ export const tagColorScheme = styleVariants({
 
 export type TagColorScheme = keyof typeof tagColorScheme;
 
-function createColorScheme(color: TagColor): ComplexStyleRule {
+function createTagColorScheme(
+  color: keyof typeof vars.color.repo.bg,
+): ComplexStyleRule {
   return {
-    color: tagVars.normal[color],
-    backgroundColor: tagVars.light[color],
-    border: `1px solid ${tagVars.light[color]}`,
+    color: vars.color.repo.text[color],
+    backgroundColor: vars.color.repo.bg[color],
+    border: `1px solid ${vars.color.repo.bg[color]}`,
   };
 }
