@@ -1,12 +1,12 @@
-import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   type HTMLFavolinkProps,
-  extractProps,
   favolink,
   forwardRef,
 } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import * as styles from './card.styles.css';
+import { extractProps } from '../../extract-props';
 import {
   type FlexStyleProps,
   flexStyleProps,

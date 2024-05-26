@@ -1,11 +1,11 @@
 import {
   type HTMLFavolinkProps,
-  extractProps,
   favolink,
   forwardRef,
 } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './flex.styles.css';
+import { extractProps } from '../../extract-props';
 import {
   type FlexStyleProps,
   flexStyleProps,
