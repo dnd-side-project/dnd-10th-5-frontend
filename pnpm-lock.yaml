@@ -175,20 +175,46 @@ importers:
 
   packages/tsconfig: {}
 
+  packages/ui/hooks:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.55
+        version: 18.3.3
+
+  packages/ui/icons:
+    dependencies:
+      '@favolink-ui/system':
+        specifier: workspace:*
+        version: link:../system
+      '@favolink-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.55
+        version: 18.3.3
+
   packages/ui/react:
     dependencies:
       '@favolink-ui/hooks':
         specifier: workspace:*
-        version: link:src/hooks
+        version: link:../hooks
       '@favolink-ui/icons':
         specifier: workspace:*
-        version: link:src/icons
+        version: link:../icons
       '@favolink-ui/system':
         specifier: workspace:*
-        version: link:src/system
+        version: link:../system
       '@favolink-ui/utils':
         specifier: workspace:*
-        version: link:src/utils
+        version: link:../utils
       '@vanilla-extract/css':
         specifier: ^1.14.1
         version: 1.14.1
@@ -209,27 +235,7 @@ importers:
         specifier: ^18.2.19
         version: 18.2.19
 
-  packages/ui/react/src/hooks:
-    dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.55
-        version: 18.2.79
-
-  packages/ui/react/src/icons:
-    dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.55
-        version: 18.2.79
-
-  packages/ui/react/src/system:
+  packages/ui/system:
     dependencies:
       '@favolink-ui/utils':
         specifier: workspace:*
@@ -246,9 +252,9 @@ importers:
     devDependencies:
       '@types/react':
         specifier: ^18.2.63
-        version: 18.2.79
+        version: 18.3.3
 
-  packages/ui/react/src/utils:
+  packages/ui/utils:
     dependencies:
       axios:
         specifier: ^1.6.7
@@ -256,6 +262,10 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
+    devDependencies:
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
 
 packages:
 
@@ -1490,7 +1500,7 @@ packages:
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.79
+      '@types/react': 18.3.3
     dev: true
 
   /@types/react@18.2.46:
@@ -1503,6 +1513,13 @@ packages:
 
   /@types/react@18.2.79:
     resolution: {integrity: sha512-RwGAGXPl9kSXwdNTafkOEuFrTBD5SA2B3iEB96xi8+xu5ddUa/cpvyVCSNn+asgLCTHkb5ZxN8gbuibYJi4s1w==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      csstype: 3.1.2
+    dev: true
+
+  /@types/react@18.3.3:
+    resolution: {integrity: sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==}
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.1.2
