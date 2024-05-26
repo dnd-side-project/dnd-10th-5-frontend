@@ -7,6 +7,8 @@
     "lint": "eslint \"**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}\""
   },
   "dependencies": {
+    "@favolink-ui/system": "workspace:*",
+    "@favolink-ui/utils": "workspace:*",
     "react": "^18.2.0"
   },
   "devDependencies": {
