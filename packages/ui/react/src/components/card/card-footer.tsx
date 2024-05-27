@@ -1,10 +1,10 @@
-import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   type HTMLFavolinkProps,
   favolink,
   forwardRef,
 } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import * as styles from './card-footer.styles.css';
 import { type FlexStyleProps, flexStyleVars } from '../../styles';
 

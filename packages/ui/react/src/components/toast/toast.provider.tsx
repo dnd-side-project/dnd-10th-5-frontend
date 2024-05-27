@@ -1,5 +1,5 @@
-import { useSyncExternalStore } from 'react';
 import { cx } from '@favolink-ui/utils';
+import { useSyncExternalStore } from 'react';
 import { Toast } from './toast';
 import * as styles from './toast.provider.styles.css';
 import { toastStore } from './toast.store';
