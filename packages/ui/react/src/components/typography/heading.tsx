@@ -1,6 +1,6 @@
-import { type ComponentPropsWithoutRef, type ElementType } from 'react';
 import { favolink, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
+import { type ComponentPropsWithoutRef, type ElementType } from 'react';
 import * as styles from './heading.styles.css';
 
 type AsHeading = {

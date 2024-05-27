@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { cx } from '@favolink-ui/utils';
+import { useEffect } from 'react';
 import { type Toast, toastStore } from './toast.store';
 import * as styles from './toast.styles.css';
 import { Box } from '../layout/box';

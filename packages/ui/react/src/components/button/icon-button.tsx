@@ -1,10 +1,10 @@
-import { type ReactElement } from 'react';
 import {
   type HTMLFavolinkProps,
   favolink,
   forwardRef,
 } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
+import { type ReactElement } from 'react';
 import * as styles from './icon-button.styles.css';
 
 export type IconButtonProps = HTMLFavolinkProps<'button'> & {

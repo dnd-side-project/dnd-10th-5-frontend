@@ -2,7 +2,7 @@ import { mergeRecords } from '@favolink-ui/utils';
 import { type createVar } from '@vanilla-extract/css';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { type CSSProperties } from 'react';
-import { type FlexStyleProps } from '../../styles';
+import { type FlexStyleProps } from './styles';
 
 export function extractProps<
   Props extends {
