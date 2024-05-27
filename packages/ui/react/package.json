@@ -19,6 +19,7 @@
     "@favolink-ui/utils": "workspace:*",
     "@vanilla-extract/css": "^1.14.1",
     "@vanilla-extract/dynamic": "^2.1.0",
+    "@vanilla-extract/recipes": "^0.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
