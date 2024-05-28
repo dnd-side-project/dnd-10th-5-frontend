@@ -6,20 +6,11 @@ import {
 import { cx } from '@favolink-ui/utils';
 import * as styles from './button.styles.css';
 
-export type ButtonProps = HTMLFavolinkProps<'button'> & {
-  colorScheme?: styles.ButtonColorScheme;
-  size?: styles.ButtonSize;
-};
+export type ButtonProps = HTMLFavolinkProps<'button'> & styles.ButtonVariants;
 
 export const Button = forwardRef<ButtonProps, 'button'>(
   function Button(props, ref) {
-    const {
-      children,
-      className,
-      colorScheme = 'white',
-      size = 'medium',
-      ...restProps
-    } = props;
+    const { children, className, colorScheme, size, ...restProps } = props;
 
     return (
       <favolink.button
@@ -27,9 +18,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         ref={ref}
         className={cx(
           'favolink-button',
-          styles.buttonBase,
-          styles.buttonSize[size],
-          styles.buttonColorScheme[colorScheme],
+          styles.button({ size, colorScheme }),
           className,
         )}
       >
