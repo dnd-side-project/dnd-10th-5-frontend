@@ -6,16 +6,16 @@ import {
 import { cx } from '@favolink-ui/utils';
 import * as styles from './link-styles.css';
 
-export type LinkProps = HTMLFavolinkProps<'a'> & {
-  isExternal?: boolean;
-  color?: styles.LinkColor;
-};
+export type LinkProps = HTMLFavolinkProps<'a'> &
+  styles.LinkVariants & {
+    isExternal?: boolean;
+  };
 
 export const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
   const {
     children,
     className,
-    color = 'black',
+    color,
     isExternal = false,
     ...restProps
   } = props;
@@ -26,12 +26,7 @@ export const Link = forwardRef<LinkProps, 'a'>(function Link(props, ref) {
       ref={ref}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener' : undefined}
-      className={cx(
-        'favolink-link',
-        styles.linkBase,
-        styles.linkColor[color],
-        className,
-      )}
+      className={cx('favolink-link', styles.link({ color }), className)}
     >
       {children}
     </favolink.a>
