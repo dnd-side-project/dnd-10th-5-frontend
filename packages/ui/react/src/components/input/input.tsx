@@ -6,13 +6,11 @@ import {
 import { cx } from '@favolink-ui/utils';
 import * as styles from './input.styles.css';
 
-export type InputProps = HTMLFavolinkProps<'input'> & {
-  variant?: styles.InputVariant;
-};
+export type InputProps = HTMLFavolinkProps<'input'> & styles.InputVariants;
 
 export const Input = forwardRef<InputProps, 'input'>(
   function Input(props, ref) {
-    const { className, variant = 'outline', ...restPorps } = props;
+    const { className, variant, ...restPorps } = props;
 
     return (
       <favolink.input
@@ -20,8 +18,7 @@ export const Input = forwardRef<InputProps, 'input'>(
         ref={ref}
         className={cx(
           'favolink-input',
-          styles.inputBase,
-          styles.inputVariant[variant],
+          styles.input({ variant }),
           className ?? styles.inputWithElement,
           className,
         )}

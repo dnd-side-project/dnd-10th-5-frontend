@@ -1,4 +1,4 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import {
   body1Medium,
   body1Regular,
@@ -10,15 +10,23 @@ import {
   body4Regular,
 } from '../../styles/text.css';
 
-export const textScale = styleVariants({
-  '1medium': [body1Medium],
-  '1regular': [body1Regular],
-  '2medium': [body2Medium],
-  '2regular': [body2Regular],
-  '3medium': [body3Medium],
-  '3regular': [body3Regular],
-  '4medium': [body4Medium],
-  '4regular': [body4Regular],
+export const text = recipe({
+  variants: {
+    scale: {
+      '1medium': [body1Medium],
+      '1regular': [body1Regular],
+      '2medium': [body2Medium],
+      '2regular': [body2Regular],
+      '3medium': [body3Medium],
+      '3regular': [body3Regular],
+      '4medium': [body4Medium],
+      '4regular': [body4Regular],
+    },
+  },
+
+  defaultVariants: {
+    scale: '2regular',
+  },
 });
 
-export type TextScale = keyof typeof textScale;
+export type TextVariants = RecipeVariants<typeof text>;

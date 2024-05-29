@@ -20,7 +20,7 @@ export const InputLeftElement = forwardRef<InputLeftElementProps, 'div'>(
         ref={ref}
         className={cx(
           '$favolink-input__left-element',
-          styles.inputElementDirection.left,
+          styles.inputElement({ direction: 'left' }),
           className,
         )}
       >
@@ -42,7 +42,7 @@ export const InputRightElement = forwardRef<InputRightElementProps, 'div'>(
         ref={ref}
         className={cx(
           'favolink-input__right-element',
-          styles.inputElementDirection.right,
+          styles.inputElement({ direction: 'right' }),
           className,
         )}
       >

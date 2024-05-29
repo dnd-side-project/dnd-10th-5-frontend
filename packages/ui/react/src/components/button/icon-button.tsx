@@ -7,21 +7,14 @@ import { cx } from '@favolink-ui/utils';
 import { type ReactElement } from 'react';
 import * as styles from './icon-button.styles.css';
 
-export type IconButtonProps = HTMLFavolinkProps<'button'> & {
-  icon: ReactElement;
-  colorScheme?: styles.IconButtonColorScheme;
-  size?: styles.IconButtonSize;
-};
+export type IconButtonProps = HTMLFavolinkProps<'button'> &
+  styles.IconButtonVariants & {
+    icon: ReactElement;
+  };
 
 export const IconButton = forwardRef<IconButtonProps, 'button'>(
   function IconButton(props, ref) {
-    const {
-      className,
-      icon,
-      colorScheme = 'white',
-      size = 'small',
-      ...restProps
-    } = props;
+    const { className, icon, colorScheme, size, ...restProps } = props;
 
     return (
       <favolink.button
@@ -29,9 +22,7 @@ export const IconButton = forwardRef<IconButtonProps, 'button'>(
         ref={ref}
         className={cx(
           'favolink-button',
-          styles.iconButtonBase,
-          styles.iconButtonSize[size],
-          styles.iconButtoncolorScheme[colorScheme],
+          styles.iconButton({ colorScheme, size }),
           className,
         )}
       >

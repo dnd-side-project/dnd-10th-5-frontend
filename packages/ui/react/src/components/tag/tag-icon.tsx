@@ -11,7 +11,10 @@ export const TagIcon = forwardRef<TagIconProps, typeof Icon>(
 
     const { size } = useTagStylesContext();
 
-    const iconSize: Record<styles.TagSize, typeof restProps> = {
+    const iconSize: Record<
+      Exclude<Exclude<styles.TagVariants, undefined>['size'], undefined>,
+      typeof restProps
+    > = {
       small: { width: 14, height: 14 },
       medium: { width: 18, height: 18 },
     };

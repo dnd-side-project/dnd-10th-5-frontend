@@ -1,12 +1,24 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 
-export const modalTopbarBase = style({
-  display: 'flex',
+export const modalTopbar = recipe({
+  base: {
+    display: 'flex',
+  },
+
+  variants: {
+    layout: {
+      single: {
+        justifyContent: 'flex-end',
+      },
+      couple: {
+        justifyContent: 'space-between',
+      },
+    },
+  },
+
+  defaultVariants: {
+    layout: 'couple',
+  },
 });
 
-export const modalTopbarLayout = styleVariants({
-  single: { justifyContent: 'flex-end' },
-  couple: { justifyContent: 'space-between' },
-});
-
-export type ModalTopbarLayout = keyof typeof modalTopbarLayout;
+export type ModalTopbarVariants = RecipeVariants<typeof modalTopbar>;

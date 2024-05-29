@@ -1,25 +1,33 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { body3Medium } from '../../styles/text.css';
 import { vars } from '../../styles/vars.css';
 
-export const linkBase = style([
-  body3Medium,
-  {
-    cursor: 'pointer',
-    textDecoration: 'none',
+export const link = recipe({
+  base: [
+    body3Medium,
+    {
+      cursor: 'pointer',
+      textDecoration: 'none',
 
-    selectors: {
-      '&:hover': {
-        textDecoration: 'underline',
+      selectors: {
+        '&:hover': {
+          textDecoration: 'underline',
+        },
       },
     },
-  },
-]);
+  ],
 
-export const linkColor = styleVariants({
-  white: { color: 'white' },
-  gray: { color: vars.color.gray[400] },
-  black: { color: 'black' },
+  variants: {
+    color: {
+      white: { color: 'white' },
+      gray: { color: vars.color.gray[400] },
+      black: { color: 'black' },
+    },
+  },
+
+  defaultVariants: {
+    color: 'black',
+  },
 });
 
-export type LinkColor = keyof typeof linkColor;
+export type LinkVariants = RecipeVariants<typeof link>;

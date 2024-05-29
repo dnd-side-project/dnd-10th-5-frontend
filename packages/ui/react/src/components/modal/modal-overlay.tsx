@@ -6,13 +6,12 @@ import {
 import { cx } from '@favolink-ui/utils';
 import * as styles from './modal-overlay.styles.css';
 
-export type ModalOverlayProps = HTMLFavolinkProps<'div'> & {
-  variant?: styles.ModalOverlayVariant;
-};
+export type ModalOverlayProps = HTMLFavolinkProps<'div'> &
+  styles.ModalOverlayVariants;
 
 export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
   function ModalOverlay(props, ref) {
-    const { variant = 'original', ...restProps } = props;
+    const { variant, ...restProps } = props;
 
     return (
       <favolink.div
@@ -20,8 +19,7 @@ export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
         ref={ref}
         className={cx(
           'favolink-modal__overlay',
-          styles.modalOverlayBase,
-          styles.modalOverlayVariant[variant],
+          styles.modalOverlay({ variant }),
         )}
       />
     );
