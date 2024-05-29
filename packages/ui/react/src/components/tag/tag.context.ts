@@ -2,7 +2,7 @@ import { createContext } from '@favolink-ui/system';
 import type * as styles from './tag.styles.css';
 
 type TagStylesContextDefaultValue = {
-  size: styles.TagSize;
+  size: Exclude<Exclude<styles.TagVariants, undefined>['size'], undefined>;
 };
 
 export const [TagStylesContextProvider, useTagStylesContext] =

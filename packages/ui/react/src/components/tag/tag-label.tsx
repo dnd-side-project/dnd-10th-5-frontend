@@ -12,7 +12,7 @@ export type TagLabelProps = HTMLFavolinkProps<'span'> & {
 };
 
 export const TagLabel = forwardRef<TagLabelProps, 'span'>(
-  function TagText(props, ref) {
+  function TagLabel(props, ref) {
     const { children, className, isAsIcon, ...restProps } = props;
 
     const { size } = useTagStylesContext();
@@ -23,8 +23,7 @@ export const TagLabel = forwardRef<TagLabelProps, 'span'>(
         ref={ref}
         className={cx(
           'favolink-tag__label',
-          styles.tagLabelBase,
-          styles.tagLabelSize[size],
+          styles.tagLabel({ size }),
           isAsIcon && styles.tagLabelAsIcon,
           className,
         )}
