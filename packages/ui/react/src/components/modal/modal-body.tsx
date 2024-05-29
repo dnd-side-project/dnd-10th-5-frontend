@@ -13,7 +13,6 @@ export const ModalBody = forwardRef<ModalBodyProps, 'main'>(
 
     return (
       <favolink.main
-        as="main"
         {...restProps}
         ref={ref}
         className={cx('favolink-modal__body', className)}

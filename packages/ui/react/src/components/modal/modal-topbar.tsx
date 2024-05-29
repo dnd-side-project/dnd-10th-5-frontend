@@ -8,9 +8,8 @@ import * as styles from './modal-topbar.styles.css';
 import { useModalContext } from './modal.context';
 import { Text } from '../typography';
 
-export type ModalTopbarProps = HTMLFavolinkProps<'div'> & {
-  layout: styles.ModalTopbarLayout;
-};
+export type ModalTopbarProps = HTMLFavolinkProps<'div'> &
+  styles.ModalTopbarVariants;
 
 export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
   function ModalTopBar(props, ref) {
@@ -18,7 +17,7 @@ export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
 
     const { onClose } = useModalContext();
 
-    const isCouple = layout === 'couple';
+    const isCouple = layout !== 'single';
 
     return (
       <favolink.div
@@ -26,8 +25,7 @@ export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
         ref={ref}
         className={cx(
           `favolink-modal__topbar`,
-          styles.modalTopbarBase,
-          styles.modalTopbarLayout[layout],
+          styles.modalTopbar({ layout }),
           className,
         )}
       >

@@ -12,10 +12,10 @@ type ModalProps = ModalContextDefaultValue & {
 
 export function Modal(props: ModalProps) {
   const { children, ...restProps } = props;
-  const { isOpen, ...realRestProps } = restProps;
+  const { isOpen, ..._restProps } = restProps;
 
   return (
-    <ModalContextProvider value={realRestProps}>
+    <ModalContextProvider value={_restProps}>
       {isOpen && <Portal type="modal">{children}</Portal>}
     </ModalContextProvider>
   );
