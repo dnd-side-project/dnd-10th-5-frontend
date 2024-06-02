@@ -7,5 +7,7 @@ type TagStylesContextDefaultValue = {
 
 export const [TagStylesContextProvider, useTagStylesContext] =
   createContext<TagStylesContextDefaultValue>({
-    size: 'small',
+    name: 'TagStylesContext',
+    hookName: 'useTagStylesContext',
+    providerName: '<TagStylesProvider />',
   });
