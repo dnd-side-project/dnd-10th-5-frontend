@@ -9,7 +9,7 @@ type CreatContextOptions<CreateContextDefaultValue> = {
   name?: string;
   hookName?: string;
   providerName?: string;
-  errorEessage?: string;
+  errorMessage?: string;
   defaultValue?: CreateContextDefaultValue;
 };
 
@@ -30,7 +30,7 @@ export function createContext<CreateContextDefaultValue>(
     name,
     hookName = 'useContext',
     providerName = 'Provider',
-    errorEessage,
+    errorMessage,
     defaultValue,
   } = options;
 
@@ -45,7 +45,7 @@ export function createContext<CreateContextDefaultValue>(
 
     if (!context) {
       const error = new Error(
-        errorEessage ?? getErrorMessage(hookName, providerName),
+        errorMessage ?? getErrorMessage(hookName, providerName),
       );
 
       error.name = 'ContextError';
