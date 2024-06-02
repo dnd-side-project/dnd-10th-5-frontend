@@ -1,8 +1,5 @@
 import { type ReactNode } from 'react';
-import {
-  type ModalContextDefaultValue,
-  ModalContextProvider,
-} from './modal.context';
+import { type ModalContextDefaultValue, ModalProvider } from './modal.context';
 import { Portal } from '../portal';
 
 type ModalProps = ModalContextDefaultValue & {
@@ -15,8 +12,8 @@ export function Modal(props: ModalProps) {
   const { isOpen, ..._restProps } = restProps;
 
   return (
-    <ModalContextProvider value={_restProps}>
+    <ModalProvider value={_restProps}>
       {isOpen && <Portal type="modal">{children}</Portal>}
-    </ModalContextProvider>
+    </ModalProvider>
   );
 }

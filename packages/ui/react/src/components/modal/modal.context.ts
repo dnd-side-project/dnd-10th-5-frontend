@@ -5,8 +5,9 @@ export type ModalContextDefaultValue = {
   closeOnOverlayClick?: boolean;
 };
 
-export const [ModalContextProvider, useModalContext] =
+export const [ModalProvider, useModalContext] =
   createContext<ModalContextDefaultValue>({
-    onClose: () => {},
-    closeOnOverlayClick: false,
+    name: 'ModalContext',
+    hookName: 'useModalContext',
+    providerName: '<ModalProvider />',
   });
