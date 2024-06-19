@@ -4,4 +4,5 @@ export * from './create-polymorphic-component';
 export * from './create-raw-style-props';
 export * from './factory';
 export * from './forward-ref';
+export * from './slottable';
 export * from './types';
