@@ -57,7 +57,7 @@ export const buttonVariants = recipe({
       normal: [body3Regular],
       strength: [h6SemiBold],
     },
-    radius: {
+    rounded: {
       full: {
         borderRadius: 9999,
       },
@@ -65,8 +65,8 @@ export const buttonVariants = recipe({
         borderRadius: 8,
       },
     },
-    fullfill: {
-      true: {
+    width: {
+      full: {
         width: '100%',
       },
     },
@@ -75,8 +75,8 @@ export const buttonVariants = recipe({
     justify: 'center',
     variant: 'solid',
     text: 'normal',
-    radius: 'normal',
-    fullfill: false,
+    rounded: 'normal',
+    width: undefined,
   },
 });
 

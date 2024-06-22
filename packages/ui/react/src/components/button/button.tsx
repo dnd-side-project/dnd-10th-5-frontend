@@ -24,10 +24,10 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       className,
       rightElement,
       leftElement,
-      radius,
-      variant,
-      fullfill,
       justify,
+      variant,
+      rounded,
+      width,
       text,
       colorScheme = 'white',
       ...restProps
@@ -43,9 +43,9 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         className={cx(
           'favolink-button',
           styles.buttonVariants({
-            radius,
+            rounded,
             variant,
-            fullfill,
+            width,
             justify,
             text,
           }),
