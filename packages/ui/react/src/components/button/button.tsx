@@ -8,14 +8,11 @@ import { cx } from '@favolink-ui/utils';
 import { type ReactElement } from 'react';
 import * as styles from './button.styles.css';
 
-type ExtendedButtonProps = {
-  rightElement?: ReactElement;
-  leftElement?: ReactElement;
-};
-
-export type ButtonProps = ExtendedButtonProps &
-  HTMLFavolinkProps<'button'> &
-  styles.ButtonVariants & { colorScheme?: styles.ButtonColorScheme };
+export type ButtonProps = HTMLFavolinkProps<'button'> &
+  styles.ButtonVariants & {
+    rightElement?: ReactElement;
+    leftElement?: ReactElement;
+  };
 
 export const Button = forwardRef<ButtonProps, 'button'>(
   function Button(props, ref) {
@@ -24,12 +21,12 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       className,
       rightElement,
       leftElement,
+      colorScheme,
       justify,
       variant,
+      text,
       rounded,
       width,
-      text,
-      colorScheme = 'white',
       ...restProps
     } = props;
 
@@ -43,13 +40,13 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         className={cx(
           'favolink-button',
           styles.buttonVariants({
-            rounded,
-            variant,
-            width,
+            colorScheme,
             justify,
+            variant,
             text,
+            rounded,
+            width,
           }),
-          styles.buttonColorScheme[colorScheme],
           hasElement && styles.buttonHasElement,
           className,
         )}

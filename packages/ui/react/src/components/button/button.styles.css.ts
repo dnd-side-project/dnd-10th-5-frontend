@@ -1,46 +1,53 @@
-import {
-  type ComplexStyleRule,
-  style,
-  styleVariants,
-} from '@vanilla-extract/css';
+import { type ComplexStyleRule, createVar, style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { type CSSProperties } from 'react';
 import { body3Regular, h6SemiBold } from '../../styles/text.css';
 import { vars } from '../../styles/vars.css';
 
-function makeButtonArchiveColorScheme(
+function makeButtonColorSchemeVar(
   color: CSSProperties['color'],
 ): ComplexStyleRule {
   return {
-    selectors: {
-      [`${buttonVariant.solid}&`]: {
-        backgroundColor: color,
-        border: `1px solid ${color}`,
-        color: color === 'white' ? vars.color.gray[1100] : 'white',
-      },
-      [`${buttonVariant.outline}&`]: {
-        color: vars.color.gray[1100],
-        backgroundColor: 'inherit',
-        border: `1px solid ${color}`,
-      },
+    vars: {
+      [colorScheme]: color as string,
     },
   };
 }
 
+const colorScheme = createVar();
+
+const base = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  cursor: 'pointer',
+  textDecoration: 'none',
+  boxSizing: 'border-box',
+  appearance: 'none',
+  verticalAlign: 'middle',
+  whiteSpace: 'nowrap',
+  padding: '8px 10px',
+  minWidth: 72,
+});
+
 export const buttonVariants = recipe({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    cursor: 'pointer',
-    textDecoration: 'none',
-    boxSizing: 'border-box',
-    appearance: 'none',
-    verticalAlign: 'middle',
-    whiteSpace: 'nowrap',
-    padding: '8px 10px',
-    minWidth: 72,
-  },
+  base,
   variants: {
+    colorScheme: {
+      archiveBlack: makeButtonColorSchemeVar(vars.color.archive.black),
+      archiveBlue: makeButtonColorSchemeVar(vars.color.archive.blue),
+      archiveBrightGreen: makeButtonColorSchemeVar(
+        vars.color.archive.brightGreen,
+      ),
+      archiveCoral: makeButtonColorSchemeVar(vars.color.archive.coral),
+      archiveMint: makeButtonColorSchemeVar(vars.color.archive.mint),
+      archivePink: makeButtonColorSchemeVar(vars.color.archive.mint),
+      archivePurple: makeButtonColorSchemeVar(vars.color.archive.purple),
+      archiveYellow: makeButtonColorSchemeVar(vars.color.archive.yellow),
+      black: makeButtonColorSchemeVar(vars.color.gray[1000]),
+      gray: makeButtonColorSchemeVar(vars.color.gray[400]),
+      white: makeButtonColorSchemeVar('white'),
+      red: makeButtonColorSchemeVar(vars.color.system[300]),
+    },
     justify: {
       center: {
         justifyContent: 'center',
@@ -50,8 +57,16 @@ export const buttonVariants = recipe({
       },
     },
     variant: {
-      solid: {},
-      outline: {},
+      solid: {
+        backgroundColor: colorScheme,
+        border: `1px solid ${colorScheme}`,
+        color: 'white',
+      },
+      outline: {
+        color: vars.color.gray[1100],
+        backgroundColor: 'inherit',
+        border: `1px solid ${colorScheme}`,
+      },
     },
     text: {
       normal: [body3Regular],
@@ -72,36 +87,27 @@ export const buttonVariants = recipe({
     },
   },
   defaultVariants: {
+    colorScheme: 'white',
     justify: 'center',
     variant: 'solid',
     text: 'normal',
     rounded: 'normal',
     width: undefined,
   },
+  compoundVariants: [
+    {
+      variants: {
+        colorScheme: 'white',
+        variant: 'solid',
+      },
+      style: {
+        color: vars.color.gray[1100],
+      },
+    },
+  ],
 });
 
 export type ButtonVariants = RecipeVariants<typeof buttonVariants>;
-
-const { variant: buttonVariant } = buttonVariants.classNames.variants;
-
-export const buttonColorScheme = styleVariants({
-  archiveBlack: makeButtonArchiveColorScheme(vars.color.archive.black),
-  archiveBlue: makeButtonArchiveColorScheme(vars.color.archive.blue),
-  archiveBrightGreen: makeButtonArchiveColorScheme(
-    vars.color.archive.brightGreen,
-  ),
-  archiveCoral: makeButtonArchiveColorScheme(vars.color.archive.coral),
-  archiveMint: makeButtonArchiveColorScheme(vars.color.archive.mint),
-  archivePink: makeButtonArchiveColorScheme(vars.color.archive.mint),
-  archivePurple: makeButtonArchiveColorScheme(vars.color.archive.purple),
-  archiveYellow: makeButtonArchiveColorScheme(vars.color.archive.yellow),
-  black: makeButtonArchiveColorScheme(vars.color.gray[1000]),
-  gray: makeButtonArchiveColorScheme(vars.color.gray[400]),
-  white: makeButtonArchiveColorScheme('white'),
-  red: makeButtonArchiveColorScheme(vars.color.system[300]),
-});
-
-export type ButtonColorScheme = keyof typeof buttonColorScheme;
 
 export const buttonHasElement = style({
   gap: 10,
