@@ -40,7 +40,7 @@ export const buttonVariants = recipe({
       ),
       archiveCoral: makeButtonColorSchemeVar(vars.color.archive.coral),
       archiveMint: makeButtonColorSchemeVar(vars.color.archive.mint),
-      archivePink: makeButtonColorSchemeVar(vars.color.archive.mint),
+      archivePink: makeButtonColorSchemeVar(vars.color.archive.pink),
       archivePurple: makeButtonColorSchemeVar(vars.color.archive.purple),
       archiveYellow: makeButtonColorSchemeVar(vars.color.archive.yellow),
       black: makeButtonColorSchemeVar(vars.color.gray[1000]),
