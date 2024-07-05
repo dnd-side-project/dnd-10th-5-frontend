@@ -1,19 +1,32 @@
-import { type ReactNode } from 'react';
-import { type ModalContextDefaultValue, ModalProvider } from './modal.context';
-import { Portal } from '../portal';
+import { type ReactNode, useState } from 'react';
+import { type ModalContextValue, ModalProvider } from './modal.context';
 
-type ModalProps = ModalContextDefaultValue & {
+export type ModalProps = Partial<ModalContextValue> & {
   children: ReactNode;
-  isOpen: boolean;
 };
 
 export function Modal(props: ModalProps) {
-  const { children, ...restProps } = props;
-  const { isOpen, ..._restProps } = restProps;
+  const {
+    children,
+    closeOnOverlayClick = false,
+    onOpen: onExternalOpen,
+    onOpenChange: onExternalOpenChanage,
+  } = props;
+
+  const [onInternalOpen, onInternalOpenChange] = useState(false);
+
+  const onOpen = onExternalOpen ?? onInternalOpen;
+  const onOpenChange = onExternalOpenChanage ?? onInternalOpenChange;
 
   return (
-    <ModalProvider value={_restProps}>
-      {isOpen && <Portal type="modal">{children}</Portal>}
+    <ModalProvider
+      value={{
+        onOpen,
+        onOpenChange,
+        closeOnOverlayClick,
+      }}
+    >
+      {children}
     </ModalProvider>
   );
 }
