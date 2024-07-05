@@ -3,23 +3,33 @@ import {
   favolink,
   forwardRef,
 } from '@favolink-ui/system';
-import { cx } from '@favolink-ui/utils';
+import { cx, mergeFns } from '@favolink-ui/utils';
 import * as styles from './modal-overlay.styles.css';
+import { useModalContext } from './modal.context';
 
-export type ModalOverlayProps = HTMLFavolinkProps<'div'> &
-  styles.ModalOverlayVariants;
+export type ModalOverlayProps = HTMLFavolinkProps<'div'>;
 
 export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
   function ModalOverlay(props, ref) {
-    const { variant, ...restProps } = props;
+    const { className, onClick, ...restProps } = props;
+
+    const { onOpenChange, closeOnOverlayClick } = useModalContext();
 
     return (
       <favolink.div
         {...restProps}
         ref={ref}
+        onClick={
+          closeOnOverlayClick
+            ? mergeFns(() => {
+                onOpenChange(false);
+              }, onClick)
+            : onClick
+        }
         className={cx(
           'favolink-modal__overlay',
-          styles.modalOverlay({ variant }),
+          styles.modalOverlayBase,
+          className,
         )}
       />
     );

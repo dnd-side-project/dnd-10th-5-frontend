@@ -1,12 +1,13 @@
 import { createContext } from '@favolink-ui/system';
 
-export type ModalContextDefaultValue = {
-  onClose: () => void;
-  closeOnOverlayClick?: boolean;
+export type ModalContextValue = {
+  closeOnOverlayClick: boolean;
+  onOpen: boolean;
+  onOpenChange: (open: boolean) => void;
 };
 
 export const [ModalProvider, useModalContext] =
-  createContext<ModalContextDefaultValue>({
+  createContext<ModalContextValue>({
     name: 'ModalContext',
     hookName: 'useModalContext',
     providerName: '<ModalProvider />',

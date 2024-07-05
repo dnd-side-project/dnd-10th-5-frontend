@@ -1,9 +1,12 @@
+import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 
+const base = style({
+  display: 'flex',
+});
+
 export const modalTopbar = recipe({
-  base: {
-    display: 'flex',
-  },
+  base,
 
   variants: {
     layout: {
@@ -17,8 +20,14 @@ export const modalTopbar = recipe({
   },
 
   defaultVariants: {
-    layout: 'couple',
+    layout: 'single',
   },
 });
 
 export type ModalTopbarVariants = RecipeVariants<typeof modalTopbar>;
+
+export const modalTopbarIcon = style({
+  width: 20,
+  height: 20,
+  cursor: 'pointer',
+});
