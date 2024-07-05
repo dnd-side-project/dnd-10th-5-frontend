@@ -1,21 +1,31 @@
+import { ChevronLeftIcon, CloseIcon } from '@favolink-ui/icons';
 import {
   type HTMLFavolinkProps,
   favolink,
   forwardRef,
 } from '@favolink-ui/system';
-import { cx } from '@favolink-ui/utils';
+import { cx, mergeFns } from '@favolink-ui/utils';
+import { type MouseEvent } from 'react';
 import * as styles from './modal-topbar.styles.css';
 import { useModalContext } from './modal.context';
-import { Text } from '../typography';
 
 export type ModalTopbarProps = HTMLFavolinkProps<'div'> &
-  styles.ModalTopbarVariants;
+  styles.ModalTopbarVariants & {
+    onLeftIconClick?: (event: MouseEvent) => void;
+    onRightIconClick?: (event: MouseEvent) => void;
+  };
 
 export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
   function ModalTopBar(props, ref) {
-    const { children, layout, className, ...restProps } = props;
+    const {
+      layout,
+      className,
+      onLeftIconClick,
+      onRightIconClick,
+      ...restProps
+    } = props;
 
-    const { onClose } = useModalContext();
+    const { onOpenChange } = useModalContext();
 
     const isCouple = layout !== 'single';
 
@@ -29,8 +39,18 @@ export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
           className,
         )}
       >
-        {isCouple && <Text>{children}</Text>}
-        <Text onClick={onClose}>닫기</Text>
+        {isCouple && (
+          <ChevronLeftIcon
+            className={styles.modalTopbarIcon}
+            onClick={onLeftIconClick}
+          />
+        )}
+        <CloseIcon
+          className={styles.modalTopbarIcon}
+          onClick={mergeFns(() => {
+            onOpenChange(false);
+          }, onRightIconClick)}
+        />
       </favolink.div>
     );
   },
