@@ -4,6 +4,7 @@ export * from './card';
 export * from './input';
 export * from './layout';
 export * from './link';
+export * from './menu';
 export * from './modal';
 export * from './portal';
 export * from './provider';
