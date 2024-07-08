@@ -4,12 +4,12 @@ export function useScroll() {
   const [scrollX, setScrollX] = useState(0);
   const [scrollY, setScrollY] = useState(0);
 
-  function handleSetScrollXY() {
-    setScrollX(window.scrollX);
-    setScrollY(window.scrollY);
-  }
-
   useEffect(() => {
+    function handleSetScrollXY() {
+      setScrollX(window.scrollX);
+      setScrollY(window.scrollY);
+    }
+
     window.addEventListener('scroll', handleSetScrollXY);
 
     return () => {

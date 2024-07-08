@@ -1,10 +1,12 @@
 import {
   type CSSProperties,
   type MutableRefObject,
+  type Ref,
   useEffect,
   useState,
 } from 'react';
 import { useScroll } from './use-scroll';
+import { useWindowDimension } from './use-window-dimension';
 
 type Layout = 'bottom' | 'left' | 'right' | 'top';
 
@@ -12,92 +14,167 @@ type Side = 'end' | 'start';
 
 export type Placement = Layout | `${Layout}-${Side}`;
 
+function getCenterLocation(target: number, container: number, control: number) {
+  const halfDifference = Math.abs(target - container) / 2;
+
+  return target > container
+    ? control + halfDifference
+    : control - halfDifference;
+}
+
 export function usePosition(
-  ref: MutableRefObject<any> | null,
+  targetRef: Ref<HTMLElement>,
+  containerRef: Ref<HTMLElement>,
   placement: Placement = 'bottom',
+  sideOffset: number = 0,
 ) {
   const [rect, setRect] = useState<CSSProperties>({});
   const { scrollX, scrollY } = useScroll();
+  const { innerWidth, innerHeight } = useWindowDimension();
 
   const heightScrollbarWidth =
-    window.innerWidth - document.documentElement.clientWidth;
+    innerWidth - document.documentElement.clientWidth;
   const widthScrollbarHeight =
-    window.innerHeight - document.documentElement.clientHeight;
-  const screenWidth = window.innerWidth - heightScrollbarWidth;
-  const screenHeight = window.innerHeight - widthScrollbarHeight;
+    innerHeight - document.documentElement.clientHeight;
+  const screenWidth = innerWidth - heightScrollbarWidth;
+  const screenHeight = innerHeight - widthScrollbarHeight;
 
   useEffect(() => {
-    if (!ref) {
+    if (!targetRef || !containerRef) {
       return;
     }
 
-    const { top, right, bottom, left } = (
-      ref as MutableRefObject<HTMLElement>
+    if ([targetRef, containerRef].every((ref) => typeof ref === 'function')) {
+      return;
+    }
+
+    const {
+      top: targetTop,
+      right: targetRight,
+      bottom: targetBottom,
+      left: targetLeft,
+      width: targetWidth,
+      height: targetHeight,
+    } = (
+      targetRef as MutableRefObject<HTMLElement>
     ).current.getBoundingClientRect();
+    const { width: containerWidth, height: containerHeight } = (
+      containerRef as MutableRefObject<HTMLElement>
+    ).current.getBoundingClientRect();
+
+    const bottomTop = targetBottom + sideOffset;
+    const leftRight = screenWidth - targetLeft + sideOffset;
+    const rightLeft = targetRight + sideOffset;
+    const topBottom = screenHeight - targetTop + sideOffset;
+    const verticalCenter = getCenterLocation(
+      targetHeight,
+      containerHeight,
+      targetTop,
+    );
+    const horizontalCenter = getCenterLocation(
+      targetWidth,
+      containerWidth,
+      targetLeft,
+    );
 
     switch (placement) {
       case 'bottom':
+        setRect({
+          top: bottomTop,
+          left: horizontalCenter,
+        });
+
+        break;
       case 'bottom-start':
         setRect({
-          top: bottom,
-          left,
+          top: bottomTop,
+          left: targetLeft,
         });
 
         break;
       case 'bottom-end':
         setRect({
-          top: bottom,
-          right: screenWidth - right,
+          top: bottomTop,
+          right: screenWidth - targetRight,
         });
 
         break;
       case 'left':
+        setRect({
+          top: verticalCenter,
+          right: leftRight,
+        });
+
+        break;
       case 'left-start':
         setRect({
-          top,
-          right: screenWidth - left,
+          top: targetTop,
+          right: leftRight,
         });
 
         break;
       case 'left-end':
         setRect({
-          bottom: screenHeight - bottom,
-          right: screenWidth - left,
+          bottom: screenHeight - targetBottom,
+          right: leftRight,
         });
 
         break;
       case 'right':
+        setRect({
+          top: verticalCenter,
+          left: rightLeft,
+        });
+
+        break;
       case 'right-start':
         setRect({
-          top,
-          left: right,
+          top: targetTop,
+          left: rightLeft,
         });
 
         break;
       case 'right-end':
         setRect({
-          bottom: screenHeight - bottom,
-          left: right,
+          bottom: screenHeight - targetBottom,
+          left: rightLeft,
         });
 
         break;
       case 'top':
+        setRect({
+          bottom: topBottom,
+          left: horizontalCenter,
+        });
+
+        break;
       case 'top-start':
         setRect({
-          bottom: screenHeight - top,
-          left: left,
+          bottom: topBottom,
+          left: targetLeft,
         });
 
         break;
       case 'top-end':
         setRect({
-          bottom: screenHeight - top,
-          right: screenWidth - right,
+          bottom: topBottom,
+          right: screenWidth - targetRight,
         });
 
         break;
     }
-  }, [ref, placement, screenWidth, screenHeight, scrollX, scrollY]);
+  }, [
+    containerRef,
+    targetRef,
+    placement,
+    screenWidth,
+    screenHeight,
+    scrollX,
+    scrollY,
+    innerWidth,
+    innerHeight,
+    sideOffset,
+  ]);
 
-  return rect as Record<Layout, number>;
+  return rect;
 }
