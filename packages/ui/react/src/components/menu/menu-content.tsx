@@ -24,29 +24,31 @@ export const MenuContent = forwardRef<MenuContentProps, 'div'>(
       ...restProps
     } = props;
 
-    const { open, triggerRef, containerRef } = useMenuContext();
+    const context = useMenuContext();
 
     const coordinate = usePosition(
-      triggerRef,
-      containerRef,
+      context.open,
+      context.triggerRef,
+      context.containerRef,
       placement,
       sideOffset,
     );
 
     return (
-      <favolink.div
-        {...restProps}
-        ref={composeRefs(ref, containerRef)}
-        className={cx(
-          `favolink-menu__list`,
-          styles.baseList,
-          styles.listContainerisVisibility[open ? 'true' : 'false'],
-          className,
-        )}
-        style={{ ...coordinate, ...style }}
-      >
-        {children}
-      </favolink.div>
+      context.open && (
+        <favolink.div
+          {...restProps}
+          ref={composeRefs(ref, context.containerRef)}
+          className={cx(
+            `favolink-menu__content`,
+            styles.contentBase,
+            className,
+          )}
+          style={{ ...coordinate, ...style }}
+        >
+          {children}
+        </favolink.div>
+      )
     );
   },
 );
