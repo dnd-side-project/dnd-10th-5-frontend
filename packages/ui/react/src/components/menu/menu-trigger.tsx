@@ -3,23 +3,24 @@ import {
   favolink,
   forwardRef,
 } from '@favolink-ui/system';
-import { composeRefs, mergeFns } from '@favolink-ui/utils';
+import { composeRefs, cx, mergeFns } from '@favolink-ui/utils';
 import { useMenuContext } from './menu.context';
 
 export type MenuTriggerProps = HTMLFavolinkProps<'button'>;
 
 export const MenuTrigger = forwardRef<MenuTriggerProps, 'button'>(
   function MenuTrigger(props, ref) {
-    const { children, onClick, ...restProps } = props;
+    const { children, className, onClick, ...restProps } = props;
 
-    const { triggerRef, onOpenChange, open } = useMenuContext();
+    const context = useMenuContext();
 
     return (
       <favolink.button
         {...restProps}
-        ref={composeRefs(ref, triggerRef)}
+        ref={composeRefs(ref, context.triggerRef)}
+        className={cx('favolink-menu__trigger', className)}
         onClick={mergeFns(() => {
-          onOpenChange(!open);
+          context.onOpenChange(!context.open);
         }, onClick)}
       >
         {children}
