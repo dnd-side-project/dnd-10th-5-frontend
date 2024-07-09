@@ -7,7 +7,11 @@ export function MenuPortal(props: PortalProps) {
   const { children, className, ...restProps } = props;
 
   return (
-    <Portal {...restProps} className={cx('favolink-menu__portal', className)}>
+    <Portal
+      {...restProps}
+      className={cx('favolink-menu__portal', className)}
+      asChild
+    >
       {children}
     </Portal>
   );

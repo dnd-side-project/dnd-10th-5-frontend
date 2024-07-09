@@ -1,6 +1,6 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
-export const baseList = style({
+export const contentBase = style({
   display: 'flex',
   flexDirection: 'column',
   position: 'fixed',
@@ -9,9 +9,4 @@ export const baseList = style({
   borderRadius: 12,
   padding: 16,
   background: 'white',
-});
-
-export const listContainerisVisibility = styleVariants({
-  true: { visibility: 'visible', pointerEvents: 'auto' },
-  false: { visibility: 'hidden', pointerEvents: 'none' },
 });
