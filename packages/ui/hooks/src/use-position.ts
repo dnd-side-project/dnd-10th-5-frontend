@@ -23,6 +23,7 @@ function getCenterLocation(target: number, container: number, control: number) {
 }
 
 export function usePosition(
+  isOpen: boolean,
   targetRef: Ref<HTMLElement>,
   containerRef: Ref<HTMLElement>,
   placement: Placement = 'bottom',
@@ -40,7 +41,7 @@ export function usePosition(
   const screenHeight = innerHeight - widthScrollbarHeight;
 
   useEffect(() => {
-    if (!targetRef || !containerRef) {
+    if (!isOpen || !targetRef || !containerRef) {
       return;
     }
 
@@ -164,6 +165,7 @@ export function usePosition(
         break;
     }
   }, [
+    isOpen,
     containerRef,
     targetRef,
     placement,
