@@ -1,29 +1,35 @@
-import { type ElementType } from 'react';
 import {
-  type FavolinkComponent,
-  type HTMLFavolinkComponents,
-  createPolymorphicComponent,
-} from './create-polymorphic-component';
-import { type JsxElements } from './types';
+  type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
+  type ElementType,
+  type ForwardRefExoticComponent,
+} from 'react';
+import { withAsChild } from './with-as-child';
 
-export type FavolinkFactory = {
-  <Component extends ElementType>(
-    component: Component,
-  ): FavolinkComponent<Component>;
+export type JsxElements = keyof JSX.IntrinsicElements;
+
+export type FavolinkPropsWithRef<T extends ElementType> =
+  ComponentPropsWithRef<T> & {
+    asChild?: boolean;
+  };
+
+type FavolinkForwardRefComponent<T extends ElementType> =
+  ForwardRefExoticComponent<FavolinkPropsWithRef<T>>;
+
+export type FavolinkComponents = {
+  [Tag in JsxElements]: FavolinkForwardRefComponent<Tag>;
 };
 
-export type FavolinkFactoryFn = FavolinkFactory & HTMLFavolinkComponents;
+export type HTMLFavolinkProps<T extends JsxElements> =
+  ComponentPropsWithoutRef<T> & { asChild?: boolean };
 
 function factory() {
-  const cache = new Map<JsxElements, FavolinkComponent<JsxElements>>();
+  const cache = new Map<JsxElements, FavolinkComponents[JsxElements]>();
 
-  return new Proxy(createPolymorphicComponent, {
-    apply: (_, __, options: [ElementType]) => {
-      return createPolymorphicComponent(...options);
-    },
+  return new Proxy(withAsChild, {
     get: (_, element: JsxElements) => {
       if (!cache.get(element)) {
-        cache.set(element, createPolymorphicComponent(element));
+        cache.set(element, withAsChild(element));
       }
 
       return cache.get(element);
@@ -31,4 +37,4 @@ function factory() {
   });
 }
 
-export const favolink = factory() as FavolinkFactoryFn;
+export const favolink = factory() as unknown as FavolinkComponents;
