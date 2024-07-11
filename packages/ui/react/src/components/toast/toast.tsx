@@ -2,7 +2,6 @@ import { cx } from '@favolink-ui/utils';
 import { useEffect } from 'react';
 import { type Toast, toastStore } from './toast.store';
 import * as styles from './toast.styles.css';
-import { Box } from '../layout/box';
 import { Link } from '../link';
 import { Heading } from '../typography';
 
@@ -24,7 +23,7 @@ export function Toast(props: ToastProps) {
   }, [deleteToast, duration, id]);
 
   return (
-    <Box className={cx('favolink-toast__item', styles.toastItemBase)}>
+    <div className={cx('favolink-toast__item', styles.toastItemBase)}>
       <Heading
         as="h5"
         weight="semibold"
@@ -33,10 +32,10 @@ export function Toast(props: ToastProps) {
         {message}
       </Heading>
       {link && (
-        <Link cxolor="gray" href={link}>
+        <Link color="gray" href={link}>
           바로가기
         </Link>
       )}
-    </Box>
+    </div>
   );
 }

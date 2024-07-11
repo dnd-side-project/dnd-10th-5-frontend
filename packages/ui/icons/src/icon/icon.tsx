@@ -8,19 +8,14 @@ import { cx } from '@favolink-ui/utils';
 export type IconProps = HTMLFavolinkProps<'svg'>;
 
 export const Icon = forwardRef<IconProps, 'svg'>(function Icon(props, ref) {
-  const { as: element, children, className, ...restProps } = props;
-
-  const sharedProps = {
-    ref,
-    className: cx('favolink-icon', className),
-  };
-
-  if (element && typeof element !== 'string') {
-    return <favolink.svg as={element} {...sharedProps} {...restProps} />;
-  }
+  const { children, className, ...restProps } = props;
 
   return (
-    <favolink.svg {...sharedProps} {...restProps}>
+    <favolink.svg
+      ref={ref}
+      className={cx('favolink-icon', className)}
+      {...restProps}
+    >
       {children}
     </favolink.svg>
   );

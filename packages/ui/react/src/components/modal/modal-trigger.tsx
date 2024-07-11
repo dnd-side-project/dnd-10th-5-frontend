@@ -6,7 +6,7 @@ import {
 import { cx, mergeFns } from '@favolink-ui/utils';
 import { useModalContext } from './modal.context';
 
-export type ModalTriggerProps = HTMLFavolinkProps<'div'>;
+export type ModalTriggerProps = HTMLFavolinkProps<'button'>;
 
 export const ModalTrigger = forwardRef<ModalTriggerProps, 'button'>(
   function MenuTrigger(props, ref) {
