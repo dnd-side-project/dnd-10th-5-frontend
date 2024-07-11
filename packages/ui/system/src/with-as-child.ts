@@ -1,8 +1,7 @@
 import { composeRefs, mergeProps } from '@favolink-ui/utils';
 import {
   Children,
-  type ComponentPropsWithoutRef,
-  type ElementType,
+  type ElementRef,
   type ReactElement,
   type ReactNode,
   type Ref,
@@ -10,33 +9,28 @@ import {
   createElement,
   isValidElement,
 } from 'react';
+import {
+  type FavolinkComponents,
+  type FavolinkPropsWithRef,
+  type JsxElements,
+} from './factory';
 import { forwardRef } from './forward-ref';
 import { Slottable, type SlottableProps } from './slottable';
-import {
-  type ComponentWithPolymorphic,
-  type JsxElements,
-  type PolymorphicProps,
-} from './types';
 
-export function isSlottable(
-  child: ReactNode,
-): child is ReactElement<SlottableProps> {
+function isSlottable(child: ReactNode): child is ReactElement<SlottableProps> {
   return isValidElement(child) && child.type === Slottable;
 }
 
-export type FavolinkComponent<Component extends ElementType> =
-  ComponentWithPolymorphic<Component, object>;
+export function withAsChild<Tag extends JsxElements>(Component: Tag) {
+  type HTMLTagElement = ElementRef<Tag>;
 
-export function createPolymorphicComponent<Component extends ElementType>(
-  component: Component,
-) {
-  const favolinkComponent = forwardRef<object, Component>(
-    function favolinkComponent(props, ref) {
-      const { as: asElement, asChild, children, ...restProps } = props;
+  const FavolinkComponent = forwardRef<FavolinkPropsWithRef<Tag>, any>(
+    function FavolinkComponent(props, ref) {
+      const { asChild, children, ...restProps } = props;
 
       if (!asChild) {
         return createElement(
-          asElement ?? component,
+          Component,
           {
             ref,
             ...restProps,
@@ -73,34 +67,32 @@ export function createPolymorphicComponent<Component extends ElementType>(
                 ref: ref
                   ? composeRefs(
                       ref,
-                      (newElement as ReactElement & { ref: Ref<any> }).ref,
+                      (
+                        newElement as ReactElement & {
+                          ref: Ref<HTMLTagElement>;
+                        }
+                      ).ref,
                     )
-                  : (newElement as ReactElement & { ref: Ref<any> }).ref,
+                  : (newElement as ReactElement & { ref: Ref<HTMLTagElement> })
+                      .ref,
               },
               newChildren,
             )
           : null;
       }
 
-      const onlyChild = Children.only(children);
+      const onlyChild = Children.only(children) as ReactNode & {
+        ref: Ref<HTMLTagElement>;
+      };
 
       return isValidElement(onlyChild)
         ? cloneElement(onlyChild, {
             ...mergeProps(restProps, onlyChild.props),
-            ref: ref
-              ? composeRefs(ref, onlyChild.ref as Ref<any>)
-              : (onlyChild.ref as Ref<any>),
+            ref: ref ? composeRefs(ref, onlyChild.ref) : onlyChild.ref,
           })
         : null;
     },
   );
 
-  return favolinkComponent as FavolinkComponent<Component>;
+  return FavolinkComponent as FavolinkComponents[Tag];
 }
-
-export type HTMLFavolinkComponents = {
-  [Element in JsxElements]: FavolinkComponent<Element>;
-};
-
-export type HTMLFavolinkProps<Element extends JsxElements> =
-  ComponentPropsWithoutRef<Element> & PolymorphicProps;
