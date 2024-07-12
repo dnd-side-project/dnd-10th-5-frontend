@@ -11,16 +11,37 @@ import {
 } from 'react';
 import { Slottable, type SlottableProps } from './slottable';
 
-type SlotProps = HTMLAttributes<HTMLElement> & {
-  children: ReactNode;
-};
-
 function isSlottable(child: ReactNode): child is ReactElement<SlottableProps> {
   return isValidElement(child) && child.type === Slottable;
 }
 
+type ReactElementWithRef = ReactElement & { ref: Ref<HTMLElement> };
+
+type SlotCloneProps = HTMLAttributes<HTMLElement> & {
+  children: ReactElementWithRef;
+};
+
+const SlotClone = forwardRef<HTMLElement, SlotCloneProps>(
+  function SlotClone(props, forwardedRef) {
+    const { children, ...slotProps } = props;
+
+    return isValidElement(children)
+      ? cloneElement(children, {
+          ...mergeProps(slotProps, children.props),
+          ref: forwardedRef
+            ? composeRefs(forwardedRef, children.ref)
+            : children.ref,
+        })
+      : null;
+  },
+);
+
+type SlotProps = HTMLAttributes<HTMLElement> & {
+  children: ReactNode;
+};
+
 export const Slot = forwardRef<HTMLElement, SlotProps>(
-  function Slot(props, ref) {
+  function Slot(props, forwardedRef) {
     const { children, ...slotProps } = props;
 
     const childrenArray = Children.toArray(children);
@@ -35,45 +56,33 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(
             return Children.only(null);
           }
 
-          return isValidElement(newElement)
-            ? ((newElement as ReactElement<{ children: ReactNode }>).props
-                .children as ReactNode)
+          return isValidElement<{ children: ReactNode }>(newElement)
+            ? newElement.props.children
             : null;
         } else {
           return child;
         }
       });
 
-      return isValidElement(newElement)
-        ? cloneElement(
-            newElement as ReactElement,
-            {
-              ...mergeProps(slotProps, newElement.props),
-              ref: ref
-                ? composeRefs(
-                    ref,
-                    (
-                      newElement as ReactElement & {
-                        ref: Ref<HTMLElement>;
-                      }
-                    ).ref,
-                  )
-                : (newElement as ReactElement & { ref: Ref<HTMLElement> }).ref,
-            },
-            newChildren,
-          )
-        : null;
+      return isValidElement(newElement) ? (
+        <SlotClone {...slotProps} ref={forwardedRef}>
+          {
+            cloneElement(
+              newElement,
+              undefined,
+              newChildren,
+            ) as ReactElementWithRef
+          }
+        </SlotClone>
+      ) : null;
     }
 
-    const onlyChild = Children.only(children) as ReactNode & {
-      ref: Ref<HTMLElement>;
-    };
+    const onlyChild = Children.only(children);
 
-    return isValidElement(onlyChild)
-      ? cloneElement(onlyChild, {
-          ...mergeProps(slotProps, onlyChild.props),
-          ref: ref ? composeRefs(ref, onlyChild.ref) : onlyChild.ref,
-        })
-      : null;
+    return (
+      <SlotClone {...slotProps} ref={forwardedRef}>
+        {onlyChild as ReactElementWithRef}
+      </SlotClone>
+    );
   },
 );
