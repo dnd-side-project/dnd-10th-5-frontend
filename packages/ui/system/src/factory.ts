@@ -8,20 +8,23 @@ import { withAsChild } from './with-as-child';
 
 export type JsxElements = keyof JSX.IntrinsicElements;
 
-export type FavolinkPropsWithRef<T extends ElementType> =
-  ComponentPropsWithRef<T> & {
+export type FavolinkPropsWithRef<E extends ElementType> =
+  ComponentPropsWithRef<E> & {
     asChild?: boolean;
   };
 
-type FavolinkForwardRefComponent<T extends ElementType> =
-  ForwardRefExoticComponent<FavolinkPropsWithRef<T>>;
+type FavolinkForwardRefComponent<E extends ElementType> =
+  ForwardRefExoticComponent<FavolinkPropsWithRef<E>>;
 
 export type FavolinkComponents = {
-  [Tag in JsxElements]: FavolinkForwardRefComponent<Tag>;
+  [E in JsxElements]: FavolinkForwardRefComponent<E>;
 };
 
-export type HTMLFavolinkProps<T extends JsxElements> =
-  ComponentPropsWithoutRef<T> & { asChild?: boolean };
+export type HTMLProps<E extends JsxElements> = ComponentPropsWithoutRef<E>;
+
+export type HTMLFavolinkProps<E extends JsxElements> = HTMLProps<E> & {
+  asChild?: boolean;
+};
 
 function factory() {
   const cache = new Map<JsxElements, FavolinkComponents[JsxElements]>();
