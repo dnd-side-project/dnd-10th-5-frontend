@@ -5,27 +5,21 @@ import {
   useContext as useReactContext,
 } from 'react';
 
-type CreatContextOptions<CreateContextDefaultValue> = {
+type CreatContextOptions<T> = {
   name?: string;
   hookName?: string;
   providerName?: string;
   errorMessage?: string;
-  defaultValue?: CreateContextDefaultValue;
+  defaultValue?: T;
 };
 
-type CreateContextReturn<CreateContextDefaultValue> = [
-  Provider<CreateContextDefaultValue>,
-  () => CreateContextDefaultValue,
-  Context<CreateContextDefaultValue>,
-];
+type CreateContextReturn<T> = [Provider<T>, () => T, Context<T>];
 
 function getErrorMessage(hook: string, provider: string) {
   return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`;
 }
 
-export function createContext<CreateContextDefaultValue>(
-  options: CreatContextOptions<CreateContextDefaultValue>,
-) {
+export function createContext<T>(options: CreatContextOptions<T>) {
   const {
     name,
     hookName = 'useContext',
@@ -34,9 +28,7 @@ export function createContext<CreateContextDefaultValue>(
     defaultValue,
   } = options;
 
-  const Context = createReactContext<CreateContextDefaultValue | undefined>(
-    defaultValue,
-  );
+  const Context = createReactContext<T | undefined>(defaultValue);
 
   Context.displayName = name;
 
@@ -57,9 +49,5 @@ export function createContext<CreateContextDefaultValue>(
     return context;
   }
 
-  return [
-    Context.Provider,
-    useContext,
-    Context,
-  ] as CreateContextReturn<CreateContextDefaultValue>;
+  return [Context.Provider, useContext, Context] as CreateContextReturn<T>;
 }
