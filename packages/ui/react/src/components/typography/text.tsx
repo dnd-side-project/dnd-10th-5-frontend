@@ -1,23 +1,35 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
+import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './text.styles.css';
 
-export type TextProps = HTMLFavolinkProps<'p'> & styles.TextVariants;
+type TextDivProps = HTMLFavolinkProps<'div'> & { as: 'div' };
 
-export const Text = forwardRef<TextProps, 'p'>(function Text(props, ref) {
-  const { children, className, scale, ...restProps } = props;
+type TextLabelProps = HTMLFavolinkProps<'label'> & { as: 'label' };
+
+type TextPProps = HTMLFavolinkProps<'p'> & { as: 'p' };
+
+type TextSpanProps = HTMLFavolinkProps<'span'> & { as?: 'span' };
+
+export type TextProps = styles.TextVariants &
+  (TextDivProps | TextLabelProps | TextPProps | TextSpanProps);
+
+export const Text = forwardRef<TextProps, 'span'>(function Text(props, ref) {
+  const {
+    children,
+    className,
+    scale,
+    asChild,
+    as: Tag = 'span',
+    ...restProps
+  } = props;
 
   return (
-    <favolink.p
+    <Slot
       {...restProps}
       ref={ref}
       className={cx('favolink-text', styles.text({ scale }), className)}
     >
-      {children}
-    </favolink.p>
+      {asChild ? children : <Tag>{children}</Tag>}
+    </Slot>
   );
 });
