@@ -1,7 +1,7 @@
 import { type ComplexStyleRule, createVar, style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { type CSSProperties } from 'react';
-import { body3Regular, h6SemiBold } from '../../styles/text.css';
+import { body, heading } from '../../styles/utilities';
 import { vars } from '../../styles/vars.css';
 
 function makeButtonColorSchemeVar(
@@ -31,6 +31,7 @@ const base = style({
 
 export const buttonVariants = recipe({
   base,
+
   variants: {
     colorScheme: {
       archiveBlack: makeButtonColorSchemeVar(vars.color.archive.black),
@@ -69,8 +70,8 @@ export const buttonVariants = recipe({
       },
     },
     text: {
-      normal: [body3Regular],
-      strength: [h6SemiBold],
+      normal: [body.body3Regular],
+      strength: [heading.h6Semibold],
     },
     rounded: {
       full: {
@@ -86,6 +87,7 @@ export const buttonVariants = recipe({
       },
     },
   },
+
   defaultVariants: {
     colorScheme: 'white',
     justify: 'center',
@@ -94,6 +96,7 @@ export const buttonVariants = recipe({
     rounded: 'normal',
     width: undefined,
   },
+
   compoundVariants: [
     {
       variants: {
@@ -107,7 +110,10 @@ export const buttonVariants = recipe({
   ],
 });
 
-export type ButtonVariants = RecipeVariants<typeof buttonVariants>;
+export type ButtonVariants = Exclude<
+  RecipeVariants<typeof buttonVariants>,
+  undefined
+>;
 
 export const buttonHasElement = style({
   gap: 10,
