@@ -10,7 +10,13 @@ type TextPProps = HTMLFavolinkProps<'p'> & { as: 'p' };
 
 type TextSpanProps = HTMLFavolinkProps<'span'> & { as?: 'span' };
 
-export type TextProps = styles.TextVariants &
+type TextVariantOptionProps = {
+  size?: '1' | '2' | '3' | '4' | 1 | 2 | 3 | 4;
+  weight?: 'medium' | 'regular';
+};
+
+export type TextProps = Omit<styles.TextVariants, 'scale'> &
+  TextVariantOptionProps &
   (TextDivProps | TextLabelProps | TextPProps | TextSpanProps);
 
 export const Text = forwardRef<TextProps, 'span'>(
@@ -18,17 +24,27 @@ export const Text = forwardRef<TextProps, 'span'>(
     const {
       children,
       className,
-      scale,
       asChild,
       as: Tag = 'span',
+      align,
+      wrap,
+      truncate,
+      size = 2,
+      weight = 'regular',
       ...restProps
     } = props;
+
+    const variant = (size + weight) as styles.TextVariants['variant'];
 
     return (
       <Slot
         {...restProps}
         ref={forwardedRef}
-        className={cx('favolink-text', styles.text({ scale }), className)}
+        className={cx(
+          'favolink-text',
+          styles.textVariants({ align, variant, truncate, wrap }),
+          className,
+        )}
       >
         {asChild ? children : <Tag>{children}</Tag>}
       </Slot>
