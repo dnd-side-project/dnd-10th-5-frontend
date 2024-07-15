@@ -1,6 +1,6 @@
-import { type ComplexStyleRule } from '@vanilla-extract/css';
+import { type ComplexStyleRule, style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { body3Medium, body4Medium } from '../../styles/text.css';
+import { body } from '../../styles/utilities';
 import { vars } from '../../styles/vars.css';
 
 function createTagColorScheme(
@@ -29,19 +29,21 @@ export const colorScheme = {
   },
 } satisfies Record<string, ComplexStyleRule>;
 
+const base = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 10,
+  borderRadius: 100,
+});
+
 export const tag = recipe({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 10,
-    borderRadius: 100,
-  },
+  base,
 
   variants: {
     colorScheme,
     size: {
-      small: [body4Medium, { padding: '4px 8px' }],
-      medium: [body3Medium, { padding: '8px 14px' }],
+      small: [body.body4Medium, { padding: '4px 8px' }],
+      medium: [body.body3Medium, { padding: '8px 14px' }],
     },
   },
 
@@ -51,4 +53,4 @@ export const tag = recipe({
   },
 });
 
-export type TagVariants = RecipeVariants<typeof tag>;
+export type TagVariants = Exclude<RecipeVariants<typeof tag>, undefined>;

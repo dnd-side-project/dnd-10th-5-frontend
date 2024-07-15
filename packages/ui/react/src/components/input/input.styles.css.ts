@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { inputElement } from './input-element.styles.css';
-import { body3Medium } from '../../styles/text.css';
+import { body } from '../../styles/utilities';
 import { vars } from '../../styles/vars.css';
 
 export const inputWithElement = style({
@@ -17,7 +17,7 @@ export const inputWithElement = style({
 
 export const input = recipe({
   base: [
-    body3Medium,
+    body.body3Medium,
     {
       boxSizing: 'border-box',
       width: '100%',
