@@ -1,5 +1,5 @@
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { h4SemiBold, h5SemiBold, h6SemiBold } from '../../styles/text.css';
+import { heading } from '../../styles/utilities';
 import * as tagStyles from '../tag/tag.styles.css';
 
 export const iconButton = recipe({
@@ -13,9 +13,9 @@ export const iconButton = recipe({
 
   variants: {
     size: {
-      small: [h6SemiBold, { padding: 8 }],
-      medium: [h5SemiBold, { padding: 10 }],
-      large: [h4SemiBold, { padding: 12 }],
+      small: [heading.h6Semibold, { padding: 8 }],
+      medium: [heading.h5Semibold, { padding: 10 }],
+      large: [heading.h4Semibold, { padding: 12 }],
     },
     colorScheme: tagStyles.colorScheme,
   },
@@ -26,4 +26,7 @@ export const iconButton = recipe({
   },
 });
 
-export type IconButtonVariants = RecipeVariants<typeof iconButton>;
+export type IconButtonVariants = Exclude<
+  RecipeVariants<typeof iconButton>,
+  undefined
+>;

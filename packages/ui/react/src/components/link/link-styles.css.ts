@@ -1,21 +1,22 @@
+import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { body3Medium } from '../../styles/text.css';
+import { body } from '../../styles/utilities';
 import { vars } from '../../styles/vars.css';
 
-export const link = recipe({
-  base: [
-    body3Medium,
-    {
-      cursor: 'pointer',
-      textDecoration: 'none',
+const base = style([
+  body.body3Medium,
+  {
+    cursor: 'pointer',
+    textDecoration: 'none',
 
-      selectors: {
-        '&:hover': {
-          textDecoration: 'underline',
-        },
-      },
+    ':hover': {
+      textDecoration: 'underline',
     },
-  ],
+  },
+]);
+
+export const link = recipe({
+  base,
 
   variants: {
     color: {
@@ -30,4 +31,4 @@ export const link = recipe({
   },
 });
 
-export type LinkVariants = RecipeVariants<typeof link>;
+export type LinkVariants = Exclude<RecipeVariants<typeof link>, undefined>;

@@ -7,7 +7,7 @@ import { cx } from '@favolink-ui/utils';
 import { type ReactElement } from 'react';
 import * as styles from './icon-button.styles.css';
 
-export type IconButtonProps = HTMLFavolinkProps<'button'> &
+export type IconButtonProps = Omit<HTMLFavolinkProps<'button'>, 'children'> &
   styles.IconButtonVariants & {
     icon: ReactElement;
   };
