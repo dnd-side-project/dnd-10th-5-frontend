@@ -1,4 +1,4 @@
-import { heading } from '@favolink-ui/react/heading.css';
+import { heading } from '@favolink-ui/react/utilities.css';
 import { vars } from '@favolink-ui/react/vars.css';
 import { style } from '@vanilla-extract/css';
 

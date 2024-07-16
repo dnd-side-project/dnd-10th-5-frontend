@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
-import { wrap } from './wrap.css';
+import { textWrap } from './text-wrap.css';
 
 export const truncate = style([
-  wrap.nowrap,
+  textWrap.nowrap,
   {
     overflow: 'hidden',
     textOverflow: 'ellipsis',

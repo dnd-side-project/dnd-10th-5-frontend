@@ -3,8 +3,8 @@ import {
   color,
   heading,
   textAlign,
+  textWrap,
   truncate,
-  wrap,
 } from '../../styles/utilities';
 
 export const headingVariants = recipe({
@@ -15,7 +15,7 @@ export const headingVariants = recipe({
     truncate: {
       true: [truncate],
     },
-    wrap,
+    wrap: textWrap,
   },
 
   defaultVariants: {
