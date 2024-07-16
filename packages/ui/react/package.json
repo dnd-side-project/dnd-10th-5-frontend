@@ -7,8 +7,7 @@
     "./reset.css": "./src/styles/reset.css.ts",
     "./vars.css": "./src/styles/vars.css.ts",
     "./theme.css": "./src/styles/theme.css.ts",
-    "./body.css": "./src/styles/utilities/body.css.ts",
-    "./heading.css": "./src/styles/utilities/heading.css.ts"
+    "./utilities.css": "./src/styles/utilities/index.ts"
   },
   "scripts": {
     "lint": "eslint \"**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}\""
