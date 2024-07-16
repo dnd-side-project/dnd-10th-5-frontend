@@ -15,5 +15,5 @@ export * from './letter-spacing.css';
 export * from './overflow.css';
 export * from './position.css';
 export * from './text-align.css';
+export * from './text-wrap.css';
 export * from './truncate.css';
-export * from './wrap.css';
