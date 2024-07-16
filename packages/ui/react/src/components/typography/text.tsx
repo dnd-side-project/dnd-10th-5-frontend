@@ -27,6 +27,7 @@ export const Text = forwardRef<TextProps, 'span'>(
       asChild,
       as: Tag = 'span',
       align,
+      color,
       wrap,
       truncate,
       size = 2,
@@ -42,7 +43,7 @@ export const Text = forwardRef<TextProps, 'span'>(
         ref={forwardedRef}
         className={cx(
           'favolink-text',
-          styles.textVariants({ align, variant, truncate, wrap }),
+          styles.textVariants({ align, color, variant, truncate, wrap }),
           className,
         )}
       >

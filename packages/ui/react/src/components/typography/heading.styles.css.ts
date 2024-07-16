@@ -1,5 +1,11 @@
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { heading, textAlign, truncate, wrap } from '../../styles/utilities';
+import {
+  color,
+  heading,
+  textAlign,
+  truncate,
+  wrap,
+} from '../../styles/utilities';
 
 export const headingVariants = recipe({
   variants: {
@@ -7,6 +13,19 @@ export const headingVariants = recipe({
       left: [textAlign.left],
       center: [textAlign.center],
       right: [textAlign.right],
+    },
+    color: {
+      gray100: [color.gray100],
+      gray200: [color.gray200],
+      gray300: [color.gray300],
+      gray400: [color.gray400],
+      gray500: [color.gray500],
+      gray600: [color.gray600],
+      gray700: [color.gray700],
+      gray800: [color.gray800],
+      gray900: [color.gray900],
+      gray1000: [color.gray1000],
+      gray1100: [color.gray1100],
     },
     variant: {
       h1bold: [heading.h1Bold],
@@ -33,6 +52,7 @@ export const headingVariants = recipe({
 
   defaultVariants: {
     align: 'left',
+    color: 'gray1100',
     truncate: false,
     variant: 'h1bold',
     wrap: 'nowrap',

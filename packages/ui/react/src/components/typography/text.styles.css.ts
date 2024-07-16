@@ -1,5 +1,5 @@
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { body, textAlign, truncate, wrap } from '../../styles/utilities';
+import { body, color, textAlign, truncate, wrap } from '../../styles/utilities';
 
 export const textVariants = recipe({
   variants: {
@@ -7,6 +7,19 @@ export const textVariants = recipe({
       left: [textAlign.left],
       center: [textAlign.center],
       right: [textAlign.right],
+    },
+    color: {
+      gray100: [color.gray100],
+      gray200: [color.gray200],
+      gray300: [color.gray300],
+      gray400: [color.gray400],
+      gray500: [color.gray500],
+      gray600: [color.gray600],
+      gray700: [color.gray700],
+      gray800: [color.gray800],
+      gray900: [color.gray900],
+      gray1000: [color.gray1000],
+      gray1100: [color.gray1100],
     },
     variant: {
       '1medium': [body.body1Medium],
@@ -29,6 +42,7 @@ export const textVariants = recipe({
 
   defaultVariants: {
     align: 'left',
+    color: 'gray1100',
     truncate: false,
     variant: '2regular',
     wrap: 'nowrap',
