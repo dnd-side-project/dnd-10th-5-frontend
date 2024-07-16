@@ -1,5 +1,11 @@
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { body, color, textAlign, truncate, wrap } from '../../styles/utilities';
+import {
+  body,
+  color,
+  textAlign,
+  textWrap,
+  truncate,
+} from '../../styles/utilities';
 
 export const textVariants = recipe({
   variants: {
@@ -9,7 +15,7 @@ export const textVariants = recipe({
     truncate: {
       true: [truncate],
     },
-    wrap,
+    wrap: textWrap,
   },
 
   defaultVariants: {
