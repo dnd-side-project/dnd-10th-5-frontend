@@ -22,10 +22,10 @@ export type TextProps = Omit<styles.TextVariants, 'scale'> &
 export const Text = forwardRef<TextProps, 'span'>(
   function Text(props, forwardedRef) {
     const {
-      children,
-      className,
       asChild,
       as: Tag = 'span',
+      children,
+      className,
       align,
       color,
       wrap,
@@ -35,7 +35,10 @@ export const Text = forwardRef<TextProps, 'span'>(
       ...restProps
     } = props;
 
-    const variant = (size + weight) as styles.TextVariants['variant'];
+    const variant = ('body' +
+      size +
+      weight[0]?.toUpperCase() +
+      weight.slice(1)) as styles.TextVariants['variant'];
 
     return (
       <Slot

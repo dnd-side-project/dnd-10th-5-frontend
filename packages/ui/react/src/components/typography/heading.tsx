@@ -13,16 +13,18 @@ export const Heading = forwardRef<HeadingProps, 'h1'>(
     const {
       as: Tag = 'h1',
       asChild,
-      align,
       className,
       children,
+      align,
       color,
       weight = 'bold',
       truncate,
       ...restProps
     } = props;
 
-    const variant = `${Tag}${weight}` as styles.HeadingVariants['variant'];
+    const variant = (Tag +
+      weight[0]?.toUpperCase() +
+      weight.slice(1)) as styles.HeadingVariants['variant'];
 
     return (
       <Slot
