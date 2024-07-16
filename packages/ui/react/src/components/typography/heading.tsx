@@ -16,6 +16,7 @@ export const Heading = forwardRef<HeadingProps, 'h1'>(
       align,
       className,
       children,
+      color,
       weight = 'bold',
       truncate,
       ...restProps
@@ -29,7 +30,7 @@ export const Heading = forwardRef<HeadingProps, 'h1'>(
         ref={ref}
         className={cx(
           'favolink-heading',
-          styles.headingVariants({ variant, truncate, align }),
+          styles.headingVariants({ variant, color, truncate, align }),
           className,
         )}
       >
