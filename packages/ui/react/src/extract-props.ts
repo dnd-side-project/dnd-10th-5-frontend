@@ -1,4 +1,4 @@
-import { mergeRecords } from '@favolink-ui/utils';
+import { mergeStyles } from '@favolink-ui/utils';
 import { type createVar } from '@vanilla-extract/css';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { type CSSProperties } from 'react';
@@ -20,7 +20,7 @@ export function extractProps<
   const { style, ...restProps } = props;
   const copiedRestProps = { ...restProps };
   const copiedVars = { ...vars };
-  const allStyleProps = mergeRecords(...styleProps);
+  const allStyleProps = mergeStyles(...styleProps);
   const willAssignInlineStyle = {} as Record<CSSVarFuntion, string>;
 
   for (const styleProp in allStyleProps) {
