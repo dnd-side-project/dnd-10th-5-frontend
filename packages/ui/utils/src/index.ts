@@ -5,3 +5,4 @@ export * from './request';
 export * from './merge-fns';
 export * from './merge-props';
 export * from './merge-styles';
+export * from './toPx';
