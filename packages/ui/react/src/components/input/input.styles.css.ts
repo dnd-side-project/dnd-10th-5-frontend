@@ -1,8 +1,12 @@
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { inputElement } from './input-element.styles.css';
-import { body } from '../../styles/utilities';
+import { enumStyles } from '../../styles/utils/enum';
 import { vars } from '../../styles/vars.css';
+
+const {
+  body: { body3Medium },
+} = enumStyles;
 
 export const inputWithElement = style({
   selectors: {
@@ -17,7 +21,7 @@ export const inputWithElement = style({
 
 export const input = recipe({
   base: [
-    body.body3Medium,
+    body3Medium,
     {
       boxSizing: 'border-box',
       width: '100%',

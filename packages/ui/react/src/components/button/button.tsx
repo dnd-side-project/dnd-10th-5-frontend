@@ -25,7 +25,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       justify,
       variant,
       text,
-      rounded,
+      radius,
       width,
       ...restProps
     } = props;
@@ -44,7 +44,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
             justify,
             variant,
             text,
-            rounded,
+            radius,
             width,
           }),
           hasElement && styles.buttonHasElement,

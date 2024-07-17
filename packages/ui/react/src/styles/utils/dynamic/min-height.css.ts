@@ -2,6 +2,6 @@ import { createVar, style } from '@vanilla-extract/css';
 
 export const minHeightVar = createVar();
 
-export const minheight = style({
+export const minHeight = style({
   minHeight: minHeightVar,
 });

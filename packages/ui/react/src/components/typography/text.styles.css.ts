@@ -1,21 +1,17 @@
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import {
-  body,
-  color,
-  textAlign,
-  textWrap,
-  truncate,
-} from '../../styles/utilities';
+import { enumStyles } from '../../styles/utils';
+
+const { textAlign: align, color, body, truncate, textWrap: wrap } = enumStyles;
 
 export const textVariants = recipe({
   variants: {
-    align: textAlign,
+    align,
     color,
     variant: body,
     truncate: {
       true: [truncate],
     },
-    wrap: textWrap,
+    wrap,
   },
 
   defaultVariants: {

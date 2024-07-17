@@ -1,7 +1,11 @@
 import { type ComplexStyleRule, style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { body } from '../../styles/utilities';
+import { enumStyles } from '../../styles/utils';
 import { vars } from '../../styles/vars.css';
+
+const {
+  body: { body3Medium, body4Medium },
+} = enumStyles;
 
 function createTagColorScheme(
   color: keyof typeof vars.color.repo.bg,
@@ -42,8 +46,8 @@ export const tag = recipe({
   variants: {
     colorScheme,
     size: {
-      small: [body.body4Medium, { padding: '4px 8px' }],
-      medium: [body.body3Medium, { padding: '8px 14px' }],
+      small: [body4Medium, { padding: '4px 8px' }],
+      medium: [body3Medium, { padding: '8px 14px' }],
     },
   },
 
