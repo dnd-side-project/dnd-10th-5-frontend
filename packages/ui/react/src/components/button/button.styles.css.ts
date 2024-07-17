@@ -1,8 +1,13 @@
 import { type ComplexStyleRule, createVar, style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { type CSSProperties } from 'react';
-import { body, heading } from '../../styles/utilities';
+import { enumStyles } from '../../styles/utils';
 import { vars } from '../../styles/vars.css';
+
+const {
+  body: { body3Regular },
+  heading: { h6Semibold },
+} = enumStyles;
 
 function makeButtonColorSchemeVar(
   color: CSSProperties['color'],
@@ -70,15 +75,15 @@ export const buttonVariants = recipe({
       },
     },
     text: {
-      normal: [body.body3Regular],
-      strength: [heading.h6Semibold],
+      normal: [body3Regular],
+      strength: [h6Semibold],
     },
-    rounded: {
-      full: {
-        borderRadius: 9999,
-      },
+    radius: {
       normal: {
         borderRadius: 8,
+      },
+      full: {
+        borderRadius: 9999,
       },
     },
     width: {
@@ -93,7 +98,7 @@ export const buttonVariants = recipe({
     justify: 'center',
     variant: 'solid',
     text: 'normal',
-    rounded: 'normal',
+    radius: 'normal',
     width: undefined,
   },
 
