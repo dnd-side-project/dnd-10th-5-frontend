@@ -1,33 +1,42 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
+import { forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
-import * as styles from './flex.styles.css';
-import { extractProps } from '../../extract-props';
-import {
-  type FlexStyleProps,
-  flexStyleProps,
-  flexStyleVars,
-} from '../../styles';
+import { Box, type BoxProps } from './box';
+import * as styles from './flex.css';
+import { extractDynamicProps } from '../../styles';
 
-export type FlexProps = FlexStyleProps & HTMLFavolinkProps<'div'>;
+export type FlexProps = BoxProps &
+  styles.FlexDynamicVariants &
+  styles.FlexEnumVariants;
 
-export const Flex = forwardRef<FlexProps, 'div'>(function Flex(props, ref) {
-  const { children, className, ...restProps } = extractProps(
-    props,
-    flexStyleVars,
-    flexStyleProps,
-  );
+export const Flex = forwardRef<FlexProps, typeof Box>(
+  function Flex(props, forwardedRef) {
+    const {
+      children,
+      className,
+      display,
+      align,
+      direction,
+      justify,
+      wrap,
+      ...restProps
+    } = extractDynamicProps(
+      props,
+      styles.flexDynamicVariantVars,
+      styles.flexDynamicVariants,
+    );
 
-  return (
-    <favolink.div
-      {...restProps}
-      ref={ref}
-      className={cx(styles.flexBase, className)}
-    >
-      {children}
-    </favolink.div>
-  );
-});
+    return (
+      <Box
+        {...restProps}
+        ref={forwardedRef}
+        className={cx(
+          'favolink-flex',
+          styles.flexEnumVariants({ display, align, direction, justify, wrap }),
+          className,
+        )}
+      >
+        {children}
+      </Box>
+    );
+  },
+);
