@@ -1,6 +1,6 @@
 export const ARCHIVE_COLOR = {
   black: '#aaacb6',
-  blue: '#9570ff',
+  blue: '#6bafff',
   brightGreen: '#b4f78b',
   coral: '#f17666',
   mint: '#6af4b4',
