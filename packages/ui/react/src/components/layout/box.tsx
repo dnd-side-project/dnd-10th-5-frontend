@@ -36,6 +36,7 @@ export const Box = forwardRef<BoxProps, 'div'>(
         {...restProps}
         ref={forwardedRef}
         className={cx(
+          'favolink-box',
           styles.boxEnumVariants({
             position,
             overflow,
