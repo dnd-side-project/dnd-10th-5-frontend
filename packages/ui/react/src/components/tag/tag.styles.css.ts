@@ -1,37 +1,20 @@
-import { type ComplexStyleRule, style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { archivePalette, vars } from '../../styles';
 import { enumStyles } from '../../styles/utils';
-import { vars } from '../../styles/vars.css';
 
 const {
   body: { body3Medium, body4Medium },
 } = enumStyles;
 
-function createTagColorScheme(
-  color: keyof typeof vars.color.repo.bg,
-): ComplexStyleRule {
-  return {
-    color: vars.color.repo.text[color],
-    backgroundColor: vars.color.repo.bg[color],
-    border: `1px solid ${vars.color.repo.bg[color]}`,
-  };
-}
-
-export const colorScheme = {
-  black: createTagColorScheme('black'),
-  blue: createTagColorScheme('blue'),
-  brightGreen: createTagColorScheme('brightGreen'),
-  coral: createTagColorScheme('coral'),
-  mint: createTagColorScheme('mint'),
-  pink: createTagColorScheme('pink'),
-  purple: createTagColorScheme('purple'),
-  yellow: createTagColorScheme('yellow'),
-  white: {
-    color: vars.color.repo.text.black,
-    backgroundColor: 'white',
-    border: `1px solid ${vars.color.gray[300]}`,
-  },
-} satisfies Record<string, ComplexStyleRule>;
+export const colorScheme = styleVariants(
+  archivePalette,
+  (archivePaletteValue, archivePaletteKey) => ({
+    color: vars.palette[archivePaletteKey],
+    backgroundColor: archivePaletteValue,
+    border: `1px solid ${archivePaletteValue}`,
+  }),
+);
 
 const base = style({
   display: 'inline-flex',
@@ -52,7 +35,7 @@ export const tag = recipe({
   },
 
   defaultVariants: {
-    colorScheme: 'white',
+    colorScheme: 'archiveBlack',
     size: 'small',
   },
 });

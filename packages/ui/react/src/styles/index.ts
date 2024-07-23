@@ -2,3 +2,4 @@
 export * from './props';
 export * from './vars';
 export * from './extract-dynamic-props';
+export * from './theme.css';

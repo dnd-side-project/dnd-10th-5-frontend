@@ -23,7 +23,7 @@ export const iconButton = recipe({
   },
 
   defaultVariants: {
-    colorScheme: 'white',
+    colorScheme: 'archiveBlack',
     size: 'small',
   },
 });

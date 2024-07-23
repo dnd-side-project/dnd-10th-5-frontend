@@ -1,7 +1,13 @@
+import { styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { grayPalette, vars } from '../../styles';
 import { enumStyles } from '../../styles/utils';
 
-const { textAlign: align, color, body, truncate, textWrap: wrap } = enumStyles;
+const { textAlign: align, body, truncate, textWrap: wrap } = enumStyles;
+
+const color = styleVariants(grayPalette, (_, grayPaletteKey) => ({
+  color: vars.palette[grayPaletteKey],
+}));
 
 export const textVariants = recipe({
   variants: {

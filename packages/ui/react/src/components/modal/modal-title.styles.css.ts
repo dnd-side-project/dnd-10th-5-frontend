@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { vars } from '../../styles/vars.css';
+import { vars } from '../../styles';
 
 const base = style({
-  color: vars.color.gray[1000],
+  color: vars.palette.gray1000,
 });
 
 export const modalTitleVariants = recipe({

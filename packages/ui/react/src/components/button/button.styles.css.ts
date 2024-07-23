@@ -1,25 +1,12 @@
-import { type ComplexStyleRule, createVar, style } from '@vanilla-extract/css';
+import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { type CSSProperties } from 'react';
+import { archivePalette, inherencePalette, vars } from '../../styles/';
 import { enumStyles } from '../../styles/utils';
-import { vars } from '../../styles/vars.css';
 
 const {
   body: { body3Regular },
   heading: { h6Semibold },
 } = enumStyles;
-
-function makeButtonColorSchemeVar(
-  color: CSSProperties['color'],
-): ComplexStyleRule {
-  return {
-    vars: {
-      [colorScheme]: color as string,
-    },
-  };
-}
-
-const colorScheme = createVar();
 
 const base = style({
   display: 'inline-flex',
@@ -34,26 +21,25 @@ const base = style({
   minWidth: 72,
 });
 
+const colorSchemeVar = createVar();
+
+const colorSchemePalette = {
+  ...archivePalette,
+  ...inherencePalette,
+};
+
+const colorScheme = styleVariants(
+  colorSchemePalette,
+  (_, colorSchemePaletteKey) => ({
+    vars: { [colorSchemeVar]: vars.palette[colorSchemePaletteKey] },
+  }),
+);
+
 export const buttonVariants = recipe({
   base,
 
   variants: {
-    colorScheme: {
-      archiveBlack: makeButtonColorSchemeVar(vars.color.archive.black),
-      archiveBlue: makeButtonColorSchemeVar(vars.color.archive.blue),
-      archiveBrightGreen: makeButtonColorSchemeVar(
-        vars.color.archive.brightGreen,
-      ),
-      archiveCoral: makeButtonColorSchemeVar(vars.color.archive.coral),
-      archiveMint: makeButtonColorSchemeVar(vars.color.archive.mint),
-      archivePink: makeButtonColorSchemeVar(vars.color.archive.pink),
-      archivePurple: makeButtonColorSchemeVar(vars.color.archive.purple),
-      archiveYellow: makeButtonColorSchemeVar(vars.color.archive.yellow),
-      black: makeButtonColorSchemeVar(vars.color.gray[1000]),
-      gray: makeButtonColorSchemeVar(vars.color.gray[400]),
-      white: makeButtonColorSchemeVar('white'),
-      red: makeButtonColorSchemeVar(vars.color.system[300]),
-    },
+    colorScheme,
     justify: {
       center: {
         justifyContent: 'center',
@@ -64,19 +50,19 @@ export const buttonVariants = recipe({
     },
     variant: {
       solid: {
-        backgroundColor: colorScheme,
-        border: `1px solid ${colorScheme}`,
-        color: 'white',
+        backgroundColor: colorSchemeVar,
+        border: `1px solid ${colorSchemeVar}`,
+        color: vars.palette.white,
       },
       outline: {
-        color: vars.color.gray[1100],
         backgroundColor: 'inherit',
-        border: `1px solid ${colorScheme}`,
+        border: `1px solid ${colorSchemeVar}`,
+        color: vars.palette.gray1000,
       },
     },
-    text: {
-      normal: [body3Regular],
-      strength: [h6Semibold],
+    weight: {
+      regular: [body3Regular],
+      semibold: [h6Semibold],
     },
     radius: {
       normal: {
@@ -97,7 +83,7 @@ export const buttonVariants = recipe({
     colorScheme: 'white',
     justify: 'center',
     variant: 'solid',
-    text: 'normal',
+    weight: 'regular',
     radius: 'normal',
     width: undefined,
   },
@@ -105,11 +91,15 @@ export const buttonVariants = recipe({
   compoundVariants: [
     {
       variants: {
-        colorScheme: 'white',
+        colorScheme: 'black',
         variant: 'solid',
       },
       style: {
-        color: vars.color.gray[1100],
+        ':disabled': {
+          backgroundColor: vars.palette.gray400,
+          border: `1px solid ${vars.palette.gray400}`,
+          color: vars.palette.gray200,
+        },
       },
     },
   ],

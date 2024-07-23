@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '../../styles/vars.css';
+import { vars } from '../../styles';
 
 export const modalContentBase = style({
   display: 'flex',
@@ -11,6 +11,6 @@ export const modalContentBase = style({
   flexDirection: 'column',
   padding: '20px 24px',
   maxWidth: 'max-content',
-  backgroundColor: vars.color.gray[200],
+  backgroundColor: vars.palette.gray200,
   borderRadius: 20,
 });

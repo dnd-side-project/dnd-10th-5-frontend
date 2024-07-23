@@ -1,8 +1,6 @@
 import { alignItems } from './align-items.css';
-import { backgroundColor } from './background-color.css';
 import { body } from './body.css';
 import { borderRadius } from './border-radius.css';
-import { color } from './color.css';
 import { display } from './display.css';
 import { flexDirection } from './flex-direction.css';
 import { flexGrow } from './flex-grow.css';
@@ -19,10 +17,8 @@ import { truncate } from './truncate.css';
 
 export const enumStyles = {
   alignItems,
-  backgroundColor,
   body,
   borderRadius,
-  color,
   display,
   flexDirection,
   flexShrink,

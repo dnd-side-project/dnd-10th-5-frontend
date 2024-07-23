@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '../../styles/vars.css';
+import { vars } from '../../styles';
 
 export const toastItemBase = style({
   width: '100%',
-  backgroundColor: vars.color.gray[800],
+  backgroundColor: vars.palette.gray800,
   borderRadius: 20,
   padding: '15px 28px',
   display: 'flex',
