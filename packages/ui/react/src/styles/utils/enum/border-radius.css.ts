@@ -12,5 +12,5 @@ const borderRadiusData = makeStyleVariantsCustomData(
 
 export const borderRadius = styleVariants(
   borderRadiusData,
-  (borderradiusValue) => ({ borderRadius: borderradiusValue }),
+  (borderRadiusValue) => ({ borderRadius: borderRadiusValue }),
 );

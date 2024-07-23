@@ -9,6 +9,6 @@ const flexWrapValues = [
 
 const flexWrapData = makeStyleVariantsData(flexWrapValues);
 
-export const flexWrap = styleVariants(flexWrapData, (flexWrapDataValue) => ({
-  flexWrap: flexWrapDataValue,
+export const flexWrap = styleVariants(flexWrapData, (flexWrapValue) => ({
+  flexWrap: flexWrapValue,
 }));
