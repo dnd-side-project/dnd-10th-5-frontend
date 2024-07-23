@@ -1,25 +1,55 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type ComplexStyleRule, styleVariants } from '@vanilla-extract/css';
 import { letterSpacing } from './letter-spacing.css';
+import {
+  makeStyleVariantsCustomData,
+  makeStyleVariantsData,
+} from '../../make-style-variants-data';
 
-const weight = styleVariants({
-  regular: { fontWeight: 400 },
-  medium: { fontWeight: 500 },
-});
+const weightKeys = ['regular', 'medium'] as const;
 
-const rowBody = styleVariants({
-  body1: [letterSpacing, { fontSize: 18, lineHeight: '25px' }],
-  body2: [letterSpacing, { fontSize: 16, lineHeight: '22px' }],
-  body3: [letterSpacing, { fontSize: 14, lineHeight: '20px' }],
-  body4: [letterSpacing, { fontSize: 12, lineHeight: '17px' }],
-});
+const weightValues = [400, 500] as const;
 
-export const body = styleVariants({
-  body1Regular: [rowBody.body1, weight.regular],
-  body1Medium: [rowBody.body1, weight.medium],
-  body2Regular: [rowBody.body2, weight.regular],
-  body2Medium: [rowBody.body2, weight.medium],
-  body3Regular: [rowBody.body3, weight.regular],
-  body3Medium: [rowBody.body3, weight.medium],
-  body4Regular: [rowBody.body4, weight.regular],
-  body4Medium: [rowBody.body4, weight.medium],
+const weightData = makeStyleVariantsCustomData(weightKeys, weightValues);
+
+const weight = styleVariants(weightData, (weightValue) => ({
+  fontWeight: weightValue,
+}));
+
+const rowBodyKeys = ['body1', 'body2', 'body3', 'body4'] as const;
+
+const rowBodyValues = [
+  { fontSize: 18, lineHeight: '25px' },
+  { fontSize: 16, lineHeight: '22px' },
+  { fontSize: 14, lineHeight: '20px' },
+  { fontSize: 12, lineHeight: '17px' },
+] satisfies ComplexStyleRule[];
+
+const rowBodyData = makeStyleVariantsCustomData(rowBodyKeys, rowBodyValues);
+
+const rowBody = styleVariants(rowBodyData, (rowBodyValue) => [
+  letterSpacing,
+  rowBodyValue,
+]);
+
+const bodyKeys = [
+  'body1Regular',
+  'body1Medium',
+  'body2Regular',
+  'body2Medium',
+  'body3Regular',
+  'body3Medium',
+  'body4Regular',
+  'body4Medium',
+] as const;
+
+const bodyData = makeStyleVariantsData(bodyKeys);
+
+export const body = styleVariants(bodyData, (_, bodyKey) => {
+  const splitedKeys = bodyKey.split(/\d/);
+
+  const rowBodyKey = (splitedKeys[0] +
+    (bodyKey[4] as string)) as keyof typeof rowBody;
+  const _weight = splitedKeys[1]?.toLowerCase() as keyof typeof weightData;
+
+  return [rowBody[rowBodyKey], weight[_weight]];
 });
