@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { vars } from '../../styles';
 import { enumStyles } from '../../styles/utils';
-import { vars } from '../../styles/vars.css';
 
 const {
   body: { body3Medium },
@@ -25,7 +25,7 @@ export const link = recipe({
   variants: {
     color: {
       white: { color: 'white' },
-      gray: { color: vars.color.gray[400] },
+      gray: { color: vars.palette.gray400 },
       black: { color: 'black' },
     },
   },

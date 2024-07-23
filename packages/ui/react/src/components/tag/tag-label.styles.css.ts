@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { vars } from '../../styles/vars.css';
+import { vars } from '../../styles';
 
 export const tagLabelAsIcon = style({
-  color: vars.color.gray[400],
+  color: vars.palette.gray400,
 });
 
 export const tagLabel = recipe({

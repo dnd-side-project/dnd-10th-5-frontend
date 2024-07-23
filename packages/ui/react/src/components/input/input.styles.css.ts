@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { inputElement } from './input-element.styles.css';
+import { vars } from '../../styles';
 import { enumStyles } from '../../styles/utils/enum';
-import { vars } from '../../styles/vars.css';
 
 const {
   body: { body3Medium },
@@ -25,7 +25,7 @@ export const input = recipe({
     {
       boxSizing: 'border-box',
       width: '100%',
-      color: vars.color.gray[1000],
+      color: vars.palette.gray1000,
       transition: 'border 0.2s ease',
       outline: 'none',
     },
@@ -34,33 +34,33 @@ export const input = recipe({
   variants: {
     variant: {
       outline: {
-        border: `1px solid ${vars.color.gray[300]}`,
+        border: `1px solid ${vars.palette.gray300}`,
         borderRadius: 8,
         padding: '10px 12px',
 
         selectors: {
           '&:disabled': {
-            backgroundColor: vars.color.gray[300],
+            backgroundColor: vars.palette.gray300,
           },
           '&:focus': {
-            border: `1px solid ${vars.color.gray[900]}`,
+            border: `1px solid ${vars.palette.gray900}`,
           },
           '&::placeholder': {
-            color: vars.color.gray[500],
+            color: vars.palette.gray500,
           },
         },
       },
       flushed: {
         border: 'none',
-        borderBottom: `1px solid ${vars.color.gray[300]}`,
+        borderBottom: `1px solid ${vars.palette.gray300}`,
         padding: '10px 0',
 
         selectors: {
           '&:focus': {
-            borderBottom: `1px solid ${vars.color.gray[900]}`,
+            borderBottom: `1px solid ${vars.palette.gray900}`,
           },
           '&::placeholder': {
-            color: vars.color.gray[500],
+            color: vars.palette.gray500,
           },
         },
       },

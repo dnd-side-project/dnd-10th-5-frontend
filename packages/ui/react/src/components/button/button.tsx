@@ -24,7 +24,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       colorScheme,
       justify,
       variant,
-      text,
+      weight,
       radius,
       width,
       ...restProps
@@ -43,7 +43,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
             colorScheme,
             justify,
             variant,
-            text,
+            weight,
             radius,
             width,
           }),
