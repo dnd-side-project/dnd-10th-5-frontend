@@ -1,6 +1,6 @@
+import { vars } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { vars } from '../../styles';
 
 export const tagLabelAsIcon = style({
   color: vars.palette.gray400,

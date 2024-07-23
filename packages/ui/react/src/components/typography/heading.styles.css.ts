@@ -1,9 +1,14 @@
+import {
+  grayPalette,
+  heading,
+  systemPalette,
+  textAlign,
+  textWrap,
+  truncate,
+  vars,
+} from '@favolink-ui/styles';
 import { styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { grayPalette, systemPalette, vars } from '../../styles';
-import { enumStyles } from '../../styles/utils';
-
-const { textAlign: align, heading, truncate, textWrap: wrap } = enumStyles;
 
 const colorPalette = { ...grayPalette, ...systemPalette };
 
@@ -13,13 +18,13 @@ const color = styleVariants(colorPalette, (_, colorPaletteKey) => ({
 
 export const headingVariants = recipe({
   variants: {
-    align,
+    align: textAlign,
     color,
     variant: heading,
     truncate: {
       true: [truncate],
     },
-    wrap,
+    wrap: textWrap,
   },
 
   defaultVariants: {

@@ -1,14 +1,9 @@
+import { body, vars } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { vars } from '../../styles';
-import { enumStyles } from '../../styles/utils';
-
-const {
-  body: { body3Medium },
-} = enumStyles;
 
 const base = style([
-  body3Medium,
+  body.body3Medium,
   {
     cursor: 'pointer',
     textDecoration: 'none',

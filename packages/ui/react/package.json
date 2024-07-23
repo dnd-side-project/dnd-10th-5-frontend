@@ -2,17 +2,14 @@
   "name": "@favolink-ui/react",
   "version": "0.0.0",
   "private": true,
-  "exports": {
-    ".": "./src/index.ts",
-    "./reset.css": "./src/styles/reset.css.ts",
-    "./theme.css": "./src/styles/theme.css.ts"
-  },
+  "main": "src/index.ts",
   "scripts": {
     "lint": "eslint \"**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}\""
   },
   "dependencies": {
     "@favolink-ui/hooks": "workspace:*",
     "@favolink-ui/icons": "workspace:*",
+    "@favolink-ui/styles": "workspace:*",
     "@favolink-ui/system": "workspace:*",
     "@favolink-ui/utils": "workspace:*",
     "@vanilla-extract/css": "^1.14.1",

@@ -1,5 +1,5 @@
+import { vars } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
-import { vars } from '../../styles';
 
 export const toastItemBase = style({
   width: '100%',

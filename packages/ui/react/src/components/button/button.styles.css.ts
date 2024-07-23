@@ -1,12 +1,12 @@
+import {
+  archivePalette,
+  body,
+  heading,
+  inherencePalette,
+  vars,
+} from '@favolink-ui/styles';
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { archivePalette, inherencePalette, vars } from '../../styles/';
-import { enumStyles } from '../../styles/utils';
-
-const {
-  body: { body3Regular },
-  heading: { h6Semibold },
-} = enumStyles;
 
 const base = style({
   display: 'inline-flex',
@@ -61,8 +61,8 @@ export const buttonVariants = recipe({
       },
     },
     weight: {
-      regular: [body3Regular],
-      semibold: [h6Semibold],
+      regular: [body.body3Regular],
+      semibold: [heading.h6Semibold],
     },
     radius: {
       normal: {
