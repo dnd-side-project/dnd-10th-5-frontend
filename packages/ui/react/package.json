@@ -5,9 +5,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./reset.css": "./src/styles/reset.css.ts",
-    "./vars.css": "./src/styles/vars.css.ts",
-    "./theme.css": "./src/styles/theme.css.ts",
-    "./utilities.css": "./src/styles/utilities/index.ts"
+    "./theme.css": "./src/styles/theme.css.ts"
   },
   "scripts": {
     "lint": "eslint \"**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}\""
