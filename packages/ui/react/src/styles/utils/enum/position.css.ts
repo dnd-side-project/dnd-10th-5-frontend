@@ -1,11 +1,16 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsData } from '../../make-style-variants-data';
 
-export const position = styleVariants({
-  static: { position: 'static' },
-  relative: { position: 'relative' },
-  absolute: { position: 'absolute' },
-  fixed: { position: 'fixed' },
-  sticky: { position: 'sticky' },
-});
+const positionValues = [
+  'static',
+  'relative',
+  'absolute',
+  'fixed',
+  'sticky',
+] satisfies CSSProperties['position'];
 
-export type Position = keyof typeof position;
+const positionData = makeStyleVariantsData(positionValues);
+
+export const position = styleVariants(positionData, (positionValue) => ({
+  position: positionValue,
+}));

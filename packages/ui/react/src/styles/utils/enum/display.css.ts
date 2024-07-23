@@ -1,12 +1,19 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsData } from '../../make-style-variants-data';
 
-export const display = styleVariants({
-  block: { display: 'block' },
-  inline: { display: 'inline' },
-  inlineBlock: { display: 'inline-block' },
-  flex: { display: 'flex' },
-  inlineFlex: { display: 'inline-flex' },
-  grid: { display: 'grid' },
-  inlineGrid: { display: 'inline-grid' },
-  none: { display: 'none' },
-});
+const displayValues = [
+  'block',
+  'inline',
+  'inline-block',
+  'flex',
+  'inline-flex',
+  'grid',
+  'inline-grid',
+  'none',
+] satisfies CSSProperties['display'];
+
+const displayData = makeStyleVariantsData(displayValues);
+
+export const display = styleVariants(displayData, (displayDataValue) => ({
+  display: displayDataValue,
+}));

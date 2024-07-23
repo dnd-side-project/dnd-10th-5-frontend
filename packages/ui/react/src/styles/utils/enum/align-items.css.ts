@@ -1,9 +1,30 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsCustomData } from '../../make-style-variants-data';
 
-export const alignItems = styleVariants({
-  start: { alignItems: 'flex-start' },
-  center: { alignItems: 'center' },
-  end: { alignItems: 'flex-end' },
-  baseline: { alignItems: 'baseline' },
-  stretch: { alignItems: 'stretch' },
-});
+const alignItemsKeys = [
+  'start',
+  'center',
+  'end',
+  'baseline',
+  'stretch',
+] as const;
+
+const alignItemsValues = [
+  'flex-start',
+  'center',
+  'flex-end',
+  'baseline',
+  'stretch',
+] satisfies CSSProperties['alignItems'];
+
+const alignItemsData = makeStyleVariantsCustomData(
+  alignItemsKeys,
+  alignItemsValues,
+);
+
+export const alignItems = styleVariants(
+  alignItemsData,
+  (alignItemsDataValue) => ({
+    alignItems: alignItemsDataValue,
+  }),
+);

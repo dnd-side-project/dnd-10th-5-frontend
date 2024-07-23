@@ -1,7 +1,14 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsData } from '../../make-style-variants-data';
 
-export const textAlign = styleVariants({
-  left: { textAlign: 'left' },
-  center: { textAlign: 'center' },
-  right: { textAlign: 'right' },
-});
+const textAlignValues = [
+  'left',
+  'center',
+  'right',
+] satisfies CSSProperties['textAlign'];
+
+const textAlignData = makeStyleVariantsData(textAlignValues);
+
+export const textAlign = styleVariants(textAlignData, (textAlignValue) => ({
+  textAlign: textAlignValue,
+}));

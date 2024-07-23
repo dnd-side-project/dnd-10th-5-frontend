@@ -1,8 +1,12 @@
 import { styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsCustomData } from '../../make-style-variants-data';
 
-export const flexGrow = styleVariants({
-  none: { flexGrow: 0 },
-  grow: { flexGrow: 1 },
-});
+const flexGrowKeys = ['none', 'grow'] as const;
 
-export type FlexGrow = keyof typeof flexGrow;
+const flexGrowValues = [0, 1] as const;
+
+const flexGrowData = makeStyleVariantsCustomData(flexGrowKeys, flexGrowValues);
+
+export const flexGrow = styleVariants(flexGrowData, (flexGrowValue) => ({
+  flexGrow: flexGrowValue,
+}));

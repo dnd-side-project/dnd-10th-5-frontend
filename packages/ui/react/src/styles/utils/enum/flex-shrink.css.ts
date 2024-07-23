@@ -1,8 +1,15 @@
 import { styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsCustomData } from '../../make-style-variants-data';
 
-export const flexShrink = styleVariants({
-  none: { flexShrink: 0 },
-  shrink: { flexShrink: 1 },
-});
+const flexShrinkKeys = ['none', 'shrink'] as const;
 
-export type FlexShrink = keyof typeof flexShrink;
+const flexShrinkValues = [0, 1] as const;
+
+const flexShrinkData = makeStyleVariantsCustomData(
+  flexShrinkKeys,
+  flexShrinkValues,
+);
+
+export const flexShrink = styleVariants(flexShrinkData, (flexShrinkValue) => ({
+  flexShrink: flexShrinkValue,
+}));

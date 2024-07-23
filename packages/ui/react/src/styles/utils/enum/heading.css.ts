@@ -1,31 +1,71 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type ComplexStyleRule, styleVariants } from '@vanilla-extract/css';
 import { letterSpacing } from './letter-spacing.css';
+import {
+  makeStyleVariantsCustomData,
+  makeStyleVariantsData,
+} from '../../make-style-variants-data';
 
-const weight = styleVariants({
-  semibold: { fontWeight: 600 },
-  bold: { fontWeight: 700 },
-});
+const weightKeys = ['semibold', 'bold'] as const;
 
-const rowHeading = styleVariants({
-  h1: [letterSpacing, { fontSize: 28, lineHeight: '39px' }],
-  h2: [letterSpacing, { fontSize: 24, lineHeight: '34px' }],
-  h3: [letterSpacing, { fontSize: 20, lineHeight: '28px' }],
-  h4: [letterSpacing, { fontSize: 18, lineHeight: '25px' }],
-  h5: [letterSpacing, { fontSize: 16, lineHeight: '22px' }],
-  h6: [letterSpacing, { fontSize: 14, lineHeight: '20px' }],
-});
+const weightValues = [600, 700] as const;
 
-export const heading = styleVariants({
-  h1Semibold: [rowHeading.h1, weight.semibold],
-  h1Bold: [rowHeading.h1, weight.bold],
-  h2Semibold: [rowHeading.h2, weight.semibold],
-  h2Bold: [rowHeading.h2, weight.bold],
-  h3Semibold: [rowHeading.h3, weight.semibold],
-  h3Bold: [rowHeading.h3, weight.bold],
-  h4Semibold: [rowHeading.h4, weight.semibold],
-  h4Bold: [rowHeading.h4, weight.bold],
-  h5Semibold: [rowHeading.h5, weight.semibold],
-  h5Bold: [rowHeading.h5, weight.bold],
-  h6Semibold: [rowHeading.h6, weight.semibold],
-  h6Bold: [rowHeading.h6, weight.bold],
+const weightData = makeStyleVariantsCustomData(weightKeys, weightValues);
+
+export const weight = styleVariants(weightData, (weightValue) => ({
+  fontWeight: weightValue,
+}));
+
+const rowHeadingKeys = [
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+] satisfies (keyof JSX.IntrinsicElements)[];
+
+const rowHeadingValues = [
+  { fontSize: 28, lineHeight: '39px' },
+  { fontSize: 24, lineHeight: '34px' },
+  { fontSize: 20, lineHeight: '28px' },
+  { fontSize: 18, lineHeight: '25px' },
+  { fontSize: 16, lineHeight: '22px' },
+  { fontSize: 14, lineHeight: '20px' },
+] satisfies ComplexStyleRule[];
+
+const rowHeadingData = makeStyleVariantsCustomData(
+  rowHeadingKeys,
+  rowHeadingValues,
+);
+
+const rowHeading = styleVariants(rowHeadingData, (rowHeadingDataValue) => [
+  letterSpacing,
+  rowHeadingDataValue,
+]);
+
+const headingKeys = [
+  'h1Semibold',
+  'h1Bold',
+  'h2Semibold',
+  'h2Bold',
+  'h3Semibold',
+  'h3Bold',
+  'h4Semibold',
+  'h4Bold',
+  'h5Semibold',
+  'h5Bold',
+  'h6Semibold',
+  'h6Bold',
+] as const;
+
+const headingData = makeStyleVariantsData(headingKeys);
+
+export const heading = styleVariants(headingData, (_, headingKey) => {
+  const splitedKeys = headingKey.split(/\d/);
+
+  const tag = (splitedKeys[0] +
+    (headingKey[1] as string)) as keyof typeof rowHeading;
+  const _weight = splitedKeys[1]?.toLowerCase() as keyof typeof weightData;
+
+  return [rowHeading[tag], weight[_weight]];
 });

@@ -1,31 +1,24 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsData } from '../../make-style-variants-data';
 
-export const overflow = styleVariants({
-  visible: { overflow: 'visible' },
-  hidden: { overflow: 'hidden' },
-  clip: { overflow: 'clip' },
-  scroll: { overflow: 'scroll' },
-  auto: { overflow: 'auto' },
-});
+const overflowValues = [
+  'visible',
+  'hidden',
+  'clip',
+  'scroll',
+  'auto',
+] satisfies CSSProperties['overflow'];
 
-export type Overflow = keyof typeof overflow;
+const overflowData = makeStyleVariantsData(overflowValues);
 
-export const overflowX = styleVariants({
-  visible: { overflowX: 'visible' },
-  hidden: { overflowX: 'hidden' },
-  clip: { overflowX: 'clip' },
-  scroll: { overflowX: 'scroll' },
-  auto: { overflowX: 'auto' },
-});
+export const overflow = styleVariants(overflowData, (overflowValue) => ({
+  overflow: overflowValue,
+}));
 
-export type OverflowX = keyof typeof overflowX;
+export const overflowX = styleVariants(overflowData, (overflowValue) => ({
+  overflowX: overflowValue,
+}));
 
-export const overflowY = styleVariants({
-  visible: { overflowY: 'visible' },
-  hidden: { overflowY: 'hidden' },
-  clip: { overflowY: 'clip' },
-  scroll: { overflowY: 'scroll' },
-  auto: { overflowY: 'auto' },
-});
-
-export type OverflowY = keyof typeof overflowY;
+export const overflowY = styleVariants(overflowData, (overflowValue) => ({
+  overflowY: overflowValue,
+}));
