@@ -1,7 +1,14 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsData } from '../../make-style-variants-data';
 
-export const flexWrap = styleVariants({
-  nowrap: { flexWrap: 'nowrap' },
-  wrap: { flexWrap: 'wrap' },
-  wrapReverse: { flexWrap: 'wrap-reverse' },
-});
+const flexWrapValues = [
+  'nowrap',
+  'wrap',
+  'wrap-reverse',
+] satisfies CSSProperties['flexWrap'];
+
+const flexWrapData = makeStyleVariantsData(flexWrapValues);
+
+export const flexWrap = styleVariants(flexWrapData, (flexWrapValue) => ({
+  flexWrap: flexWrapValue,
+}));

@@ -1,8 +1,18 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
+import { makeStyleVariantsData } from '../../make-style-variants-data';
 
-export const flexDirection = styleVariants({
-  row: { flexDirection: 'row' },
-  column: { flexDirection: 'column' },
-  rowReverse: { flexDirection: 'row-reverse' },
-  columnReverse: { flexDirection: 'column-reverse' },
-});
+const flexDirectionValues = [
+  'row',
+  'column',
+  'row-reverse',
+  'column-reverse',
+] satisfies CSSProperties['flexDirection'];
+
+const flexDirectionData = makeStyleVariantsData(flexDirectionValues);
+
+export const flexDirection = styleVariants(
+  flexDirectionData,
+  (flexDirectionValue) => ({
+    flexDirection: flexDirectionValue,
+  }),
+);
