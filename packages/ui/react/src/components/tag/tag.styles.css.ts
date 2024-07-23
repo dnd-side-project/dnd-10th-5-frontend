@@ -1,11 +1,6 @@
+import { archivePalette, body, vars } from '@favolink-ui/styles';
 import { style, styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { archivePalette, vars } from '../../styles';
-import { enumStyles } from '../../styles/utils';
-
-const {
-  body: { body3Medium, body4Medium },
-} = enumStyles;
 
 export const colorScheme = styleVariants(
   archivePalette,
@@ -29,8 +24,8 @@ export const tag = recipe({
   variants: {
     colorScheme,
     size: {
-      small: [body4Medium, { padding: '4px 8px' }],
-      medium: [body3Medium, { padding: '8px 14px' }],
+      small: [body.body4Medium, { padding: '4px 8px' }],
+      medium: [body.body3Medium, { padding: '8px 14px' }],
     },
   },
 

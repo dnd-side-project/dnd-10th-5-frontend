@@ -1,12 +1,7 @@
+import { body, vars } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { inputElement } from './input-element.styles.css';
-import { vars } from '../../styles';
-import { enumStyles } from '../../styles/utils/enum';
-
-const {
-  body: { body3Medium },
-} = enumStyles;
 
 export const inputWithElement = style({
   selectors: {
@@ -21,7 +16,7 @@ export const inputWithElement = style({
 
 export const input = recipe({
   base: [
-    body3Medium,
+    body.body3Medium,
     {
       boxSizing: 'border-box',
       width: '100%',

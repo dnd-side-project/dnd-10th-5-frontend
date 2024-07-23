@@ -1,8 +1,6 @@
+import { heading } from '@favolink-ui/styles';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { enumStyles } from '../../styles/utils';
 import * as tagStyles from '../tag/tag.styles.css';
-
-const { heading } = enumStyles;
 
 export const iconButton = recipe({
   base: {

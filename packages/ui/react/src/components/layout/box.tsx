@@ -1,7 +1,7 @@
+import { extractDynamicProps } from '@favolink-ui/styles';
 import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './box.css';
-import { extractDynamicProps } from '../../styles';
 
 type BoxDivProps = HTMLFavolinkProps<'div'> & { as?: 'div' };
 

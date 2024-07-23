@@ -209,6 +209,9 @@ importers:
       '@favolink-ui/icons':
         specifier: workspace:*
         version: link:../icons
+      '@favolink-ui/styles':
+        specifier: workspace:*
+        version: link:../styles
       '@favolink-ui/system':
         specifier: workspace:*
         version: link:../system

@@ -1,25 +1,29 @@
+import {
+  alignItems,
+  display,
+  flexDirection,
+  flexWrap,
+  gap,
+  gapVar,
+  gapX,
+  gapXVar,
+  gapY,
+  gapYVar,
+  justifyContent,
+} from '@favolink-ui/styles';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
-import { dynamicStyles, dynamicVars, enumStyles } from '../../styles/utils';
-
-const {
-  display: { none, flex, inlineFlex },
-  alignItems: align,
-  justifyContent: justify,
-  flexWrap: wrap,
-  flexDirection: direction,
-} = enumStyles;
 
 export const flexEnumVariants = recipe({
   variants: {
     display: {
-      none,
-      flex,
-      inlineFlex,
+      none: display.none,
+      flex: display.flex,
+      inlineFlex: display.inlineFlex,
     },
-    align,
-    direction,
-    justify,
-    wrap,
+    align: alignItems,
+    direction: flexDirection,
+    justify: justifyContent,
+    wrap: flexWrap,
   },
 
   defaultVariants: {
@@ -32,15 +36,11 @@ export type FlexEnumVariants = Exclude<
   undefined
 >;
 
-const { gapVar, gapXVar, gapYVar } = dynamicVars;
-
 export const flexDynamicVariantVars = {
   gapVar,
   gapXVar,
   gapYVar,
 };
-
-const { gap, gapX, gapY } = dynamicStyles;
 
 export const flexDynamicVariants = {
   gap,
