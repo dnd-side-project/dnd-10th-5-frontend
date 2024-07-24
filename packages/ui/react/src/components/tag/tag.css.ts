@@ -1,7 +1,11 @@
 import {
+  alignItems,
   archivePaletteTokens,
   body,
   borderRadius,
+  display,
+  flexShrink,
+  textWrap,
   vars,
 } from '@favolink-ui/styles';
 import {
@@ -82,10 +86,15 @@ export const colorVariant = styleVariants(
 
 const base = style([
   colorVariantClass,
+  display.inlineFlex,
+  alignItems.center,
+  flexShrink.none,
+  textWrap.nowrap,
   borderRadius.full,
   body.body4Medium,
   {
     padding: '4px 8px',
+    height: 'fit-content',
   },
 ]);
 
