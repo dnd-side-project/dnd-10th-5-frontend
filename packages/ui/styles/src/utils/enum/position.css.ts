@@ -1,5 +1,6 @@
 import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
-import { makeStyleVariantsData } from '../../make-style-variants-data';
+import { makeData } from '../../make-data';
+import { mapToProp } from '../../map-to-prop';
 
 const positionValues = [
   'static',
@@ -9,8 +10,6 @@ const positionValues = [
   'sticky',
 ] satisfies CSSProperties['position'];
 
-const positionData = makeStyleVariantsData(positionValues);
+const positionData = makeData(positionValues);
 
-export const position = styleVariants(positionData, (positionValue) => ({
-  position: positionValue,
-}));
+export const position = styleVariants(positionData, mapToProp('position'));

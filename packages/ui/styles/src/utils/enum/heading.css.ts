@@ -1,15 +1,12 @@
 import { type ComplexStyleRule, styleVariants } from '@vanilla-extract/css';
 import { letterSpacing } from './letter-spacing.css';
-import {
-  makeStyleVariantsCustomData,
-  makeStyleVariantsData,
-} from '../../make-style-variants-data';
+import { makeCustomData, makeData } from '../../make-data';
 
 const weightKeys = ['semibold', 'bold'] as const;
 
 const weightValues = [600, 700] as const;
 
-const weightData = makeStyleVariantsCustomData(weightKeys, weightValues);
+const weightData = makeCustomData(weightKeys, weightValues);
 
 export const weight = styleVariants(weightData, (weightValue) => ({
   fontWeight: weightValue,
@@ -33,10 +30,7 @@ const rowHeadingValues = [
   { fontSize: 14, lineHeight: '20px' },
 ] satisfies ComplexStyleRule[];
 
-const rowHeadingData = makeStyleVariantsCustomData(
-  rowHeadingKeys,
-  rowHeadingValues,
-);
+const rowHeadingData = makeCustomData(rowHeadingKeys, rowHeadingValues);
 
 const rowHeading = styleVariants(rowHeadingData, (rowHeadingDataValue) => [
   letterSpacing,
@@ -58,7 +52,7 @@ const headingKeys = [
   'h6Bold',
 ] as const;
 
-const headingData = makeStyleVariantsData(headingKeys);
+const headingData = makeData(headingKeys);
 
 export const heading = styleVariants(headingData, (_, headingKey) => {
   const splitedKeys = headingKey.split(/\d/);

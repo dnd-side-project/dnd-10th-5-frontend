@@ -1,5 +1,6 @@
 import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
-import { makeStyleVariantsData } from '../../make-style-variants-data';
+import { makeData } from '../../make-data';
+import { mapToProp } from '../../map-to-prop';
 
 const displayValues = [
   'block',
@@ -12,8 +13,6 @@ const displayValues = [
   'none',
 ] satisfies CSSProperties['display'];
 
-const displayData = makeStyleVariantsData(displayValues);
+const displayData = makeData(displayValues);
 
-export const display = styleVariants(displayData, (displayDataValue) => ({
-  display: displayDataValue,
-}));
+export const display = styleVariants(displayData, mapToProp('display'));

@@ -1,15 +1,12 @@
 import { type ComplexStyleRule, styleVariants } from '@vanilla-extract/css';
 import { letterSpacing } from './letter-spacing.css';
-import {
-  makeStyleVariantsCustomData,
-  makeStyleVariantsData,
-} from '../../make-style-variants-data';
+import { makeCustomData, makeData } from '../../make-data';
 
 const weightKeys = ['regular', 'medium'] as const;
 
 const weightValues = [400, 500] as const;
 
-const weightData = makeStyleVariantsCustomData(weightKeys, weightValues);
+const weightData = makeCustomData(weightKeys, weightValues);
 
 const weight = styleVariants(weightData, (weightValue) => ({
   fontWeight: weightValue,
@@ -24,7 +21,7 @@ const rowBodyValues = [
   { fontSize: 12, lineHeight: '17px' },
 ] satisfies ComplexStyleRule[];
 
-const rowBodyData = makeStyleVariantsCustomData(rowBodyKeys, rowBodyValues);
+const rowBodyData = makeCustomData(rowBodyKeys, rowBodyValues);
 
 const rowBody = styleVariants(rowBodyData, (rowBodyValue) => [
   letterSpacing,
@@ -42,7 +39,7 @@ const bodyKeys = [
   'body4Medium',
 ] as const;
 
-const bodyData = makeStyleVariantsData(bodyKeys);
+const bodyData = makeData(bodyKeys);
 
 export const body = styleVariants(bodyData, (_, bodyKey) => {
   const splitedKeys = bodyKey.split(/\d/);

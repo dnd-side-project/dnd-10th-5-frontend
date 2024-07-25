@@ -1,5 +1,6 @@
 import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
-import { makeStyleVariantsData } from '../../make-style-variants-data';
+import { makeData } from '../../make-data';
+import { mapToProp } from '../../map-to-prop';
 
 const overflowValues = [
   'visible',
@@ -9,16 +10,10 @@ const overflowValues = [
   'auto',
 ] satisfies CSSProperties['overflow'];
 
-const overflowData = makeStyleVariantsData(overflowValues);
+const overflowData = makeData(overflowValues);
 
-export const overflow = styleVariants(overflowData, (overflowValue) => ({
-  overflow: overflowValue,
-}));
+export const overflow = styleVariants(overflowData, mapToProp('overflow'));
 
-export const overflowX = styleVariants(overflowData, (overflowValue) => ({
-  overflowX: overflowValue,
-}));
+export const overflowX = styleVariants(overflowData, mapToProp('overflowX'));
 
-export const overflowY = styleVariants(overflowData, (overflowValue) => ({
-  overflowY: overflowValue,
-}));
+export const overflowY = styleVariants(overflowData, mapToProp('overflowY'));

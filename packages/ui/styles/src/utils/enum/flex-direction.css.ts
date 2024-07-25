@@ -1,5 +1,6 @@
 import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
-import { makeStyleVariantsData } from '../../make-style-variants-data';
+import { makeData } from '../../make-data';
+import { mapToProp } from '../../map-to-prop';
 
 const flexDirectionValues = [
   'row',
@@ -8,11 +9,9 @@ const flexDirectionValues = [
   'column-reverse',
 ] satisfies CSSProperties['flexDirection'];
 
-const flexDirectionData = makeStyleVariantsData(flexDirectionValues);
+const flexDirectionData = makeData(flexDirectionValues);
 
 export const flexDirection = styleVariants(
   flexDirectionData,
-  (flexDirectionValue) => ({
-    flexDirection: flexDirectionValue,
-  }),
+  mapToProp('flexDirection'),
 );
