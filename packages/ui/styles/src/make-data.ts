@@ -10,9 +10,7 @@ function kebabToCamelCase<T extends string>(value: T) {
   ) as KebabToCamelCase<T>;
 }
 
-export function makeStyleVariantsData<T extends readonly string[]>(
-  dataValues: T,
-) {
+export function makeData<T extends readonly string[]>(dataValues: T) {
   const data = dataValues.reduce(
     (prevData, value) => ({ ...prevData, [kebabToCamelCase(value)]: value }),
     {} as Record<KebabToCamelCase<T[number]>, T[number]>,
@@ -21,7 +19,7 @@ export function makeStyleVariantsData<T extends readonly string[]>(
   return data;
 }
 
-export function makeStyleVariantsCustomData<
+export function makeCustomData<
   K extends readonly string[],
   V extends readonly (ComplexStyleRule | number | string)[],
 >(customKeys: K, dataValues: V) {
