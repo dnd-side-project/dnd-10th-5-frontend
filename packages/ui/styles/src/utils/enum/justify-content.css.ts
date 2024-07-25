@@ -1,5 +1,6 @@
 import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
-import { makeStyleVariantsCustomData } from '../../make-style-variants-data';
+import { makeCustomData } from '../../make-data';
+import { mapToProp } from '../../map-to-prop';
 
 const justifyContentKeys = ['start', 'center', 'end', 'spaceBetween'] as const;
 
@@ -10,12 +11,12 @@ const justifyContentValues = [
   'space-between',
 ] satisfies CSSProperties['justifyContent'];
 
-const justifyContentData = makeStyleVariantsCustomData(
+const justifyContentData = makeCustomData(
   justifyContentKeys,
   justifyContentValues,
 );
 
 export const justifyContent = styleVariants(
   justifyContentData,
-  (justifyContentValue) => ({ justifyContent: justifyContentValue }),
+  mapToProp('justifyContent'),
 );

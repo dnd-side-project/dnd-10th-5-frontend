@@ -1,5 +1,6 @@
 import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
-import { makeStyleVariantsCustomData } from '../../make-style-variants-data';
+import { makeCustomData } from '../../make-data';
+import { mapToProp } from '../../map-to-prop';
 
 const alignItemsKeys = [
   'start',
@@ -17,14 +18,9 @@ const alignItemsValues = [
   'stretch',
 ] satisfies CSSProperties['alignItems'];
 
-const alignItemsData = makeStyleVariantsCustomData(
-  alignItemsKeys,
-  alignItemsValues,
-);
+const alignItemsData = makeCustomData(alignItemsKeys, alignItemsValues);
 
 export const alignItems = styleVariants(
   alignItemsData,
-  (alignItemsDataValue) => ({
-    alignItems: alignItemsDataValue,
-  }),
+  mapToProp('alignItems'),
 );

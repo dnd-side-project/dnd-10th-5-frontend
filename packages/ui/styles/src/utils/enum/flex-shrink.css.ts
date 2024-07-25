@@ -1,15 +1,14 @@
 import { styleVariants } from '@vanilla-extract/css';
-import { makeStyleVariantsCustomData } from '../../make-style-variants-data';
+import { makeCustomData } from '../../make-data';
+import { mapToProp } from '../../map-to-prop';
 
 const flexShrinkKeys = ['none', 'shrink'] as const;
 
 const flexShrinkValues = [0, 1] as const;
 
-const flexShrinkData = makeStyleVariantsCustomData(
-  flexShrinkKeys,
-  flexShrinkValues,
-);
+const flexShrinkData = makeCustomData(flexShrinkKeys, flexShrinkValues);
 
-export const flexShrink = styleVariants(flexShrinkData, (flexShrinkValue) => ({
-  flexShrink: flexShrinkValue,
-}));
+export const flexShrink = styleVariants(
+  flexShrinkData,
+  mapToProp('flexShrink'),
+);
