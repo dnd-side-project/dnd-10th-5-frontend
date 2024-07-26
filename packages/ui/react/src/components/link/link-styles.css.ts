@@ -1,6 +1,7 @@
-import { body, vars } from '@favolink-ui/styles';
+import { body } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { globalVars } from '../../theme.css';
 
 const base = style([
   body.body3Medium,
@@ -20,7 +21,7 @@ export const link = recipe({
   variants: {
     color: {
       white: { color: 'white' },
-      gray: { color: vars.palette.gray400 },
+      gray: { color: globalVars.palette.gray400 },
       black: { color: 'black' },
     },
   },

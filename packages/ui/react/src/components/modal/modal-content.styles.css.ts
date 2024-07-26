@@ -1,5 +1,5 @@
-import { vars } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
+import { globalVars } from '../../theme.css';
 
 export const modalContentBase = style({
   display: 'flex',
@@ -11,6 +11,6 @@ export const modalContentBase = style({
   flexDirection: 'column',
   padding: '20px 24px',
   maxWidth: 'max-content',
-  backgroundColor: vars.palette.gray200,
+  backgroundColor: globalVars.palette.gray200,
   borderRadius: 20,
 });

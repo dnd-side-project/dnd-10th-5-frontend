@@ -1,12 +1,10 @@
 import {
   alignItems,
-  archivePaletteTokens,
   body,
   borderRadius,
   display,
   flexShrink,
   textWrap,
-  vars,
 } from '@favolink-ui/styles';
 import {
   createGlobalThemeContract,
@@ -15,6 +13,7 @@ import {
   styleVariants,
 } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { archivePaletteTokens, globalVars } from '../../theme.css';
 
 const colorVariantPaletteTokenValues = {
   ...archivePaletteTokens,
@@ -54,20 +53,20 @@ const colorVariantPalette: typeof colorVariantPaletteTokens = {
       archivePink: '#ff8fb820',
       archivePurple: '#9570ff15',
       archiveYellow: '#ffe27940',
-      gray: vars.palette.gray200,
-      white: vars.palette.white,
+      gray: globalVars.palette.gray200,
+      white: globalVars.palette.white,
     },
     color: {
-      archiveBlack: vars.palette.gray700,
+      archiveBlack: globalVars.palette.gray700,
       archiveBlue: '#2c84ec',
       archiveBrightGreen: '#5db924',
-      archiveCoral: vars.palette.archiveCoral,
+      archiveCoral: globalVars.palette.archiveCoral,
       archiveMint: '#15c27a',
       archivePink: '#ff4c8c',
-      archivePurple: vars.palette.archivePurple,
+      archivePurple: globalVars.palette.archivePurple,
       archiveYellow: '#ff8a35',
-      gray: vars.palette.gray800,
-      white: vars.palette.gray800,
+      gray: globalVars.palette.gray800,
+      white: globalVars.palette.gray800,
     },
   },
 };
@@ -115,7 +114,7 @@ export const tagVariants = recipe({
         color: 'white',
       },
       style: {
-        border: `1px solid ${vars.palette.gray300}`,
+        border: `1px solid ${globalVars.palette.gray300}`,
       },
     },
   ],

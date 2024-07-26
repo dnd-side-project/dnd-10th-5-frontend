@@ -1,25 +1,22 @@
-import {
-  archivePalette,
-  body,
-  heading,
-  inherencePalette,
-  vars,
-} from '@favolink-ui/styles';
+import { alignItems, body, display, heading } from '@favolink-ui/styles';
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { archivePalette, globalVars, inherencePalette } from '../../theme.css';
 
-const base = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  textDecoration: 'none',
-  boxSizing: 'border-box',
-  appearance: 'none',
-  verticalAlign: 'middle',
-  whiteSpace: 'nowrap',
-  padding: '8px 10px',
-  minWidth: 72,
-});
+const base = style([
+  display.inlineFlex,
+  alignItems.center,
+  {
+    cursor: 'pointer',
+    textDecoration: 'none',
+    boxSizing: 'border-box',
+    appearance: 'none',
+    verticalAlign: 'middle',
+    whiteSpace: 'nowrap',
+    padding: '8px 10px',
+    minWidth: 72,
+  },
+]);
 
 const colorSchemeVar = createVar();
 
@@ -31,7 +28,7 @@ const colorSchemePalette = {
 const colorScheme = styleVariants(
   colorSchemePalette,
   (_, colorSchemePaletteKey) => ({
-    vars: { [colorSchemeVar]: vars.palette[colorSchemePaletteKey] },
+    vars: { [colorSchemeVar]: globalVars.palette[colorSchemePaletteKey] },
   }),
 );
 
@@ -52,12 +49,12 @@ export const buttonVariants = recipe({
       solid: {
         backgroundColor: colorSchemeVar,
         border: `1px solid ${colorSchemeVar}`,
-        color: vars.palette.white,
+        color: globalVars.palette.white,
       },
       outline: {
         backgroundColor: 'inherit',
         border: `1px solid ${colorSchemeVar}`,
-        color: vars.palette.gray1000,
+        color: globalVars.palette.gray1000,
       },
     },
     weight: {
@@ -96,9 +93,9 @@ export const buttonVariants = recipe({
       },
       style: {
         ':disabled': {
-          backgroundColor: vars.palette.gray400,
-          border: `1px solid ${vars.palette.gray400}`,
-          color: vars.palette.gray200,
+          backgroundColor: globalVars.palette.gray400,
+          border: `1px solid ${globalVars.palette.gray400}`,
+          color: globalVars.palette.gray200,
         },
       },
     },
