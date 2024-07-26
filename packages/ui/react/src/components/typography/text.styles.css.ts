@@ -1,16 +1,10 @@
-import {
-  body,
-  grayPalette,
-  textAlign,
-  textWrap,
-  truncate,
-  vars,
-} from '@favolink-ui/styles';
+import { body, textAlign, textWrap, truncate } from '@favolink-ui/styles';
 import { styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { globalVars, grayPalette } from '../../theme.css';
 
 const color = styleVariants(grayPalette, (_, grayPaletteKey) => ({
-  color: vars.palette[grayPaletteKey],
+  color: globalVars.palette[grayPaletteKey],
 }));
 
 export const textVariants = recipe({
