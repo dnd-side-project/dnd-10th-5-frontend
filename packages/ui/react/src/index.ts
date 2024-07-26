@@ -5,3 +5,4 @@ export * from '@favolink-ui/system';
 export * from '@favolink-ui/styles';
 export * from '@favolink-ui/utils';
 export * from './components';
+export * from './theme.css';
