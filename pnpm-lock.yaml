@@ -84,9 +84,6 @@ importers:
       '@favolink-ui/react':
         specifier: workspace:*
         version: link:../../packages/ui/react
-      '@favolink-ui/styles':
-        specifier: workspace:*
-        version: link:../../packages/ui/styles
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.50.1)
