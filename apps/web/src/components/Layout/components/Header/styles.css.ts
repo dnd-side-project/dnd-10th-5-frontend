@@ -1,4 +1,4 @@
-import { globalVars } from '@favolink-ui/react';
+import { globalVars } from '@favolink-ui/react/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const header = style([
