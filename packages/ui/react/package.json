@@ -4,6 +4,7 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
+    "./reset.css": "./src/reset.css.ts",
     "./theme.css": "./src/theme.css.ts"
   },
   "scripts": {
