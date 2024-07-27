@@ -1,9 +1,9 @@
-import { vars } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { globalVars } from '../../theme.css';
 
 const base = style({
-  color: vars.palette.gray1000,
+  color: globalVars.palette.gray1000,
 });
 
 export const modalTitleVariants = recipe({

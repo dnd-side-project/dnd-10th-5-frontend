@@ -50,7 +50,7 @@ export const themeTokens = {
   },
 };
 
-export const vars = createGlobalThemeContract(
+export const globalVars = createGlobalThemeContract(
   themeTokens,
   (value, path) => `favolink-${path[0]}-${value}`,
 );
@@ -93,7 +93,7 @@ export const inherencePalette: typeof inherencePaletteTokens = {
   white: '#ffffff',
 };
 
-createGlobalTheme(':root', vars, {
+createGlobalTheme(':root', globalVars, {
   palette: {
     ...archivePalette,
     ...grayPalette,

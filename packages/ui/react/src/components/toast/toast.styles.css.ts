@@ -1,9 +1,9 @@
-import { vars } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
+import { globalVars } from '../../theme.css';
 
 export const toastItemBase = style({
   width: '100%',
-  backgroundColor: vars.palette.gray800,
+  backgroundColor: globalVars.palette.gray800,
   borderRadius: 20,
   padding: '15px 28px',
   display: 'flex',

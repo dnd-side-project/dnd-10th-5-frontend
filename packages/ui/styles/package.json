@@ -2,11 +2,7 @@
   "name": "@favolink-ui/styles",
   "version": "0.0.0",
   "private": true,
-  "exports": {
-    ".": "./src/index.ts",
-    "./reset.css": "./src/reset.css.ts",
-    "./theme.css": "./src/theme.css.ts"
-  },
+  "main": "src/index.ts",
   "scripts": {
     "lint": "eslint \"**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}\""
   },

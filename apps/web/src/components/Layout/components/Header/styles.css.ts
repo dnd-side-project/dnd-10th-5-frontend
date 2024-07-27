@@ -1,9 +1,9 @@
-import { vars } from '@favolink-ui/styles/theme.css';
+import { globalVars } from '@favolink-ui/react/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const header = style([
   {
-    color: vars.palette.archiveCoral,
-    backgroundColor: vars.palette.archiveYellow,
+    color: globalVars.palette.archiveCoral,
+    backgroundColor: globalVars.palette.archiveYellow,
   },
 ]);
