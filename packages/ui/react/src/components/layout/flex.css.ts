@@ -3,15 +3,32 @@ import {
   display,
   flexDirection,
   flexWrap,
-  gap,
-  gapVar,
-  gapX,
-  gapXVar,
-  gapY,
-  gapYVar,
   justifyContent,
 } from '@favolink-ui/styles';
+import { createThemeContract, style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+
+export const dynamicVars = createThemeContract({
+  gap: null,
+  gapX: null,
+  gapY: null,
+});
+
+export const gap = style({
+  gap: dynamicVars.gap,
+});
+
+export const gapX = style({
+  columnGap: dynamicVars.gapX,
+});
+
+export const gapY = style({
+  rowGap: dynamicVars.gapY,
+});
+
+export type FlexDynamicVariants = {
+  [K in keyof typeof dynamicVars]?: number | string;
+};
 
 export const flexEnumVariants = recipe({
   variants: {
@@ -20,8 +37,8 @@ export const flexEnumVariants = recipe({
       flex: display.flex,
       inlineFlex: display.inlineFlex,
     },
-    align: alignItems,
     direction: flexDirection,
+    align: alignItems,
     justify: justifyContent,
     wrap: flexWrap,
   },
@@ -34,20 +51,4 @@ export const flexEnumVariants = recipe({
 export type FlexEnumVariants = Exclude<
   RecipeVariants<typeof flexEnumVariants>,
   undefined
->;
-
-export const flexDynamicVariantVars = {
-  gapVar,
-  gapXVar,
-  gapYVar,
-};
-
-export const flexDynamicVariants = {
-  gap,
-  gapX,
-  gapY,
-};
-
-export type FlexDynamicVariants = Partial<
-  Record<keyof typeof flexDynamicVariants, number | string>
 >;
