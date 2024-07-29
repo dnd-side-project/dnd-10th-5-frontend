@@ -1,4 +1,4 @@
-import { alignItems, body, display, heading } from '@favolink-ui/styles';
+import { alignItems, display } from '@favolink-ui/styles';
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { archivePalette, globalVars, inherencePalette } from '../../theme.css';
@@ -58,8 +58,14 @@ export const buttonVariants = recipe({
       },
     },
     weight: {
-      regular: [body.body3Regular],
-      semibold: [heading.h6Semibold],
+      regular: [
+        globalVars.text.text3,
+        { fontWeight: globalVars.weight.text.medium },
+      ],
+      semibold: [
+        globalVars.heading.h6,
+        { fontWeight: globalVars.weight.heading.semibold },
+      ],
     },
     radius: {
       normal: {

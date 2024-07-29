@@ -1,5 +1,5 @@
-import { heading } from '@favolink-ui/styles';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { globalVars } from '../../theme.css';
 import * as tagStyles from '../tag/tag.css';
 
 export const iconButton = recipe({
@@ -13,11 +13,20 @@ export const iconButton = recipe({
 
   variants: {
     size: {
-      small: [heading.h6Semibold, { padding: 8 }],
-      medium: [heading.h5Semibold, { padding: 10 }],
-      large: [heading.h4Semibold, { padding: 12 }],
+      small: [
+        globalVars.heading.h6,
+        { padding: 8, fontweight: globalVars.weight.heading.semibold },
+      ],
+      medium: [
+        globalVars.heading.h5,
+        { padding: 10, fontweight: globalVars.weight.heading.semibold },
+      ],
+      large: [
+        globalVars.heading.h4,
+        { padding: 12, fontweight: globalVars.weight.heading.semibold },
+      ],
     },
-    colorScheme: tagStyles.colorVariant,
+    colorScheme: tagStyles.color,
   },
 
   defaultVariants: {

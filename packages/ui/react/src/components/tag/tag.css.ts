@@ -1,6 +1,5 @@
 import {
   alignItems,
-  body,
   borderRadius,
   display,
   flexShrink,
@@ -15,21 +14,21 @@ import {
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { archivePaletteTokens, globalVars } from '../../theme.css';
 
-const colorVariantPaletteTokenValues = {
+const colorPaletteTokenValues = {
   ...archivePaletteTokens,
   gray: 'gray',
   white: 'white',
 };
 
-const colorVariantPaletteTokens = {
+const colorPaletteTokens = {
   palette: {
-    backgroundColor: colorVariantPaletteTokenValues,
-    color: colorVariantPaletteTokenValues,
+    backgroundColor: colorPaletteTokenValues,
+    color: colorPaletteTokenValues,
   },
 };
 
-const colorVariantVars = createGlobalThemeContract(
-  colorVariantPaletteTokens,
+const colorVars = createGlobalThemeContract(
+  colorPaletteTokens,
   (value, path) => {
     const palette = path[0];
     const kebabCasedKey = path[1]
@@ -42,7 +41,7 @@ const colorVariantVars = createGlobalThemeContract(
   },
 );
 
-const colorVariantPalette: typeof colorVariantPaletteTokens = {
+const colorPalette: typeof colorPaletteTokens = {
   palette: {
     backgroundColor: {
       archiveBlack: '#aaacb615',
@@ -71,29 +70,29 @@ const colorVariantPalette: typeof colorVariantPaletteTokens = {
   },
 };
 
-const colorVariantClass = createTheme(colorVariantVars, colorVariantPalette);
+const colorClass = createTheme(colorVars, colorPalette);
 
-export const colorVariant = styleVariants(
-  colorVariantPaletteTokenValues,
-  (_, colorVariantPaletteTokenKey) => ({
-    backgroundColor:
-      colorVariantVars.palette.backgroundColor[colorVariantPaletteTokenKey],
-    color: colorVariantVars.palette.color[colorVariantPaletteTokenKey],
-    border: `1px solid ${colorVariantVars.palette.backgroundColor[colorVariantPaletteTokenKey]}`,
+export const color = styleVariants(
+  colorPaletteTokenValues,
+  (_, colorPaletteTokenKey) => ({
+    backgroundColor: colorVars.palette.backgroundColor[colorPaletteTokenKey],
+    color: colorVars.palette.color[colorPaletteTokenKey],
+    border: `1px solid ${colorVars.palette.backgroundColor[colorPaletteTokenKey]}`,
   }),
 );
 
 const base = style([
-  colorVariantClass,
+  colorClass,
   display.inlineFlex,
   alignItems.center,
   flexShrink.none,
   textWrap.nowrap,
   borderRadius.full,
-  body.body4Medium,
+  globalVars.text.text4,
   {
     padding: '4px 8px',
     height: 'fit-content',
+    fontWeight: globalVars.weight.text.medium,
   },
 ]);
 
@@ -101,7 +100,7 @@ export const tagVariants = recipe({
   base,
 
   variants: {
-    color: colorVariant,
+    color,
   },
 
   defaultVariants: {
