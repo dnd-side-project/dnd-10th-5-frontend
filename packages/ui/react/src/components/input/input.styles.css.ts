@@ -1,4 +1,3 @@
-import { body } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { inputElement } from './input-element.styles.css';
@@ -17,13 +16,14 @@ export const inputWithElement = style({
 
 export const input = recipe({
   base: [
-    body.body3Medium,
+    globalVars.text.text3,
     {
       boxSizing: 'border-box',
       width: '100%',
       color: globalVars.palette.gray1000,
       transition: 'border 0.2s ease',
       outline: 'none',
+      fontWeight: globalVars.weight.text.medium,
     },
   ],
 

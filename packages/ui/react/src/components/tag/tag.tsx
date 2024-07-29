@@ -8,16 +8,18 @@ import * as styles from './tag.css';
 
 export type TagProps = HTMLFavolinkProps<'span'> & styles.TagVariants;
 
-export const Tag = forwardRef<TagProps, 'span'>(function Tag(props, ref) {
-  const { children, className, color, ...restProps } = props;
+export const Tag = forwardRef<TagProps, 'span'>(
+  function Tag(props, forwardedRef) {
+    const { children, className, color, ...restProps } = props;
 
-  return (
-    <favolink.span
-      {...restProps}
-      ref={ref}
-      className={cx('favolink-tag', styles.tagVariants({ color }), className)}
-    >
-      {children}
-    </favolink.span>
-  );
-});
+    return (
+      <favolink.span
+        {...restProps}
+        ref={forwardedRef}
+        className={cx('favolink-tag', styles.tagVariants({ color }), className)}
+      >
+        {children}
+      </favolink.span>
+    );
+  },
+);

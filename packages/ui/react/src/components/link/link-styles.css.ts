@@ -1,13 +1,13 @@
-import { body } from '@favolink-ui/styles';
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { globalVars } from '../../theme.css';
 
 const base = style([
-  body.body3Medium,
+  globalVars.text.text3,
   {
     cursor: 'pointer',
     textDecoration: 'none',
+    fontWeight: globalVars.weight.text.medium,
 
     ':hover': {
       textDecoration: 'underline',

@@ -1,6 +1,7 @@
 import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
-import * as styles from './text.styles.css';
+import * as styles from './text.css';
+import * as commonStyles from './typography.css';
 
 type TextDivProps = HTMLFavolinkProps<'div'> & { as: 'div' };
 
@@ -10,13 +11,8 @@ type TextPProps = HTMLFavolinkProps<'p'> & { as: 'p' };
 
 type TextSpanProps = HTMLFavolinkProps<'span'> & { as?: 'span' };
 
-type TextVariantOptionProps = {
-  size?: '1' | '2' | '3' | '4' | 1 | 2 | 3 | 4;
-  weight?: 'medium' | 'regular';
-};
-
-export type TextProps = Omit<styles.TextVariants, 'scale'> &
-  TextVariantOptionProps &
+export type TextProps = commonStyles.TypographyVariants &
+  styles.TextVariants &
   (TextDivProps | TextLabelProps | TextPProps | TextSpanProps);
 
 export const Text = forwardRef<TextProps, 'span'>(
@@ -28,17 +24,12 @@ export const Text = forwardRef<TextProps, 'span'>(
       className,
       align,
       color,
-      wrap,
       truncate,
-      size = 2,
-      weight = 'regular',
+      wrap,
+      size,
+      weight,
       ...restProps
     } = props;
-
-    const variant = ('body' +
-      size +
-      weight[0]?.toUpperCase() +
-      weight.slice(1)) as styles.TextVariants['variant'];
 
     return (
       <Slot
@@ -46,7 +37,8 @@ export const Text = forwardRef<TextProps, 'span'>(
         ref={forwardedRef}
         className={cx(
           'favolink-text',
-          styles.textVariants({ align, color, variant, truncate, wrap }),
+          commonStyles.typographyVariants({ align, color, truncate, wrap }),
+          styles.textVariants({ size, weight }),
           className,
         )}
       >
