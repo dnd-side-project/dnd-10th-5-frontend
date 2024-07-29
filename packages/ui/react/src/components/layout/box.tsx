@@ -1,5 +1,5 @@
 import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
-import { cx, mergeStyles, toPx } from '@favolink-ui/utils';
+import { cx, mergeStyles, px } from '@favolink-ui/utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import * as styles from './box.css';
 
@@ -84,25 +84,25 @@ export const Box = forwardRef<BoxProps, 'div'>(
         )}
         style={mergeStyles(
           assignInlineVars({
-            [styles.dynamicVars.padding]: toPx(padding),
-            [styles.dynamicVars.paddingX]: toPx(paddingX),
-            [styles.dynamicVars.paddingY]: toPx(paddingY),
-            [styles.dynamicVars.paddingTop]: toPx(paddingTop),
-            [styles.dynamicVars.paddingRight]: toPx(paddingRight),
-            [styles.dynamicVars.paddingBottom]: toPx(paddingBottom),
-            [styles.dynamicVars.paddingLeft]: toPx(paddingLeft),
-            [styles.dynamicVars.width]: toPx(width),
-            [styles.dynamicVars.minWidth]: toPx(minWidth),
-            [styles.dynamicVars.maxWidth]: toPx(maxWidth),
-            [styles.dynamicVars.height]: toPx(height),
-            [styles.dynamicVars.minHeight]: toPx(minHeight),
-            [styles.dynamicVars.maxHeight]: toPx(maxHeight),
-            [styles.dynamicVars.inset]: toPx(inset),
-            [styles.dynamicVars.top]: toPx(top),
-            [styles.dynamicVars.right]: toPx(right),
-            [styles.dynamicVars.bottom]: toPx(bottom),
-            [styles.dynamicVars.left]: toPx(left),
-            [styles.dynamicVars.flexBasis]: toPx(flexBasis),
+            [styles.dynamicVars.padding]: px(padding),
+            [styles.dynamicVars.paddingX]: px(paddingX),
+            [styles.dynamicVars.paddingY]: px(paddingY),
+            [styles.dynamicVars.paddingTop]: px(paddingTop),
+            [styles.dynamicVars.paddingRight]: px(paddingRight),
+            [styles.dynamicVars.paddingBottom]: px(paddingBottom),
+            [styles.dynamicVars.paddingLeft]: px(paddingLeft),
+            [styles.dynamicVars.width]: px(width),
+            [styles.dynamicVars.minWidth]: px(minWidth),
+            [styles.dynamicVars.maxWidth]: px(maxWidth),
+            [styles.dynamicVars.height]: px(height),
+            [styles.dynamicVars.minHeight]: px(minHeight),
+            [styles.dynamicVars.maxHeight]: px(maxHeight),
+            [styles.dynamicVars.inset]: px(inset),
+            [styles.dynamicVars.top]: px(top),
+            [styles.dynamicVars.right]: px(right),
+            [styles.dynamicVars.bottom]: px(bottom),
+            [styles.dynamicVars.left]: px(left),
+            [styles.dynamicVars.flexBasis]: px(flexBasis),
           }),
           style,
         )}
