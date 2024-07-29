@@ -1,5 +1,5 @@
 import { forwardRef } from '@favolink-ui/system';
-import { cx, mergeStyles, toPx } from '@favolink-ui/utils';
+import { cx, mergeStyles, px } from '@favolink-ui/utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { Box, type BoxProps } from './box';
 import * as styles from './flex.css';
@@ -39,9 +39,9 @@ export const Flex = forwardRef<FlexProps, typeof Box>(
         )}
         style={mergeStyles(
           assignInlineVars({
-            [styles.dynamicVars.gap]: toPx(gap),
-            [styles.dynamicVars.gapX]: toPx(gapX),
-            [styles.dynamicVars.gapY]: toPx(gapY),
+            [styles.dynamicVars.gap]: px(gap),
+            [styles.dynamicVars.gapX]: px(gapX),
+            [styles.dynamicVars.gapY]: px(gapY),
           }),
           style,
         )}
