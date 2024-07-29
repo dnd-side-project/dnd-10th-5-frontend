@@ -1,4 +1,4 @@
-export function toPx(value: number | string | undefined) {
+export function px(value: number | string | undefined) {
   if (typeof value === 'undefined') {
     return;
   }
