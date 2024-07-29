@@ -1,4 +1,4 @@
-import { heading, textAlign, textWrap, truncate } from '@favolink-ui/styles';
+import { textAlign, textWrap, truncate } from '@favolink-ui/styles';
 import { styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { globalVars, grayPalette, systemPalette } from '../../theme.css';
@@ -9,11 +9,10 @@ const color = styleVariants(colorPalette, (_, colorPaletteKey) => ({
   color: globalVars.palette[colorPaletteKey],
 }));
 
-export const headingVariants = recipe({
+export const typographyVariants = recipe({
   variants: {
     align: textAlign,
     color,
-    variant: heading,
     truncate: {
       true: [truncate],
     },
@@ -24,12 +23,11 @@ export const headingVariants = recipe({
     align: 'left',
     color: 'gray1100',
     truncate: false,
-    variant: 'h1Bold',
     wrap: 'nowrap',
   },
 });
 
-export type HeadingVariants = Exclude<
-  RecipeVariants<typeof headingVariants>,
+export type TypographyVariants = Exclude<
+  RecipeVariants<typeof typographyVariants>,
   undefined
 >;

@@ -1,15 +1,14 @@
 import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
-import * as styles from './heading.styles.css';
+import * as styles from './heading.css';
+import * as commonStyles from './typography.css';
 
-export type HeadingProps = HTMLFavolinkProps<'h2'> &
-  Omit<styles.HeadingVariants, 'variant'> & {
-    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    weight?: 'bold' | 'semibold';
-  };
+export type HeadingProps = commonStyles.TypographyVariants &
+  HTMLFavolinkProps<'h2'> &
+  styles.HeadingVariants;
 
 export const Heading = forwardRef<HeadingProps, 'h1'>(
-  function Heading(props, ref) {
+  function Heading(props, forwardedRef) {
     const {
       as: Tag = 'h1',
       asChild,
@@ -17,22 +16,20 @@ export const Heading = forwardRef<HeadingProps, 'h1'>(
       children,
       align,
       color,
-      weight = 'bold',
       truncate,
+      wrap,
+      weight,
       ...restProps
     } = props;
-
-    const variant = (Tag +
-      weight[0]?.toUpperCase() +
-      weight.slice(1)) as styles.HeadingVariants['variant'];
 
     return (
       <Slot
         {...restProps}
-        ref={ref}
+        ref={forwardedRef}
         className={cx(
           'favolink-heading',
-          styles.headingVariants({ variant, color, truncate, align }),
+          commonStyles.typographyVariants({ align, color, truncate, wrap }),
+          styles.headingVariants({ as: Tag, weight }),
           className,
         )}
       >
