@@ -13,6 +13,3 @@ export * from './position.css';
 export * from './text-align.css';
 export * from './text-wrap.css';
 export * from './truncate.css';
-
-export * from './body.css';
-export * from './heading.css';

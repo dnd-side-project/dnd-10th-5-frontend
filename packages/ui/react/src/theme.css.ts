@@ -41,18 +41,84 @@ export const inherencePaletteTokens = {
   white: 'white',
 };
 
-export const themeTokens = {
-  palette: {
-    ...archivePaletteTokens,
-    ...grayPaletteTokens,
-    ...systemPaletteTokens,
-    ...inherencePaletteTokens,
+export const paletteTokens = {
+  ...archivePaletteTokens,
+  ...grayPaletteTokens,
+  ...systemPaletteTokens,
+  ...inherencePaletteTokens,
+};
+
+export const weightHeadingTokens = {
+  semibold: 'semibold',
+  bold: 'bold',
+};
+
+export const weightTextTokens = {
+  regular: 'regular',
+  medium: 'medium',
+};
+
+export const weightTokens = {
+  heading: weightHeadingTokens,
+  text: weightTextTokens,
+};
+
+export const headingTokens = {
+  h1: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
   },
+  h2: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+  h3: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+  h4: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+  h5: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+  h6: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+};
+
+export const textTokens = {
+  text1: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+  text2: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+  text3: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+  text4: {
+    fontSize: 'font-size',
+    lineHeight: 'line-height',
+  },
+};
+
+export const themeTokens = {
+  palette: paletteTokens,
+  heading: headingTokens,
+  text: textTokens,
+  weight: weightTokens,
 };
 
 export const globalVars = createGlobalThemeContract(
   themeTokens,
-  (value, path) => `favolink-${path[0]}-${value}`,
+  (value, path) => `favolink-${path.slice(0, -1).join('-')}-${value}`,
 );
 
 export const archivePalette: typeof archivePaletteTokens = {
@@ -93,11 +159,77 @@ export const inherencePalette: typeof inherencePaletteTokens = {
   white: '#ffffff',
 };
 
-createGlobalTheme(':root', globalVars, {
-  palette: {
-    ...archivePalette,
-    ...grayPalette,
-    ...systemPalette,
-    ...inherencePalette,
+export const palette = {
+  ...archivePalette,
+  ...grayPalette,
+  ...systemPalette,
+  ...inherencePalette,
+};
+
+export const weightHeading: typeof weightHeadingTokens = {
+  semibold: '600',
+  bold: '700',
+};
+
+export const weightText: typeof weightTextTokens = {
+  regular: '400',
+  medium: '500',
+};
+
+export const weight: typeof weightTokens = {
+  heading: weightHeading,
+  text: weightText,
+};
+
+export const heading: typeof headingTokens = {
+  h1: {
+    fontSize: '28px',
+    lineHeight: '39px',
   },
+  h2: {
+    fontSize: '24px',
+    lineHeight: '34px',
+  },
+  h3: {
+    fontSize: '20px',
+    lineHeight: '28px',
+  },
+  h4: {
+    fontSize: '18px',
+    lineHeight: '25px',
+  },
+  h5: {
+    fontSize: '16px',
+    lineHeight: '22px',
+  },
+  h6: {
+    fontSize: '14px',
+    lineHeight: '20px',
+  },
+};
+
+export const text: typeof textTokens = {
+  text1: {
+    fontSize: '18px',
+    lineHeight: '25px',
+  },
+  text2: {
+    fontSize: '16px',
+    lineHeight: '22px',
+  },
+  text3: {
+    fontSize: '14px',
+    lineHeight: '20px',
+  },
+  text4: {
+    fontSize: '12px',
+    lineHeight: '17px',
+  },
+};
+
+createGlobalTheme(':root', globalVars, {
+  palette,
+  heading,
+  text,
+  weight,
 });
