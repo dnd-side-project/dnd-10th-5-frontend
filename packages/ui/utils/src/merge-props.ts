@@ -25,8 +25,8 @@ export function mergeProps<T extends Props>(...propsList: T[]) {
         typeof currentProps[propName] === 'function'
       ) {
         resultProps[propName] = mergeFns(
-          resultProps[propName],
           currentProps[propName],
+          resultProps[propName],
         );
 
         continue;
