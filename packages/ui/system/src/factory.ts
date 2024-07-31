@@ -6,6 +6,9 @@ import {
 } from 'react';
 import { withAsChild } from './with-as-child';
 
+export type RightJoinProps<T extends object, O extends object> = O &
+  Omit<T, keyof O>;
+
 export type JsxElements = keyof JSX.IntrinsicElements;
 
 export type FavolinkPropsWithRef<E extends ElementType> =
