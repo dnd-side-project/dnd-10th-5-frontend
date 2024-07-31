@@ -2,8 +2,7 @@ import { cx } from '@favolink-ui/utils';
 import { useEffect } from 'react';
 import { type Toast, toastStore } from './toast.store';
 import * as styles from './toast.styles.css';
-import { Link } from '../link';
-import { Heading } from '../typography';
+import { Heading, Link } from '../typography';
 
 export type ToastProps = Toast;
 
@@ -32,7 +31,7 @@ export function Toast(props: ToastProps) {
         {message}
       </Heading>
       {link && (
-        <Link color="gray" href={link}>
+        <Link color="gray400" href={link}>
           바로가기
         </Link>
       )}

@@ -4,7 +4,7 @@ import * as styles from './heading.css';
 import * as commonStyles from './typography.css';
 
 export type HeadingProps = commonStyles.TypographyVariants &
-  HTMLFavolinkProps<'h2'> &
+  HTMLFavolinkProps<'h1'> &
   styles.HeadingVariants;
 
 export const Heading = forwardRef<HeadingProps, 'h1'>(
