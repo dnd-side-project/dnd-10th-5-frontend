@@ -1,8 +1,8 @@
 import * as styles from './text.css';
 import * as commonStyles from './typography.css';
-import { type MarginVariants, extractMarginProps } from '../../margin';
 import { type HTMLFavolinkProps, Slot, forwardRef } from '../../system';
 import { cx } from '../../utils';
+import { type MarginVariants, extractMarginProps } from '../margin';
 
 type TextDivProps = HTMLFavolinkProps<'div'> & { as: 'div' };
 
