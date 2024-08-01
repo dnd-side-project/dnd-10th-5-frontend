@@ -2,9 +2,11 @@ import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './heading.css';
 import * as commonStyles from './typography.css';
+import { type MarginVariants, extractMarginProps } from '../../margin';
 
 export type HeadingProps = commonStyles.TypographyVariants &
   HTMLFavolinkProps<'h1'> &
+  MarginVariants &
   styles.HeadingVariants;
 
 export const Heading = forwardRef<HeadingProps, 'h1'>(
@@ -20,7 +22,7 @@ export const Heading = forwardRef<HeadingProps, 'h1'>(
       wrap,
       weight,
       ...restProps
-    } = props;
+    } = extractMarginProps(props);
 
     return (
       <Slot

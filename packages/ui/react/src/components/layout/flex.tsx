@@ -11,7 +11,6 @@ export type FlexProps = BoxProps &
 export const Flex = forwardRef<FlexProps, typeof Box>(
   function Flex(props, forwardedRef) {
     const {
-      children,
       className,
       style,
       display,
@@ -45,9 +44,7 @@ export const Flex = forwardRef<FlexProps, typeof Box>(
           }),
           style,
         )}
-      >
-        {children}
-      </Box>
+      />
     );
   },
 );

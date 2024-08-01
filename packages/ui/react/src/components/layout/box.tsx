@@ -2,12 +2,14 @@ import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx, mergeStyles, px } from '@favolink-ui/utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import * as styles from './box.css';
+import { type MarginVariants, extractMarginProps } from '../../margin';
 
 type BoxDivProps = HTMLFavolinkProps<'div'> & { as?: 'div' };
 
 type BoxSpanProps = HTMLFavolinkProps<'span'> & { as: 'span' };
 
-export type BoxProps = styles.BoxDynamicVariants &
+export type BoxProps = MarginVariants &
+  styles.BoxDynamicVariants &
   styles.BoxEnumVariants &
   (BoxDivProps | BoxSpanProps);
 
@@ -45,7 +47,7 @@ export const Box = forwardRef<BoxProps, 'div'>(
       flexShrink,
       flexGrow,
       ...restProps
-    } = props;
+    } = extractMarginProps(props);
 
     return (
       <Slot
