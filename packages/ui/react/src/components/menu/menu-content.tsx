@@ -1,6 +1,6 @@
-import { type Placement, usePosition } from '@favolink-ui/hooks';
 import * as styles from './menu-content.styles.css';
 import { useMenuContext } from './menu.context';
+import { type Placement, usePosition } from '../../hooks';
 import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 import { composeRefs, cx } from '../../utils';
 

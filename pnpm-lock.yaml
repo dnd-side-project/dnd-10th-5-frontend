@@ -175,16 +175,6 @@ importers:
 
   packages/tsconfig: {}
 
-  packages/ui/hooks:
-    dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.55
-        version: 18.3.3
-
   packages/ui/icons:
     dependencies:
       react:
@@ -197,9 +187,6 @@ importers:
 
   packages/ui/react:
     dependencies:
-      '@favolink-ui/hooks':
-        specifier: workspace:*
-        version: link:../hooks
       '@favolink-ui/icons':
         specifier: workspace:*
         version: link:../icons
