@@ -20,8 +20,8 @@ export const marginX = style({
 });
 
 export const marginY = style({
-  marginRight: marginVars.marginX,
-  marginLeft: marginVars.marginX,
+  marginTop: marginVars.marginY,
+  marginBottom: marginVars.marginY,
 });
 
 export const marginTop = style({
