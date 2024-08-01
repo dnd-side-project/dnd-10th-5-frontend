@@ -1,9 +1,9 @@
-import { cx } from '@favolink-ui/utils';
 import {
   type HTMLFavolinkProps,
   favolink,
   forwardRef,
 } from '../../../react/src/system';
+import { cx } from '../../../react/src/utils';
 
 export type IconProps = HTMLFavolinkProps<'svg'>;
 

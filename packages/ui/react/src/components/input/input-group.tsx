@@ -1,6 +1,6 @@
-import { cx } from '@favolink-ui/utils';
 import * as styles from './input-group.styles.css';
 import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
+import { cx } from '../../utils';
 
 export type InputGroupProps = HTMLFavolinkProps<'div'>;
 

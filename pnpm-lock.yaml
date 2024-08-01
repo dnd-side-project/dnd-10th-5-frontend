@@ -187,9 +187,6 @@ importers:
 
   packages/ui/icons:
     dependencies:
-      '@favolink-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -206,9 +203,6 @@ importers:
       '@favolink-ui/icons':
         specifier: workspace:*
         version: link:../icons
-      '@favolink-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@vanilla-extract/css':
         specifier: ^1.14.1
         version: 1.14.1
@@ -231,19 +225,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.19
         version: 18.2.19
-
-  packages/ui/utils:
-    dependencies:
-      axios:
-        specifier: ^1.6.7
-        version: 1.6.7
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.3
 
 packages:
 

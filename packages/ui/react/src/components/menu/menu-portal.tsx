@@ -1,4 +1,4 @@
-import { cx } from '@favolink-ui/utils';
+import { cx } from '../../utils';
 import { Portal, type PortalProps } from '../portal';
 
 export type MenuPortalProps = PortalProps;

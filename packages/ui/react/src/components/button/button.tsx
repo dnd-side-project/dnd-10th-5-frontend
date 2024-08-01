@@ -1,4 +1,3 @@
-import { cx } from '@favolink-ui/utils';
 import { type ReactElement } from 'react';
 import * as styles from './button.styles.css';
 import {
@@ -7,6 +6,7 @@ import {
   favolink,
   forwardRef,
 } from '../../system';
+import { cx } from '../../utils';
 
 export type ButtonProps = HTMLFavolinkProps<'button'> &
   styles.ButtonVariants & {

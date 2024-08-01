@@ -1,8 +1,8 @@
-import { cx, mergeStyles, px } from '@favolink-ui/utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import * as styles from './box.css';
 import { type MarginVariants, extractMarginProps } from '../../margin';
 import { type HTMLFavolinkProps, Slot, forwardRef } from '../../system';
+import { cx, mergeStyles, px } from '../../utils';
 
 type BoxDivProps = HTMLFavolinkProps<'div'> & { as?: 'div' };
 

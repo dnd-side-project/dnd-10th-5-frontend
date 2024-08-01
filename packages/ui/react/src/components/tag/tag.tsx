@@ -1,7 +1,7 @@
-import { cx } from '@favolink-ui/utils';
 import * as styles from './tag.css';
 import { type MarginVariants, extractMarginProps } from '../../margin';
 import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
+import { cx } from '../../utils';
 
 export type TagProps = HTMLFavolinkProps<'span'> &
   MarginVariants &

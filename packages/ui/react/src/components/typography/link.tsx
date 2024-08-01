@@ -1,4 +1,3 @@
-import { cx } from '@favolink-ui/utils';
 import * as styles from './link.css';
 import { Text, type TextProps } from './text';
 import {
@@ -6,6 +5,7 @@ import {
   type RightJoinProps,
   forwardRef,
 } from '../../system';
+import { cx } from '../../utils';
 
 export type LinkProps = RightJoinProps<
   Omit<TextProps, 'as'>,

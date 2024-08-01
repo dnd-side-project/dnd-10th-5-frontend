@@ -3,5 +3,5 @@ export * from '@favolink-ui/hooks';
 export * from '@favolink-ui/icons';
 export * from './system';
 export * from './styles';
-export * from '@favolink-ui/utils';
+export * from './utils';
 export * from './components';
