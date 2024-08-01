@@ -1,8 +1,8 @@
-import { forwardRef } from '@favolink-ui/system';
 import { cx, mergeStyles, px } from '@favolink-ui/utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { Box, type BoxProps } from './box';
 import * as styles from './flex.css';
+import { forwardRef } from '../../system';
 
 export type FlexProps = BoxProps &
   styles.FlexDynamicVariants &

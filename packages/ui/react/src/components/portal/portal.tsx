@@ -1,9 +1,5 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { createPortal } from 'react-dom';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type PortalProps = HTMLFavolinkProps<'div'> & {
   container?: HTMLElement;

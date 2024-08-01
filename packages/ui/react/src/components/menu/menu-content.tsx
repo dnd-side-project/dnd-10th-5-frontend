@@ -1,12 +1,8 @@
 import { type Placement, usePosition } from '@favolink-ui/hooks';
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { composeRefs, cx } from '@favolink-ui/utils';
 import * as styles from './menu-content.styles.css';
 import { useMenuContext } from './menu.context';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type MenuContentProps = HTMLFavolinkProps<'div'> & {
   placement?: Placement;

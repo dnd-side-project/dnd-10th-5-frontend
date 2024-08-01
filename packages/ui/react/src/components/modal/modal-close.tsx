@@ -1,10 +1,6 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { cx, mergeFns } from '@favolink-ui/utils';
 import { useModalContext } from './modal.context';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type ModalCloseProps = HTMLFavolinkProps<'button'>;
 

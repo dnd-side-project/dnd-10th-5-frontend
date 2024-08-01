@@ -1,10 +1,6 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './modal-content.styles.css';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type ModalContentProps = HTMLFavolinkProps<'div'>;
 

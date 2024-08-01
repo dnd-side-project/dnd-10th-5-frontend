@@ -1,9 +1,5 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type ModalBodyProps = HTMLFavolinkProps<'main'>;
 

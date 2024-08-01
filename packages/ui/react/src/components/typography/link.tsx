@@ -1,11 +1,11 @@
+import { cx } from '@favolink-ui/utils';
+import * as styles from './link.css';
+import { Text, type TextProps } from './text';
 import {
   type HTMLFavolinkProps,
   type RightJoinProps,
   forwardRef,
-} from '@favolink-ui/system';
-import { cx } from '@favolink-ui/utils';
-import * as styles from './link.css';
-import { Text, type TextProps } from './text';
+} from '../../system';
 
 export type LinkProps = RightJoinProps<
   Omit<TextProps, 'as'>,

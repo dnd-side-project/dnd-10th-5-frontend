@@ -1,8 +1,8 @@
-import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './heading.css';
 import * as commonStyles from './typography.css';
 import { type MarginVariants, extractMarginProps } from '../../margin';
+import { type HTMLFavolinkProps, Slot, forwardRef } from '../../system';
 
 export type HeadingProps = commonStyles.TypographyVariants &
   HTMLFavolinkProps<'h1'> &

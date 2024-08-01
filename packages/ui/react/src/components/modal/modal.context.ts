@@ -1,4 +1,4 @@
-import { createContext } from '@favolink-ui/system';
+import { createContext } from '../../system';
 
 export type ModalContextValue = {
   closeOnOverlayClick: boolean;

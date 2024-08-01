@@ -1,13 +1,9 @@
 import { ChevronLeftIcon, CloseIcon } from '@favolink-ui/icons';
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { cx, mergeFns } from '@favolink-ui/utils';
 import { type MouseEvent } from 'react';
 import * as styles from './modal-topbar.styles.css';
 import { useModalContext } from './modal.context';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type ModalTopbarProps = HTMLFavolinkProps<'div'> &
   styles.ModalTopbarVariants & {

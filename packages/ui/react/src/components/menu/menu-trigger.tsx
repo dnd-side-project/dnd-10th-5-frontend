@@ -1,10 +1,6 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { composeRefs, cx, mergeFns } from '@favolink-ui/utils';
 import { useMenuContext } from './menu.context';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type MenuTriggerProps = HTMLFavolinkProps<'button'>;
 

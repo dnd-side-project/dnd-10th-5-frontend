@@ -1,11 +1,7 @@
-import {
-  type HTMLFavolinkProps,
-  favolink,
-  forwardRef,
-} from '@favolink-ui/system';
 import { cx, mergeFns } from '@favolink-ui/utils';
 import * as styles from './modal-overlay.styles.css';
 import { useModalContext } from './modal.context';
+import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 
 export type ModalOverlayProps = HTMLFavolinkProps<'div'>;
 

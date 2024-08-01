@@ -1,6 +1,6 @@
-import { forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './modal-title.styles.css';
+import { forwardRef } from '../../system';
 import { Heading, type HeadingProps } from '../typography';
 
 export type ModalTitleProps = HeadingProps & styles.ModalTitleVariants;
