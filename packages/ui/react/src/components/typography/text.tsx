@@ -2,6 +2,7 @@ import { type HTMLFavolinkProps, Slot, forwardRef } from '@favolink-ui/system';
 import { cx } from '@favolink-ui/utils';
 import * as styles from './text.css';
 import * as commonStyles from './typography.css';
+import { type MarginVariants, extractMarginProps } from '../../margin';
 
 type TextDivProps = HTMLFavolinkProps<'div'> & { as: 'div' };
 
@@ -12,6 +13,7 @@ type TextPProps = HTMLFavolinkProps<'p'> & { as: 'p' };
 type TextSpanProps = HTMLFavolinkProps<'span'> & { as?: 'span' };
 
 export type TextProps = commonStyles.TypographyVariants &
+  MarginVariants &
   styles.TextVariants &
   (TextDivProps | TextLabelProps | TextPProps | TextSpanProps);
 
@@ -29,7 +31,7 @@ export const Text = forwardRef<TextProps, 'span'>(
       size,
       weight,
       ...restProps
-    } = props;
+    } = extractMarginProps(props);
 
     return (
       <Slot
