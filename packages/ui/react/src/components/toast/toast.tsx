@@ -1,7 +1,7 @@
-import { cx } from '@favolink-ui/utils';
 import { useEffect } from 'react';
 import { type Toast, toastStore } from './toast.store';
 import * as styles from './toast.styles.css';
+import { cx } from '../../utils';
 import { Heading, Link } from '../typography';
 
 export type ToastProps = Toast;

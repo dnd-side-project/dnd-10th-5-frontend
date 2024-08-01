@@ -1,4 +1,3 @@
-import { composeRefs, mergeProps } from '@favolink-ui/utils';
 import {
   Children,
   type HTMLAttributes,
@@ -10,6 +9,7 @@ import {
   isValidElement,
 } from 'react';
 import { Slottable, type SlottableProps } from './slottable';
+import { composeRefs, mergeProps } from '../utils';
 
 function isSlottable(child: ReactNode): child is ReactElement<SlottableProps> {
   return isValidElement(child) && child.type === Slottable;

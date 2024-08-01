@@ -1,7 +1,7 @@
-import { cx, mergeStyles, px } from '@favolink-ui/utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { type CSSProperties } from 'react';
 import * as styles from './margin.css';
+import { cx, mergeStyles, px } from '../utils';
 
 export function extractMarginProps<
   P extends styles.MarginVariants & {
