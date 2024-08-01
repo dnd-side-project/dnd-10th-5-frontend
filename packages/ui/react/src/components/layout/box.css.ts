@@ -1,3 +1,5 @@
+import { createThemeContract, style } from '@vanilla-extract/css';
+import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import {
   flexGrow,
   flexShrink,
@@ -5,9 +7,7 @@ import {
   overflowX,
   overflowY,
   position,
-} from '@favolink-ui/styles';
-import { createThemeContract, style } from '@vanilla-extract/css';
-import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+} from '../../styles';
 
 export const dynamicVars = createThemeContract({
   padding: null,

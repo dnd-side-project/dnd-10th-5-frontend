@@ -1,12 +1,12 @@
+import { createThemeContract, style } from '@vanilla-extract/css';
+import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import {
   alignItems,
   display,
   flexDirection,
   flexWrap,
   justifyContent,
-} from '@favolink-ui/styles';
-import { createThemeContract, style } from '@vanilla-extract/css';
-import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+} from '../../styles';
 
 export const dynamicVars = createThemeContract({
   gap: null,

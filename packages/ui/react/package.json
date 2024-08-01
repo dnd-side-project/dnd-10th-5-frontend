@@ -13,7 +13,6 @@
   "dependencies": {
     "@favolink-ui/hooks": "workspace:*",
     "@favolink-ui/icons": "workspace:*",
-    "@favolink-ui/styles": "workspace:*",
     "@favolink-ui/system": "workspace:*",
     "@favolink-ui/utils": "workspace:*",
     "@vanilla-extract/css": "^1.14.1",

@@ -1,6 +1,6 @@
-import { alignItems, display } from '@favolink-ui/styles';
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { alignItems, display } from '../../styles';
 import { archivePalette, globalVars, inherencePalette } from '../../theme.css';
 
 const base = style([

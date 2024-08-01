@@ -1,17 +1,17 @@
 import {
-  alignItems,
-  borderRadius,
-  display,
-  flexShrink,
-  textWrap,
-} from '@favolink-ui/styles';
-import {
   createGlobalThemeContract,
   createTheme,
   style,
   styleVariants,
 } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import {
+  alignItems,
+  borderRadius,
+  display,
+  flexShrink,
+  textWrap,
+} from '../../styles';
 import { archivePaletteTokens, globalVars } from '../../theme.css';
 
 const colorPaletteTokenValues = {
