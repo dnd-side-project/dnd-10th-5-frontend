@@ -1,5 +1,5 @@
 {
-  "name": "favolink-extension",
+  "name": "@favolink/extension",
   "version": "1.0.0",
   "private": true,
   "description": "저장한 링크를 한눈에",

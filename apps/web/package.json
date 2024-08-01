@@ -1,5 +1,5 @@
 {
-  "name": "favolink-web",
+  "name": "@favolink/web",
   "version": "0.0.0",
   "private": true,
   "type": "module",
