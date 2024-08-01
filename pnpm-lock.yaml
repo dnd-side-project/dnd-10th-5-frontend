@@ -81,9 +81,9 @@ importers:
 
   apps/web:
     dependencies:
-      '@favolink-ui/react':
+      '@favolink/ui':
         specifier: workspace:*
-        version: link:../../packages/ui/react
+        version: link:../../packages/ui
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.50.1)
@@ -175,49 +175,8 @@ importers:
 
   packages/tsconfig: {}
 
-  packages/ui/hooks:
+  packages/ui:
     dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.55
-        version: 18.3.3
-
-  packages/ui/icons:
-    dependencies:
-      '@favolink-ui/system':
-        specifier: workspace:*
-        version: link:../system
-      '@favolink-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.55
-        version: 18.3.3
-
-  packages/ui/react:
-    dependencies:
-      '@favolink-ui/hooks':
-        specifier: workspace:*
-        version: link:../hooks
-      '@favolink-ui/icons':
-        specifier: workspace:*
-        version: link:../icons
-      '@favolink-ui/styles':
-        specifier: workspace:*
-        version: link:../styles
-      '@favolink-ui/system':
-        specifier: workspace:*
-        version: link:../system
-      '@favolink-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@vanilla-extract/css':
         specifier: ^1.14.1
         version: 1.14.1
@@ -236,61 +195,10 @@ importers:
     devDependencies:
       '@types/react':
         specifier: ^18.2.55
-        version: 18.2.79
+        version: 18.3.3
       '@types/react-dom':
         specifier: ^18.2.19
         version: 18.2.19
-
-  packages/ui/styles:
-    dependencies:
-      '@favolink-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
-      '@vanilla-extract/css':
-        specifier: ^1.14.1
-        version: 1.14.1
-      '@vanilla-extract/dynamic':
-        specifier: ^2.1.0
-        version: 2.1.0
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.3
-
-  packages/ui/system:
-    dependencies:
-      '@favolink-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
-      '@vanilla-extract/css':
-        specifier: ^1.14.1
-        version: 1.14.1
-      '@vanilla-extract/dynamic':
-        specifier: ^2.1.0
-        version: 2.1.0
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.63
-        version: 18.3.3
-
-  packages/ui/utils:
-    dependencies:
-      axios:
-        specifier: ^1.6.7
-        version: 1.6.7
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.3
 
 packages:
 

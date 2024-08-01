@@ -1,5 +1,4 @@
 {
-  "name": "favolink",
   "private": true,
   "packageManager": "pnpm@8.9.0",
   "scripts": {

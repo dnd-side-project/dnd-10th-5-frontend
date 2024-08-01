@@ -1,5 +1,5 @@
 {
-  "name": "favolink-web",
+  "name": "@favolink/web",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@favolink-ui/react": "workspace:*",
+    "@favolink/ui": "workspace:*",
     "@hookform/resolvers": "^3.3.4",
     "@tanstack/react-query": "^5.18.1",
     "@tanstack/react-query-devtools": "^5.18.1",

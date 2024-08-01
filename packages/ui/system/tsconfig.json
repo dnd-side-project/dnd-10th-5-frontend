@@ -1,4 +1,0 @@
-{
-  "extends": "@tsconfig/favolink/react-library.json",
-  "include": [".eslintrc.js", "src"]
-}
