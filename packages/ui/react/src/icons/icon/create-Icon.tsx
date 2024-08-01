@@ -1,6 +1,6 @@
 import { Children, type ReactNode } from 'react';
 import { Icon, type IconProps } from './icon';
-import { forwardRef } from '../../../react/src/system';
+import { forwardRef } from '../../system';
 
 type CreateIconOptions = {
   d?: string;
