@@ -7,8 +7,8 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended-type-checked',
-    'plugin:@typescript-eslint/strict-type-checked',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/strict',
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:react/recommended',
@@ -46,9 +46,7 @@ module.exports = {
     ],
     '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/method-signature-style': 'error',
-    '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/prefer-reduce-type-parameter': 'off',
     '@typescript-eslint/sort-type-constituents': 'error',
     '@stylistic/padding-line-between-statements': [
       'error',
