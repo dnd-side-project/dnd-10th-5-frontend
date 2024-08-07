@@ -5,4 +5,5 @@ export const PATH = {
   SIGNUP: 'signup',
   SAVED_LINK: 'saved',
   SPACE: ':spaceId',
+  KAKAO_OAUTH: 'kakao/oauth',
 } as const;
