@@ -2,6 +2,7 @@
 export { useBoolean } from './use-boolean';
 export { useCallbackRef } from './use-callback-ref';
 export { useComposeRefs } from './use-compose-refs';
+export { useControllableState } from './use-controllable-state';
 export { useDisclosure } from './use-disclosure';
 export { useLayoutEffect } from './use-layout-effect';
 export { usePosition, type Placement } from './use-position';
