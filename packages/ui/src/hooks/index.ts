@@ -8,4 +8,5 @@ export { useLayoutEffect } from './use-layout-effect';
 export { usePosition, type Placement } from './use-position';
 export { usePrevious } from './use-previous';
 export { useScroll } from './use-scroll';
+export { useSize } from './use-size';
 export { useWindowDimension } from './use-window-dimension';
