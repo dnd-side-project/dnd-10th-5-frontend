@@ -8,33 +8,7 @@ import {
   forwardRef,
   isValidElement,
 } from 'react';
-import { Slottable, type SlottableProps } from './slottable';
 import { composeRefs, mergeProps } from '../utils';
-
-function isSlottable(child: ReactNode): child is ReactElement<SlottableProps> {
-  return isValidElement(child) && child.type === Slottable;
-}
-
-type ReactElementWithRef = ReactElement & { ref: Ref<HTMLElement> };
-
-type SlotCloneProps = HTMLAttributes<HTMLElement> & {
-  children: ReactElementWithRef;
-};
-
-const SlotClone = forwardRef<HTMLElement, SlotCloneProps>(
-  function SlotClone(props, forwardedRef) {
-    const { children, ...slotProps } = props;
-
-    return isValidElement(children)
-      ? cloneElement(children, {
-          ...mergeProps(slotProps, children.props),
-          ref: forwardedRef
-            ? composeRefs(forwardedRef, children.ref)
-            : children.ref,
-        })
-      : null;
-  },
-);
 
 type SlotProps = HTMLAttributes<HTMLElement> & {
   children: ReactNode;
@@ -86,3 +60,38 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(
     );
   },
 );
+
+type ReactElementWithRef = ReactElement & { ref: Ref<HTMLElement> };
+
+type SlotCloneProps = HTMLAttributes<HTMLElement> & {
+  children: ReactElementWithRef;
+};
+
+const SlotClone = forwardRef<HTMLElement, SlotCloneProps>(
+  function SlotClone(props, forwardedRef) {
+    const { children, ...slotProps } = props;
+
+    return isValidElement(children)
+      ? cloneElement(children, {
+          ...mergeProps(slotProps, children.props),
+          ref: forwardedRef
+            ? composeRefs(forwardedRef, children.ref)
+            : children.ref,
+        })
+      : null;
+  },
+);
+
+export type SlottableProps = {
+  children: ReactNode;
+};
+
+export function Slottable(props: SlottableProps) {
+  const { children } = props;
+
+  return children;
+}
+
+function isSlottable(child: ReactNode): child is ReactElement<SlottableProps> {
+  return isValidElement(child) && child.type === Slottable;
+}
