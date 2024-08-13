@@ -13,8 +13,6 @@ type UseControllableStateProps<T> = {
   shouldUpdate?: (prev: T, next: T) => boolean;
 };
 
-type SetStateFn<T> = (prevState?: T) => T;
-
 export function useControllableState<T>(props: UseControllableStateProps<T>) {
   const {
     value: valueProp,
@@ -32,7 +30,7 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
 
   const setValue: Dispatch<SetStateAction<T>> = useCallback(
     (next) => {
-      const setter = next as SetStateFn<T>;
+      const setter = next as (prevState?: T) => T;
       const nextValue = typeof next === 'function' ? setter(value) : next;
 
       if (!shouldUpdateProp(value, nextValue)) {
