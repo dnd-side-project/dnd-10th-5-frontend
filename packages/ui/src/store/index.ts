@@ -4,3 +4,8 @@ export {
   type FavolinkStoreObserver,
   createFavolinkStore,
 } from './store';
+export {
+  useFavolinkStore,
+  useFavolinkStoreValue,
+  useSetFavolinkStore,
+} from './hooks';
