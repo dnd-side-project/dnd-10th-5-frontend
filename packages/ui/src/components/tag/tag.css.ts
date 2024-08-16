@@ -83,7 +83,7 @@ export const color = styleVariants(
 
 const base = style([
   colorClass,
-  display.inlineFlex,
+  display['inline-flex'],
   alignItems.center,
   flexShrink.none,
   textWrap.nowrap,
