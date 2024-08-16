@@ -1,10 +1,16 @@
-import { toastStore } from './toast.store';
+import { useMemo } from 'react';
+import { type ToastNotifyOptions, toastStore } from './toast.store';
 
 export function useToast() {
-  const { showToast, deleteToast } = toastStore;
+  return useMemo(() => {
+    function toast(options: ToastNotifyOptions) {
+      return toastStore.notify(options);
+    }
 
-  return {
-    show: showToast,
-    delete: deleteToast,
-  };
+    toast.close = (id: number) => toastStore.close(id);
+
+    toast.closeAll = () => toastStore.closeAll();
+
+    return toast;
+  }, []);
 }
