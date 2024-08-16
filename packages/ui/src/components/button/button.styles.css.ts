@@ -4,7 +4,7 @@ import { alignItems, display } from '../../styles';
 import { archivePalette, globalVars, inherencePalette } from '../../theme.css';
 
 const base = style([
-  display.inlineFlex,
+  display['inline-flex'],
   alignItems.center,
   {
     cursor: 'pointer',
@@ -18,25 +18,22 @@ const base = style([
   },
 ]);
 
-const colorSchemeVar = createVar();
+const colorVar = createVar();
 
-const colorSchemePalette = {
+const colorPalette = {
   ...archivePalette,
   ...inherencePalette,
 };
 
-const colorScheme = styleVariants(
-  colorSchemePalette,
-  (_, colorSchemePaletteKey) => ({
-    vars: { [colorSchemeVar]: globalVars.palette[colorSchemePaletteKey] },
-  }),
-);
+const color = styleVariants(colorPalette, (_, colorPaletteKey) => ({
+  vars: { [colorVar]: globalVars.palette[colorPaletteKey] },
+}));
 
 export const buttonVariants = recipe({
   base,
 
   variants: {
-    colorScheme,
+    color,
     justify: {
       center: {
         justifyContent: 'center',
@@ -47,13 +44,13 @@ export const buttonVariants = recipe({
     },
     variant: {
       solid: {
-        backgroundColor: colorSchemeVar,
-        border: `1px solid ${colorSchemeVar}`,
+        backgroundColor: colorVar,
+        border: `1px solid ${colorVar}`,
         color: globalVars.palette.white,
       },
       outline: {
         backgroundColor: 'inherit',
-        border: `1px solid ${colorSchemeVar}`,
+        border: `1px solid ${colorVar}`,
         color: globalVars.palette.gray1000,
       },
     },
@@ -83,7 +80,7 @@ export const buttonVariants = recipe({
   },
 
   defaultVariants: {
-    colorScheme: 'white',
+    color: 'white',
     justify: 'center',
     variant: 'solid',
     weight: 'regular',
@@ -94,7 +91,7 @@ export const buttonVariants = recipe({
   compoundVariants: [
     {
       variants: {
-        colorScheme: 'black',
+        color: 'black',
         variant: 'solid',
       },
       style: {

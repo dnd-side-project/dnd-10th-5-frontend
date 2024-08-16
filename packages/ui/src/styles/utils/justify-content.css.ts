@@ -2,7 +2,7 @@ import { type CSSProperties, styleVariants } from '@vanilla-extract/css';
 import { makeCustomData } from '../make-data';
 import { mapToProp } from '../map-to-prop';
 
-const justifyContentKeys = ['start', 'center', 'end', 'spaceBetween'] as const;
+const justifyContentKeys = ['start', 'center', 'end', 'between'] as const;
 
 const justifyContentValues = [
   'flex-start',

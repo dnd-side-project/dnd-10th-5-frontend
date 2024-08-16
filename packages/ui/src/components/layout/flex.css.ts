@@ -35,7 +35,7 @@ export const flexEnumVariants = recipe({
     display: {
       none: display.none,
       flex: display.flex,
-      inlineFlex: display.inlineFlex,
+      'inline-flex': display['inline-flex'],
     },
     direction: flexDirection,
     align: alignItems,

@@ -1,33 +1,35 @@
-import { useEffect } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
+import * as styles from './toast.css';
 import { type Toast, toastStore } from './toast.store';
-import * as styles from './toast.styles.css';
-import { cx } from '../../utils';
+import { Flex } from '../layout';
+import { Portal } from '../portal';
 import { Heading, Link } from '../typography';
 
-export type ToastProps = Toast;
+type ToastProps = Toast;
 
-export function Toast(props: ToastProps) {
+function Toast(props: ToastProps) {
   const { id, message, duration, link } = props;
 
-  const { deleteToast } = toastStore;
-
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      deleteToast(id);
+    const timeoutId = window.setTimeout(() => {
+      toastStore.close(id);
     }, duration);
 
     return () => {
-      clearTimeout(timeoutId);
+      window.clearTimeout(timeoutId);
     };
-  }, [deleteToast, duration, id]);
+  }, [duration, id]);
 
   return (
-    <div className={cx('favolink-toast__item', styles.toastItemBase)}>
-      <Heading
-        as="h5"
-        weight="semibold"
-        className={cx(styles.toastItemTextBase)}
-      >
+    <Flex
+      width="100%"
+      paddingY={15}
+      paddingX={28}
+      justify="between"
+      align="center"
+      className={styles.toastItem}
+    >
+      <Heading as="h5" weight="semibold" className={styles.toastItemText}>
         {message}
       </Heading>
       {link && (
@@ -35,6 +37,33 @@ export function Toast(props: ToastProps) {
           바로가기
         </Link>
       )}
-    </div>
+    </Flex>
   );
+}
+
+export function ToastProvider() {
+  const toastState = useSyncExternalStore(
+    toastStore.subscribe,
+    toastStore.getState,
+    toastStore.getState,
+  );
+
+  const toastList = (
+    <Flex
+      position="fixed"
+      width={780}
+      bottom={10}
+      left="0"
+      right="0"
+      margin="0 auto"
+      direction="column"
+      gap={10}
+    >
+      {toastState.map((toast) => (
+        <Toast key={toast.id} {...toast} />
+      ))}
+    </Flex>
+  );
+
+  return <Portal>{toastList}</Portal>;
 }

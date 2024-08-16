@@ -1,14 +1,16 @@
-import { type ReactElement } from 'react';
+import { type ReactElement, useMemo } from 'react';
 import * as styles from './button.styles.css';
 import {
-  type HTMLFavolinkProps,
+  type HTMLFavolinkPropsWithout,
+  type RemovedProps,
   Slottable,
   favolink,
   forwardRef,
 } from '../../system';
 import { cx } from '../../utils';
+import { extractMarginProps } from '../margin';
 
-export type ButtonProps = HTMLFavolinkProps<'button'> &
+export type ButtonProps = HTMLFavolinkPropsWithout<'button', RemovedProps> &
   styles.ButtonVariants & {
     rightElement?: ReactElement;
     leftElement?: ReactElement;
@@ -17,20 +19,22 @@ export type ButtonProps = HTMLFavolinkProps<'button'> &
 export const Button = forwardRef<ButtonProps, 'button'>(
   function Button(props, ref) {
     const {
-      children,
       className,
       rightElement,
       leftElement,
-      colorScheme,
+      color,
       justify,
       variant,
       weight,
       radius,
       width,
       ...restProps
-    } = props;
+    } = extractMarginProps(props);
 
-    const hasElement = Boolean(rightElement || leftElement);
+    const hasElement = useMemo(
+      () => Boolean(rightElement || leftElement),
+      [rightElement, leftElement],
+    );
 
     return (
       <favolink.button
@@ -40,7 +44,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         className={cx(
           'favolink-button',
           styles.buttonVariants({
-            colorScheme,
+            color,
             justify,
             variant,
             weight,
@@ -52,8 +56,8 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         )}
       >
         {leftElement}
-        <Slottable>{children}</Slottable>
-        <span className={cx(styles.justifyStartButtonHasRightElement)}>
+        <Slottable>{props.children}</Slottable>
+        <span className={styles.justifyStartButtonHasRightElement}>
           {rightElement}
         </span>
       </favolink.button>
