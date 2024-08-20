@@ -2,7 +2,6 @@ export interface FavolinkStoreObserver<T> {
   getState: () => T;
   setState: (next: SetStateAction<T>) => void;
   subscribe: (listener: () => void) => () => void;
-  emitChange: () => void;
 }
 
 type SetStateFn<T> = (prevState: T) => T;
@@ -11,10 +10,11 @@ type SetStateAction<T> = SetStateFn<T> | T;
 
 export class FavolinkStore<T> implements FavolinkStoreObserver<T> {
   private state: T;
-  private listeners: (() => void)[] = [];
+  private listeners: Set<() => void>;
 
   constructor(initialState: T) {
     this.state = initialState;
+    this.listeners = new Set();
   }
 
   getState = () => {
@@ -23,28 +23,24 @@ export class FavolinkStore<T> implements FavolinkStoreObserver<T> {
 
   setState = (next: SetStateAction<T>) => {
     const setter = next as SetStateFn<T>;
-    const nextValue = typeof next === 'function' ? setter(this.state) : next;
+    const nextState = typeof next === 'function' ? setter(this.state) : next;
 
-    if (this.state === nextValue) {
+    if (this.state === nextState) {
       return;
     }
 
-    this.state = nextValue;
-    this.emitChange();
-  };
-
-  subscribe = (listener: () => void) => {
-    this.listeners = [...this.listeners, listener];
-
-    return () => {
-      this.listeners = this.listeners.filter((l) => l !== listener);
-    };
-  };
-
-  emitChange = () => {
+    this.state = nextState;
     this.listeners.forEach((listener) => {
       listener();
     });
+  };
+
+  subscribe = (listener: () => void) => {
+    this.listeners.add(listener);
+
+    return () => {
+      this.listeners.delete(listener);
+    };
   };
 }
 
