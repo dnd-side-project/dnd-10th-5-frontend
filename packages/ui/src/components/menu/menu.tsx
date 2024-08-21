@@ -22,7 +22,12 @@ export function Menu(props: MenuProps) {
   const onOpenChange = onExternalOnOpenChange ?? onInternalOnOpenChange;
 
   return (
-    <MenuProvider value={{ open, onOpenChange, triggerRef, containerRef }}>
+    <MenuProvider
+      open={open}
+      onOpenChange={onOpenChange}
+      triggerRef={triggerRef}
+      containerRef={containerRef}
+    >
       {children}
     </MenuProvider>
   );

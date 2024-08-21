@@ -3,13 +3,15 @@ import { useModalContext } from './modal.context';
 import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 import { cx, mergeFns } from '../../utils';
 
+const OVERLAY_NAME = 'ModalOverlay';
+
 export type ModalOverlayProps = HTMLFavolinkProps<'div'>;
 
 export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
   function ModalOverlay(props, ref) {
     const { className, onClick, ...restProps } = props;
 
-    const { onOpenChange, closeOnOverlayClick } = useModalContext();
+    const { onOpenChange, closeOnOverlayClick } = useModalContext(OVERLAY_NAME);
 
     return (
       <favolink.div
@@ -31,3 +33,5 @@ export const ModalOverlay = forwardRef<ModalOverlayProps, 'div'>(
     );
   },
 );
+
+ModalOverlay.displayName = OVERLAY_NAME;

@@ -5,6 +5,8 @@ import { ChevronLeftIcon, CloseIcon } from '../../icons';
 import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 import { cx, mergeFns } from '../../utils';
 
+const TOPBAR_NAME = 'ModalTopbar';
+
 export type ModalTopbarProps = HTMLFavolinkProps<'div'> &
   styles.ModalTopbarVariants & {
     onLeftIconClick?: (event: MouseEvent) => void;
@@ -21,7 +23,7 @@ export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
       ...restProps
     } = props;
 
-    const { onOpenChange } = useModalContext();
+    const { onOpenChange } = useModalContext(TOPBAR_NAME);
 
     const isCouple = layout !== 'single';
 
@@ -51,3 +53,5 @@ export const ModalTopbar = forwardRef<ModalTopbarProps, 'div'>(
     );
   },
 );
+
+ModalTopbar.displayName = TOPBAR_NAME;

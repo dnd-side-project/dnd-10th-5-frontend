@@ -15,17 +15,15 @@ import {
 } from '../../system';
 import { mergeFns, mergeStyles } from '../../utils';
 
+const CHECKBOX_NAME = 'Checkbox';
+
 type CheckboxContextValue = {
   state: boolean;
   disabled?: boolean;
 };
 
 const [CheckboxProvider, useCheckboxContext] =
-  createContext<CheckboxContextValue>({
-    name: 'CheckboxContext',
-    hookName: 'useCheckboxContext',
-    providerName: '<CheckboxProvider />',
-  });
+  createContext<CheckboxContextValue>(CHECKBOX_NAME);
 
 type CheckboxProps = HTMLFavolinkPropsWithout<
   'button',
@@ -68,9 +66,7 @@ const Checkbox = forwardRef<CheckboxProps, 'button'>(
     useEffect(() => {
       const form = button?.form;
 
-      if (!form) {
-        return;
-      }
+      if (!form) return;
 
       function reset() {
         setChecked(initialCheckedStateRef.current);
@@ -84,7 +80,7 @@ const Checkbox = forwardRef<CheckboxProps, 'button'>(
     }, [button, setChecked]);
 
     return (
-      <CheckboxProvider value={{ state: checked, disabled }}>
+      <CheckboxProvider state={checked} disabled={disabled}>
         <favolink.button
           type="button"
           role="checkbox"
@@ -97,9 +93,7 @@ const Checkbox = forwardRef<CheckboxProps, 'button'>(
           {...restProps}
           ref={composedRefs}
           onKeyDown={mergeFns(props.onKeyDown, (event) => {
-            if (event.key === 'Enter') {
-              event.preventDefault();
-            }
+            if (event.key === 'Enter') event.preventDefault();
           })}
           onClick={mergeFns(props.onClick, (event) => {
             setChecked(!checked);
@@ -108,9 +102,8 @@ const Checkbox = forwardRef<CheckboxProps, 'button'>(
               hasConsumerStoppedPropagation.current =
                 event.isPropagationStopped();
 
-              if (!hasConsumerStoppedPropagation.current) {
+              if (!hasConsumerStoppedPropagation.current)
                 event.stopPropagation();
-              }
             }
           })}
         />
@@ -131,13 +124,15 @@ const Checkbox = forwardRef<CheckboxProps, 'button'>(
   },
 );
 
-Checkbox.displayName = 'Checkbox';
+Checkbox.displayName = CHECKBOX_NAME;
+
+const INDICATOR_NAME = 'CheckboxIndicator';
 
 type CheckboxIndicatorProps = HTMLFavolinkProps<'span'>;
 
 const CheckboxIndicator = forwardRef<CheckboxIndicatorProps, 'span'>(
   function CheckboxIndicator(props, forwardedRef) {
-    const context = useCheckboxContext();
+    const context = useCheckboxContext(INDICATOR_NAME);
 
     return (
       context.state && (
@@ -153,7 +148,7 @@ const CheckboxIndicator = forwardRef<CheckboxIndicatorProps, 'span'>(
   },
 );
 
-CheckboxIndicator.displayName = 'CheckboxIndicator';
+CheckboxIndicator.displayName = INDICATOR_NAME;
 
 type BubbleInputProps = HTMLProps<'input'> & {
   bubbles: boolean;
@@ -176,9 +171,7 @@ function BubbleInput(props: BubbleInputProps) {
     ) as PropertyDescriptor;
     const setChecked = checkedDescriptor.set?.bind(input);
 
-    if (prevChecked === checked || !setChecked) {
-      return;
-    }
+    if (prevChecked === checked || !setChecked) return;
 
     const event = new Event('click', { bubbles });
 

@@ -4,6 +4,8 @@ import { type Placement, usePosition } from '../../hooks';
 import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 import { composeRefs, cx } from '../../utils';
 
+const CONTENT_NAME = 'MenuContent';
+
 export type MenuContentProps = HTMLFavolinkProps<'div'> & {
   placement?: Placement;
   sideOffset?: number;
@@ -20,7 +22,7 @@ export const MenuContent = forwardRef<MenuContentProps, 'div'>(
       ...restProps
     } = props;
 
-    const context = useMenuContext();
+    const context = useMenuContext(CONTENT_NAME);
 
     const coordinate = usePosition(
       context.open,
@@ -48,3 +50,5 @@ export const MenuContent = forwardRef<MenuContentProps, 'div'>(
     );
   },
 );
+
+MenuContent.displayName = CONTENT_NAME;

@@ -7,8 +7,4 @@ export type ModalContextValue = {
 };
 
 export const [ModalProvider, useModalContext] =
-  createContext<ModalContextValue>({
-    name: 'ModalContext',
-    hookName: 'useModalContext',
-    providerName: '<ModalProvider />',
-  });
+  createContext<ModalContextValue>('Modal');

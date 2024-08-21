@@ -20,11 +20,9 @@ export function Modal(props: ModalProps) {
 
   return (
     <ModalProvider
-      value={{
-        onOpen,
-        onOpenChange,
-        closeOnOverlayClick,
-      }}
+      onOpen={onOpen}
+      onOpenChange={onOpenChange}
+      closeOnOverlayClick={closeOnOverlayClick}
     >
       {children}
     </ModalProvider>
