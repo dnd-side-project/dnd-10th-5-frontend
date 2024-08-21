@@ -2,13 +2,15 @@ import { useModalContext } from './modal.context';
 import { type HTMLFavolinkProps, favolink, forwardRef } from '../../system';
 import { cx, mergeFns } from '../../utils';
 
+const TRIGGER_NAME = 'ModalTrigger';
+
 export type ModalTriggerProps = HTMLFavolinkProps<'button'>;
 
 export const ModalTrigger = forwardRef<ModalTriggerProps, 'button'>(
   function MenuTrigger(props, ref) {
     const { className, children, onClick, ...restProps } = props;
 
-    const { onOpenChange } = useModalContext();
+    const { onOpenChange } = useModalContext(TRIGGER_NAME);
 
     return (
       <favolink.button
@@ -25,3 +27,5 @@ export const ModalTrigger = forwardRef<ModalTriggerProps, 'button'>(
     );
   },
 );
+
+ModalTrigger.displayName = TRIGGER_NAME;

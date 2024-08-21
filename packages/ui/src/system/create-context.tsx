@@ -1,53 +1,43 @@
 import {
-  type Context,
-  type Provider,
+  type ReactNode,
   createContext as createReactContext,
+  useMemo,
   useContext as useReactContext,
 } from 'react';
 
-type CreatContextOptions<T> = {
-  name?: string;
-  hookName?: string;
-  providerName?: string;
-  errorMessage?: string;
-  defaultValue?: T;
-};
-
-type CreateContextReturn<T> = [Provider<T>, () => T, Context<T>];
-
-function getErrorMessage(hook: string, provider: string) {
-  return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`;
-}
-
-export function createContext<T>(options: CreatContextOptions<T>) {
-  const {
-    name,
-    hookName = 'useContext',
-    providerName = 'Provider',
-    errorMessage,
-    defaultValue,
-  } = options;
-
+export function createContext<T extends object | null>(
+  rootComponentName: string,
+  defaultValue?: T,
+) {
   const Context = createReactContext<T | undefined>(defaultValue);
 
-  Context.displayName = name;
+  function Provider(props: T & { children: ReactNode }) {
+    const { children, ...context } = props;
 
-  function useContext() {
-    const context = useReactContext(Context);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const value = useMemo(() => context, Object.values(context)) as T;
 
-    if (!context) {
-      const error = new Error(
-        errorMessage ?? getErrorMessage(hookName, providerName),
-      );
-
-      error.name = 'ContextError';
-      Error.captureStackTrace(error, useContext);
-
-      throw error;
-    }
-
-    return context;
+    return <Context.Provider value={value}>{children}</Context.Provider>;
   }
 
-  return [Context.Provider, useContext, Context] as CreateContextReturn<T>;
+  Provider.displayName = rootComponentName + 'Provider';
+
+  function useContext(consumerName: string) {
+    const context = useReactContext(Context);
+
+    if (context) return context;
+
+    if (defaultValue !== undefined) return defaultValue;
+
+    const error = new Error(
+      `\`${consumerName}\` must be used within \`${rootComponentName}\``,
+    );
+
+    error.name = 'ContextError';
+    Error.captureStackTrace(error, useContext);
+
+    throw error;
+  }
+
+  return [Provider, useContext] as const;
 }

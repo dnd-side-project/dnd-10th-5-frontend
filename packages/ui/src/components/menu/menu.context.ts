@@ -8,8 +8,5 @@ type MenuContextValue = {
   containerRef: Ref<HTMLDivElement>;
 };
 
-export const [MenuProvider, useMenuContext] = createContext<MenuContextValue>({
-  name: 'MenuContentContext',
-  hookName: 'useMenuContentContext',
-  providerName: '<MenuContentProvider />',
-});
+export const [MenuProvider, useMenuContext] =
+  createContext<MenuContextValue>('Menu');
