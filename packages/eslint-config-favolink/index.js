@@ -34,7 +34,6 @@ module.exports = {
     },
   },
   rules: {
-    curly: 'error',
     'dot-notation': 'off',
     eqeqeq: 'error',
     'func-style': ['error', 'declaration'],
@@ -97,14 +96,11 @@ module.exports = {
     ],
     'react/function-component-definition': [
       'error',
-      {
-        namedComponents: 'function-declaration',
-        unnamedComponents: 'arrow-function',
-      },
+      { namedComponents: 'function-declaration' },
     ],
     'react/jsx-curly-brace-presence': 'error',
     'react/jsx-no-useless-fragment': 'error',
-    'react/jsx-pascal-case': 'error',
+    'react/jsx-pascal-case': ['error', { allowNamespace: true }],
     'react/no-unused-state': 'error',
     'react/self-closing-comp': 'error',
     'react-refresh/only-export-components': [
