@@ -7,44 +7,36 @@ import {
 import { useCallbackRef } from './use-callback-ref';
 
 type UseControllableStateProps<T> = {
-  value?: T;
-  defaultValue?: T;
-  onChange?: (value: T) => void;
-  shouldUpdate?: (prev: T, next: T) => boolean;
+  prop?: T;
+  defaultProp?: T;
+  onChange?: (state: T) => void;
 };
 
+type SetStateFn<T> = (prevState?: T) => T;
+
 export function useControllableState<T>(props: UseControllableStateProps<T>) {
-  const {
-    value: valueProp,
-    defaultValue,
-    onChange = () => {},
-    shouldUpdate = (prev, next) => prev !== next,
-  } = props;
+  const { prop, defaultProp, onChange = () => {} } = props;
 
+  const [uncontrolledProp, setUncontrolledProp] = useState<T | undefined>(
+    defaultProp,
+  );
+  const isControlled = prop !== undefined;
+  const state = isControlled ? prop : uncontrolledProp;
   const handleChange = useCallbackRef(onChange);
-  const shouldUpdateProp = useCallbackRef(shouldUpdate);
 
-  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue as T);
-  const isControlled = valueProp !== undefined;
-  const value = isControlled ? valueProp : uncontrolledValue;
-
-  const setValue: Dispatch<SetStateAction<T>> = useCallback(
+  const setState: Dispatch<SetStateAction<T | undefined>> = useCallback(
     (next) => {
-      const setter = next as (prevState?: T) => T;
-      const nextValue = typeof next === 'function' ? setter(value) : next;
+      const setter = next as SetStateFn<T>;
+      const nextState = typeof next === 'function' ? setter(state) : next;
 
-      if (!shouldUpdateProp(value, nextValue)) {
-        return;
-      }
+      if (state === nextState) return;
 
-      if (!isControlled) {
-        setUncontrolledValue(nextValue);
-      }
+      if (!isControlled) setUncontrolledProp(nextState);
 
-      handleChange(nextValue);
+      handleChange(nextState as T);
     },
-    [handleChange, isControlled, shouldUpdateProp, value],
+    [handleChange, isControlled, state],
   );
 
-  return [value, setValue] as const;
+  return [state, setState] as const;
 }

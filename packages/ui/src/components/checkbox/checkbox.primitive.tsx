@@ -42,16 +42,16 @@ const Checkbox = forwardRef<CheckboxProps, 'button'>(
       value = 'on',
       required,
       disabled,
-      defaultChecked,
       checked: checkedProp,
+      defaultChecked,
       onCheckedChange,
       ...restProps
     } = props;
 
     const [button, setButton] = useState<HTMLButtonElement | null>(null);
     const [checked = false, setChecked] = useControllableState({
-      value: checkedProp,
-      defaultValue: defaultChecked,
+      prop: checkedProp,
+      defaultProp: defaultChecked,
       onChange: onCheckedChange,
     });
 
