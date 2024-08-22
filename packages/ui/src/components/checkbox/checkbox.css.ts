@@ -61,7 +61,6 @@ const base = style([
   {
     boxSizing: 'border-box',
     padding: 0,
-    borderColor: globalVars.palette.gray800,
     borderStyle: 'solid',
 
     selectors: {
