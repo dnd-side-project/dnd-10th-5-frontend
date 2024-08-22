@@ -2,6 +2,7 @@
 export * from './add';
 export * from './bell';
 export * from './cancel';
+export * from './check';
 export * from './chevron-down';
 export * from './chevron-left';
 export * from './chevron-right';
