@@ -26,7 +26,7 @@ export const gapY = style({
   rowGap: dynamicVars.gapY,
 });
 
-export type FlexDynamicVariants = {
+type FlexDynamicVariants = {
   [K in keyof typeof dynamicVars]?: number | string;
 };
 
@@ -48,7 +48,9 @@ export const flexEnumVariants = recipe({
   },
 });
 
-export type FlexEnumVariants = Exclude<
+type FlexEnumVariants = Exclude<
   RecipeVariants<typeof flexEnumVariants>,
   undefined
 >;
+
+export type FlexVariants = FlexDynamicVariants & FlexEnumVariants;
