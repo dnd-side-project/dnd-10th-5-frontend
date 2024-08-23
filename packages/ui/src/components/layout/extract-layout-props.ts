@@ -1,10 +1,10 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { type CSSProperties } from 'react';
-import * as styles from './layout.css';
+import * as Styles from './layout.css';
 import { cx, mergeStyles, px } from '../../utils';
 
 export function extractLayoutProps<
-  P extends styles.LayoutVariants & {
+  P extends Styles.LayoutVariants & {
     [key: string]: any;
     className?: string;
     style?: CSSProperties;
@@ -40,26 +40,26 @@ export function extractLayoutProps<
   } = props;
 
   const newClassName = cx(
-    padding && styles.padding,
-    paddingX && styles.paddingX,
-    paddingY && styles.paddingY,
-    paddingTop && styles.paddingTop,
-    paddingRight && styles.paddingRight,
-    paddingBottom && styles.paddingBottom,
-    paddingLeft && styles.paddingLeft,
-    width && styles.width,
-    minWidth && styles.minWidth,
-    maxWidth && styles.maxWidth,
-    height && styles.width,
-    minHeight && styles.minHeight,
-    maxHeight && styles.maxHeight,
-    inset && styles.inset,
-    top && styles.top,
-    right && styles.right,
-    bottom && styles.bottom,
-    left && styles.left,
-    flexBasis && styles.flexBasis,
-    styles.layoutEnumVariants({
+    padding && Styles.padding,
+    paddingX && Styles.paddingX,
+    paddingY && Styles.paddingY,
+    paddingTop && Styles.paddingTop,
+    paddingRight && Styles.paddingRight,
+    paddingBottom && Styles.paddingBottom,
+    paddingLeft && Styles.paddingLeft,
+    width && Styles.width,
+    minWidth && Styles.minWidth,
+    maxWidth && Styles.maxWidth,
+    height && Styles.width,
+    minHeight && Styles.minHeight,
+    maxHeight && Styles.maxHeight,
+    inset && Styles.inset,
+    top && Styles.top,
+    right && Styles.right,
+    bottom && Styles.bottom,
+    left && Styles.left,
+    flexBasis && Styles.flexBasis,
+    Styles.layoutEnumVariants({
       position,
       overflow,
       overflowX,
@@ -72,25 +72,25 @@ export function extractLayoutProps<
 
   const newStyle = mergeStyles(
     assignInlineVars({
-      [styles.dynamicVars.padding]: px(padding),
-      [styles.dynamicVars.paddingX]: px(paddingX),
-      [styles.dynamicVars.paddingY]: px(paddingY),
-      [styles.dynamicVars.paddingTop]: px(paddingTop),
-      [styles.dynamicVars.paddingRight]: px(paddingRight),
-      [styles.dynamicVars.paddingBottom]: px(paddingBottom),
-      [styles.dynamicVars.paddingLeft]: px(paddingLeft),
-      [styles.dynamicVars.width]: px(width),
-      [styles.dynamicVars.minWidth]: px(minWidth),
-      [styles.dynamicVars.maxWidth]: px(maxWidth),
-      [styles.dynamicVars.height]: px(height),
-      [styles.dynamicVars.minHeight]: px(minHeight),
-      [styles.dynamicVars.maxHeight]: px(maxHeight),
-      [styles.dynamicVars.inset]: px(inset),
-      [styles.dynamicVars.top]: px(top),
-      [styles.dynamicVars.right]: px(right),
-      [styles.dynamicVars.bottom]: px(bottom),
-      [styles.dynamicVars.left]: px(left),
-      [styles.dynamicVars.flexBasis]: px(flexBasis),
+      [Styles.dynamicVars.padding]: px(padding),
+      [Styles.dynamicVars.paddingX]: px(paddingX),
+      [Styles.dynamicVars.paddingY]: px(paddingY),
+      [Styles.dynamicVars.paddingTop]: px(paddingTop),
+      [Styles.dynamicVars.paddingRight]: px(paddingRight),
+      [Styles.dynamicVars.paddingBottom]: px(paddingBottom),
+      [Styles.dynamicVars.paddingLeft]: px(paddingLeft),
+      [Styles.dynamicVars.width]: px(width),
+      [Styles.dynamicVars.minWidth]: px(minWidth),
+      [Styles.dynamicVars.maxWidth]: px(maxWidth),
+      [Styles.dynamicVars.height]: px(height),
+      [Styles.dynamicVars.minHeight]: px(minHeight),
+      [Styles.dynamicVars.maxHeight]: px(maxHeight),
+      [Styles.dynamicVars.inset]: px(inset),
+      [Styles.dynamicVars.top]: px(top),
+      [Styles.dynamicVars.right]: px(right),
+      [Styles.dynamicVars.bottom]: px(bottom),
+      [Styles.dynamicVars.left]: px(left),
+      [Styles.dynamicVars.flexBasis]: px(flexBasis),
     }),
     props.style,
   );
@@ -99,7 +99,7 @@ export function extractLayoutProps<
     ...restProps,
     className: newClassName,
     style: newStyle,
-  } as Omit<P, keyof styles.LayoutVariants>;
+  } as Omit<P, keyof Styles.LayoutVariants>;
 
   return resultProps;
 }

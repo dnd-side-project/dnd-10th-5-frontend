@@ -1,10 +1,10 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { type CSSProperties } from 'react';
-import * as styles from './flex.css';
+import * as Styles from './flex.css';
 import { cx, mergeStyles, px } from '../../utils';
 
 export function extractFlexProps<
-  P extends styles.FlexVariants & {
+  P extends Styles.FlexVariants & {
     [key: string]: any;
     className?: string;
     style?: CSSProperties;
@@ -23,18 +23,18 @@ export function extractFlexProps<
   } = props;
 
   const newClassName = cx(
-    gap && styles.gap,
-    gapX && styles.gapX,
-    gapY && styles.gapY,
-    styles.flexEnumVariants({ display, direction, align, justify, wrap }),
+    gap && Styles.gap,
+    gapX && Styles.gapX,
+    gapY && Styles.gapY,
+    Styles.flexEnumVariants({ display, direction, align, justify, wrap }),
     props.className,
   );
 
   const newStyle = mergeStyles(
     assignInlineVars({
-      [styles.dynamicVars.gap]: px(gap),
-      [styles.dynamicVars.gapX]: px(gapX),
-      [styles.dynamicVars.gapY]: px(gapY),
+      [Styles.dynamicVars.gap]: px(gap),
+      [Styles.dynamicVars.gapX]: px(gapX),
+      [Styles.dynamicVars.gapY]: px(gapY),
     }),
     props.style,
   );
@@ -43,7 +43,7 @@ export function extractFlexProps<
     ...restProps,
     className: newClassName,
     style: newStyle,
-  } as Omit<P, keyof styles.FlexVariants>;
+  } as Omit<P, keyof Styles.FlexVariants>;
 
   return resultProps;
 }
